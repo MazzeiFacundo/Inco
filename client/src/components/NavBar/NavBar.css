@@ -1,0 +1,35 @@
+@media screen and (min-width: 900px) {
+    .nav {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        height: 100%;
+        width: 100px;
+        background: red;
+        border-image: linear-gradient(to right, #222222, #444444) 1;
+    }
+
+    .navText {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        color: white;
+        text-decoration: none;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 20px;
+    }
+
+    .navText:hover{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-decoration: none;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 23px;
+        font-weight: 600;
+        width: 15%;
+    }
+}
