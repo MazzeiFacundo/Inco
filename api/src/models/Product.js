@@ -31,9 +31,13 @@ module.exports = (sequelize) => {
     },
 
     image: {
-      type: DataTypes.STRING,
+      type: DataTypes.BLOB,
       defaultValue: "none",
       allowNull: false,
+    },
+    galleryImages: {
+      type: DataTypes.ARRAY(DataTypes.BLOB),
+      defaultValue: [],
     }
 
   });

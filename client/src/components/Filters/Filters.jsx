@@ -1,20 +1,17 @@
 import React from "react";
-import NavBar from "../NavBar/NavBar";
-import "./SearchBar.css"
+import "./Filters.css"
 
-function SearchBar() {
+function Filters() {
     return (
-        <div className="sBarContainer">
-            <input className="sBarInput"></input>
-            <button className="sBarSearchBtn">Search</button>
-            <form>
+        <div className="filtersContainer">
+            <div className="filtersApplied">Filters applied</div>
+            <form className="filtersForm">
             <label><input type="checkbox" id="cbox1" value="first_checkbox"/>ASC</label>
             <label><input type="checkbox" id="cbox1" value="first_checkbox"/>DESC</label>
             <label><input type="checkbox" id="cbox1" value="first_checkbox"/>DEFAULT</label>
             </form>
-            
         </div>
     )
 }
 
-export default SearchBar;
+export default Filters;

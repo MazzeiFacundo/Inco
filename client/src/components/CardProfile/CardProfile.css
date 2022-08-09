@@ -1,0 +1,35 @@
+
+.cardContainerP{
+    display: flex;
+    background-color: blue;
+    width: 575px;
+    height: 130px;
+    border-radius: 5px;
+    border: 1px red solid;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+
+.imgCardP{
+    display: flex;
+    height: auto;
+}
+
+.cardTextContainerP{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 20px;
+    margin-top: 10px;
+    flex-direction: column;
+}
+
+.cardTitleP{
+    display: flex;
+    font-size: 25px;
+}
+
+.cardDescriptionP{
+    display: flex;
+    font-size: 15px;
+}

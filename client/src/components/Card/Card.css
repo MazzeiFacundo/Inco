@@ -1,0 +1,63 @@
+
+.cardContainer{
+    display: flex;
+    background-color: brown;
+    width: 1000px;
+    height: 200px;
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-left: 30px;
+    margin-bottom: 15px;
+    transition: 0.3s;
+}
+
+.cardContainer:hover{
+    display: flex;
+    background-color: brown;
+    width: 1000px;
+    height: 205px;
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-left: 30px;
+    margin-bottom: 15px;
+}
+
+.cardContainerProfile{
+    display: flex;
+    background-color: rebeccapurple;
+    width: 1000px;
+    height: 230px;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+.imgCard{
+    display: flex;
+    height: auto;
+}
+
+.imgCardP{
+    display: flex;
+    height: 20px;
+}
+
+.cardTextContainer{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 20px;
+    margin-top: 20px;
+    flex-direction: column;
+}
+
+.cardTitle{
+    display: flex;
+    font-size: 35px;
+}
+
+.cardDescription{
+    display: flex;
+    margin-top: 20px;
+    font-size: 15px;
+}

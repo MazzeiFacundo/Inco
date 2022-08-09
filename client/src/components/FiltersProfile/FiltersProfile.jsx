@@ -1,20 +1,17 @@
 import React from "react";
-import NavBar from "../NavBar/NavBar";
-import "./SearchBar.css"
+import "./FiltersProfile.css"
 
-function SearchBar() {
+function FiltersProfile() {
     return (
-        <div className="sBarContainer">
-            <input className="sBarInput"></input>
-            <button className="sBarSearchBtn">Search</button>
-            <form>
+        <div className="profileFiltersContainer">
+            <div className="profileFiltersApplied">Filters applied</div>
+            <form className="profileFiltersForm">
             <label><input type="checkbox" id="cbox1" value="first_checkbox"/>ASC</label>
             <label><input type="checkbox" id="cbox1" value="first_checkbox"/>DESC</label>
             <label><input type="checkbox" id="cbox1" value="first_checkbox"/>DEFAULT</label>
             </form>
-            
         </div>
     )
 }
 
-export default SearchBar;
+export default FiltersProfile;

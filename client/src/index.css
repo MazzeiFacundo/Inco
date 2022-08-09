@@ -4,8 +4,7 @@ html {
 }
 body {
   height: 100%;
-  /* background: rgb(0,0,0);
-  background: linear-gradient(145deg, rgba(0,0,0,1) 36%, rgba(65,65,65,1) 84%); */
+  background: rgb(246, 245, 245);
   background-repeat: no-repeat;
   background-attachment: fixed;
   margin: 0;

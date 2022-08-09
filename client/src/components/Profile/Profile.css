@@ -1,0 +1,63 @@
+.profileContainer{
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    padding-top: 70px;
+    background-color: aqua;
+    justify-content: space-around;
+}
+
+.userData{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    width: 450px;
+    height: 545px;
+    background-color: orange;
+}
+
+.imgUser {
+    width: 120px;
+    height: 120px;
+    border-radius: 100px;
+}
+
+.userHeadline{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.userNameProfile{
+    font-size: 30px;
+}
+
+.userHeadLineText{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.descriptionProfile{
+    display: flex;
+    justify-content: center;
+    background-color: blueviolet;
+    width: 95%;
+    height: 200px;
+}
+
+.descriptionProfileText{
+    display: flex;
+    background-color: violet;
+    align-self: flex-start;
+    margin-top: 20px;
+}
+
+.userProducts{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}

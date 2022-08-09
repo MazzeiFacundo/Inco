@@ -194,6 +194,37 @@ class UserClass {
         res.status(200).json(userFoundDB);
     };
 
+    getProfileInfoToken = async (req, res) => {
+        const token = req.query.token;
+        const userFoundDB = await User.findOne({
+            where: { token: token },
+            include: [
+                {
+                    model: Product,
+                    include: [
+                        { model: User, attributes: ["userName"] },
+                    ],
+                },
+            ],
+        });
+        if (!userFoundDB) return res.status(404).json({ msgE: "User not found" });
+        res.status(200).json(userFoundDB);
+    };
+
+    getPhotoUser = async (req, res) => {
+        const userNameQuery = req.query.userName;
+        // const tokenDecoded = jwt.decode(tokenUser);
+        try {
+          let userFind = await User.findOne({ where: { userName: userNameQuery } });
+          return !userFind
+            ? res.status(404).json({ msgE: "User not Found" })
+            : res.status(200).end(userFind.profileImage);
+        } catch (error) {
+          console.log(error);
+          res.status(404).json({ msgE: "Error to get photo" });
+        }
+      };
+
     editionBasicDataProfile = async (req, res) => {
         let dataPhoto;
         const { token, fullName, description, tel } = req.body;
