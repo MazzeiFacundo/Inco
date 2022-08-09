@@ -2,7 +2,7 @@ import "./Profile.css"
 import CardProfile from "../CardProfile/CardProfile";
 import NavBar from "../NavBar/NavBar";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { showUserData, getCurrentUser } from "../../features/products/productsSlice"
 import FiltersProfile from "../FiltersProfile/FiltersProfile";
@@ -43,15 +43,16 @@ function Profile() {
             <div className="userProducts">
                 {
                     (userProducts || []).map((e) => {
-                        return <CardProfile
-                            key={e.id}
-                            id={e.id}
-                            name={e.name}
-                            description={e.description}
-                            price={e.price}
-                            typeOfProduct={e.typeOfProduct}
-                            image={e.image}
-                        ></CardProfile>
+                        return <Link to={"/Home/" + e.id}>
+                            <CardProfile
+                                key={e.id}
+                                id={e.id}
+                                name={e.name}
+                                description={e.description}
+                                price={e.price}
+                                typeOfProduct={e.typeOfProduct}
+                            ></CardProfile>
+                        </Link>
                     })
                 }
             </div>

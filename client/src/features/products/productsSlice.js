@@ -6,6 +6,7 @@ export const productsSlice = createSlice({
     name: "product",
     initialState: {
         currentProducts: [],
+        currentProductDetails: [],
         userToken: "",
         currentUser: {},
         currentUserProducts: [],
@@ -26,6 +27,9 @@ export const productsSlice = createSlice({
         showCurrentUserProducts: (state, action) => {
             state.currentUserProducts.push(state.currentUser.products)
         },
+        showCurrentProductDetails: (state, action) => {
+            state.currentProductDetails[0] = action.payload
+        },
         getToken: (state, action) => {
             state.userToken = action.payload
         },
@@ -39,6 +43,16 @@ export const showAllProducts = (data) => async (dispatch) => {
     try {
         const response = await axios.get("http://localhost:3001/display/allProducts");
         dispatch(showAll(response.data));
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+export const getCurrentProductDetail = (productId) => async (dispatch) => {
+    try {
+        const response = await axios.get(`http://localhost:3001/display/productById?id=${productId}`);
+        console.log(response.data)
+        dispatch(showCurrentProductDetails(response.data));
     } catch (err) {
         console.log(err);
     }
@@ -70,9 +84,11 @@ export const {
     getToken,
     getUserInfo,
     showCurrentUserProducts,
+    showCurrentProductDetails,
 } = productsSlice.actions
 export const showProducts = (state) => state.product.currentProducts;
 export const showUserData = (state) => state.product.currentUser;
 export const userProducts = (state) => state.product.currentUserProducts;
+export const productDetail = (state) => state.product.currentProductDetails;
 
 export default productsSlice.reducer

@@ -198,9 +198,11 @@ class UserClass {
         const token = req.query.token;
         const userFoundDB = await User.findOne({
             where: { token: token },
+            attributes: {exclude: ['profileImage']},
             include: [
                 {
                     model: Product,
+                    attributes: {exclude: ['image', 'galleryImages']},
                     include: [
                         { model: User, attributes: ["userName"] },
                     ],

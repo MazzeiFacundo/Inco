@@ -5,7 +5,7 @@ import Filters from "../Filters/Filters";
 import "./Home.css"
 import { showAll, showAllAsc, showAllDesc, showAllProducts, showProducts, getProductsSearched } from "../../features/products/productsSlice"
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Home() {
 
@@ -18,12 +18,12 @@ function Home() {
         const userCredentials = window.localStorage.getItem("userCredentials");
         const userToken = JSON.parse(userCredentials);
         console.log(userToken)
-        if(!userToken) {
+        if (!userToken) {
             navigate("/");
         }
-      }, []);
+    }, []);
 
-      const [input, setInput] = useState("")
+    const [input, setInput] = useState("")
 
     function handleClick(e) {
         e.preventDefault()
@@ -41,24 +41,26 @@ function Home() {
         <div className="homeContainer">
             <NavBar></NavBar>
             <div className="homeCardContainer">
-            <div className="searchContainer">
-                <input onChange={(e) => handleChange(e)} className="searchInputHome" placeholder="Search properties..."></input>
-                <button onClick={(e) => handleClick(e)} className="searchButtonHome">Search</button>
-            </div>
+                <div className="searchContainer">
+                    <input onChange={(e) => handleChange(e)} className="searchInputHome" placeholder="Search properties..."></input>
+                    <button onClick={(e) => handleClick(e)} className="searchButtonHome">Search</button>
+                </div>
                 {console.log(currentProducts)}
                 {
                     currentProducts.map((e) => {
-                        return <Card 
-                        key={e.id}
-                        id={e.id}
-                        name={e.name}
-                        description={e.description}
-                        price={e.price}
-                        typeOfProduct={e.typeOfProduct}
-                        typeOfDeals={e.typeOfDeals.map((e) => {
-                            return e.name
-                        })}
-                        ></Card>
+                        return <Link to={"/Home/" + e.id}>
+                            <Card
+                                key={e.id}
+                                id={e.id}
+                                name={e.name}
+                                description={e.description}
+                                price={e.price}
+                                typeOfProduct={e.typeOfProduct}
+                                typeOfDeals={e.typeOfDeals.map((e) => {
+                                    return e.name
+                                })}
+                            ></Card>
+                        </Link>
                     })
                 }
             </div>
