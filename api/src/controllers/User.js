@@ -194,6 +194,23 @@ class UserClass {
         res.status(200).json(userFoundDB);
     };
 
+    getProfileInfoById = async (req, res) => {
+        const id = req.query.id;
+        const userFoundDB = await User.findOne({
+            where: { idUser: id },
+            // include: [
+            //     {
+            //         model: Product,
+            //         include: [
+            //             { model: User, attributes: ["userName"] },
+            //         ],
+            //     },
+            // ],
+        });
+        if (!userFoundDB) return res.status(404).json({ msgE: "User not found" });
+        res.status(200).json(userFoundDB);
+    };
+
     getProfileInfoToken = async (req, res) => {
         const token = req.query.token;
         const userFoundDB = await User.findOne({

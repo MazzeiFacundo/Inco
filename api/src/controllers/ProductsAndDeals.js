@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { Product, TypeOfDeal, User } = require("../db.js");
+const { Product, TypeOfDeal, User, Images } = require("../db.js");
 const { Op } = require("sequelize");
 const jwt = require("jsonwebtoken");
 
@@ -24,10 +24,10 @@ class ProductsAndDeals {
             const name = req.query.name
             const searchInDb = async () => {
                 return await Product.findAll({
-                    attributes: {exclude: ['image', 'galleryImages']},
+                    attributes: { exclude: ['image', 'galleryImages'] },
                     include: {
                         model: TypeOfDeal,
-                        attributes: ["name"], 
+                        attributes: ["name"],
                         through: {
                             attributes: [],
                         },
@@ -107,6 +107,13 @@ class ProductsAndDeals {
             const id = req.query.id;
             const product = await Product.findOne({
                 where: { id: id },
+                attributes: { exclude: ['image'] },
+                include: [
+                    {
+                        model: User,
+                        attributes: { exclude: ['profileImage', 'password'] },
+                    },
+                ],
             })
             console.log(product)
             res.status(200).send(product)
@@ -158,22 +165,6 @@ class ProductsAndDeals {
                 { responseType: "arraybuffer" }
             );
 
-            const photoArray = [];
-
-            const photoArray1 = await axios.get(
-                "https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/advisor/wp-content/uploads/2021/08/download-23.jpg",
-                { responseType: "arraybuffer" }
-            );
-
-            const photoArray2 = await axios.get(
-                "https://ca-times.brightspotcdn.com/dims4/default/c12c0dd/2147483647/strip/true/crop/2000x1195+0+0/resize/1486x888!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fad%2Ff4%2F1f1b2193479eafb7cbba65691184%2F10480-sunset-fullres-01.jpg",
-                { responseType: "arraybuffer" }
-            );
-
-            photoArray.push(photoArray1)
-            photoArray.push(photoArray2)
-            console.log(photoArray)
-
             let {
                 name,
                 description,
@@ -194,10 +185,9 @@ class ProductsAndDeals {
                 description,
                 price,
                 photo,
-                photoArray,
                 typeOfProduct,
                 image: photo.data,
-                galleryImages: photoArray
+                // galleryImages: photoArray
             })
 
             let typeOfDealDb = await TypeOfDeal.findAll({
@@ -219,6 +209,50 @@ class ProductsAndDeals {
 
     }
 
+    addGalleryImage = async (req, res) => {
+
+        let id = req.query.id;
+        let dataPhoto;
+
+        try {
+            dataPhoto = req.files.photoGallery.data;
+        } catch (e) {
+            console.log(e)
+        }
+        if (req.files) {
+            dataPhoto = req.files.photoGallery.data;
+        }
+
+        console.log(dataPhoto)
+
+        try {
+            const product = await Product.findOne({
+                where: { id: id },
+            });
+            if (!product) return res.status(404).json({ msgE: "Could not find your product" });
+
+            const photo = await axios.get(
+                "https://us.123rf.com/450wm/aquir/aquir1909/aquir190907813/129839336-bot%C3%B3n-de-ejemplo-ejemplo-de-signo-verde-redondeado-ejemplo.jpg?ver=6",
+                { responseType: "arraybuffer" }
+            );
+            console.log(photo)
+
+            let imageCreated = await Images.create({
+                image: dataPhoto
+            })
+
+            await imageCreated.setProduct(product.id)
+
+            return res.status(201).json({
+                msg: "Image added successfully",
+                product: product.id,
+                imageCreated: imageCreated.id
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     getPhotoProduct = async (req, res) => {
         const productId = req.query.id;
         // const tokenDecoded = jwt.decode(tokenUser);
@@ -233,19 +267,42 @@ class ProductsAndDeals {
         }
     };
 
-    getGalleryProduct = async (req, res) => {
-        const productId = req.query.id;
+    getPhotoGallery = async (req, res) => {
+        const imageId = req.query.id;
         // const tokenDecoded = jwt.decode(tokenUser);
         try {
-            let productFind = await Product.findOne({ where: { id: productId } });
-            return !productFind
+            let imageFound = await Images.findOne({ where: { id: imageId } });
+            console.log(imageFound.image)
+            return !imageFound
                 ? res.status(404).json({ msgE: "User not Found" })
-                : res.status(200).send(productFind.galleryImages);
+                : res.status(200).end(imageFound.image);
         } catch (error) {
             console.log(error);
             res.status(404).json({ msgE: "Error to get photo" });
         }
     };
+
+    getGalleryProduct = async (req, res) => {
+        const productId = req.query.id;
+        // const tokenDecoded = jwt.decode(tokenUser);
+        try {
+            let imagesFound = await Images.findAll(
+                {
+                    where: { productId: productId }, attributes: { exclude: ['image'] },
+                },
+
+            );
+            console.log(imagesFound)
+            res.send(imagesFound)
+            // return !productFind
+            //     ? res.status(404).json({ msgE: "User not Found" })
+            //     : res.status(200).end(productFind.galleryImages[0]);
+        } catch (error) {
+            console.log(error);
+            res.status(404).json({ msgE: "Error to get photo" });
+        }
+    };
+
 
     listNewTypeOfDeal = async (req, res) => {
         let {
@@ -258,6 +315,7 @@ class ProductsAndDeals {
 
         res.send("New deal listed successfully")
     }
+
 }
 
 module.exports = ProductsAndDeals;

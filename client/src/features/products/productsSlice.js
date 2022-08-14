@@ -7,8 +7,10 @@ export const productsSlice = createSlice({
     initialState: {
         currentProducts: [],
         currentProductDetails: [],
+        productGallery: [],
         userToken: "",
         currentUser: {},
+        currentUserById: {},
         currentUserProducts: [],
     },
     reducers: {
@@ -30,11 +32,17 @@ export const productsSlice = createSlice({
         showCurrentProductDetails: (state, action) => {
             state.currentProductDetails[0] = action.payload
         },
+        showCurrentProductGallery: (state, action) => {
+            state.productGallery[0] = action.payload
+        },
         getToken: (state, action) => {
             state.userToken = action.payload
         },
         getUserInfo: (state, action) => {
             state.currentUser = action.payload
+        },
+        getUserInfoById: (state, action) => {
+            state.currentUserById = action.payload
         }
     }
 });
@@ -58,10 +66,29 @@ export const getCurrentProductDetail = (productId) => async (dispatch) => {
     }
 };
 
+export const getProductsGallery = (productId) => async (dispatch) => {
+    try {
+        console.log(productId)
+        const response = await axios.get(`http://localhost:3001/display/getGalleryProduct?id=${productId}`);
+        dispatch(showCurrentProductGallery(response.data));
+    } catch (err) {
+        console.log(err);
+    }
+};
+
 export const getCurrentUser = (userData) => async (dispatch) => {
     try {
         const response = await axios.get(`http://localhost:3001/users/profileInfoToken?token=${userData}`);
         dispatch(getUserInfo(response.data));
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+export const getCurrentUserById = (userId) => async (dispatch) => {
+    try {
+        const response = await axios.get(`http://localhost:3001/users/profileInfoById?id=${userId}`);
+        dispatch(getUserInfoById(response.data));
     } catch (err) {
         console.log(err);
     }
@@ -83,11 +110,15 @@ export const {
     showAllDesc,
     getToken,
     getUserInfo,
+    getUserInfoById,
     showCurrentUserProducts,
     showCurrentProductDetails,
+    showCurrentProductGallery
 } = productsSlice.actions
 export const showProducts = (state) => state.product.currentProducts;
+export const showProductGallery = (state) => state.product.productGallery;
 export const showUserData = (state) => state.product.currentUser;
+export const showUserDataById = (state) => state.product.currentUserById;
 export const userProducts = (state) => state.product.currentUserProducts;
 export const productDetail = (state) => state.product.currentProductDetails;
 

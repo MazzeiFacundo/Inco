@@ -6,6 +6,7 @@ const router = Router();
 
 router.get('/all', user.getAllUsers)
 router.get('/profileInfo', user.getProfileInfo);
+router.get('/profileInfoById', user.getProfileInfoById);
 router.get('/profileInfoToken', user.getProfileInfoToken);
 router.get("/getPhotoUser", user.getPhotoUser);
 router.post('/editProfileInfo', user.editionBasicDataProfile)

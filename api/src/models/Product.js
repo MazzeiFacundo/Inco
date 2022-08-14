@@ -35,10 +35,5 @@ module.exports = (sequelize) => {
       defaultValue: "none",
       allowNull: false,
     },
-    galleryImages: {
-      type: DataTypes.ARRAY(DataTypes.BLOB),
-      defaultValue: [],
-    }
-
   });
 };

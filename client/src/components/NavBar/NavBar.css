@@ -11,6 +11,18 @@
         border-image: linear-gradient(to right, #222222, #444444) 1;
     }
 
+    .textNavLeft{
+        display: flex;
+        justify-content: space-around;
+        width: 400px;
+    }
+
+    .textNavRight{
+        display: flex;
+        justify-content: space-around;
+        width: 400px;
+    }
+
     .navText {
         display: flex;
         justify-content: flex-start;
@@ -18,8 +30,11 @@
         color: white;
         text-decoration: none;
         font-family: 'Quicksand', sans-serif;
-        font-size: 20px;
+        font-size: 17px;
+        margin-left: 10px;
+        transition: 0.3s;
     }
+
 
     .navText:hover{
         display: flex;
@@ -28,9 +43,22 @@
         color: white;
         text-decoration: none;
         font-family: 'Quicksand', sans-serif;
-        font-size: 21px;
-        font-weight: 600;
-        width: 15%;
+        font-size: 18px;
     }
 
+    .homeDiv{
+        display: flex;
+    }
+
+    .profileDiv{
+        display: flex;
+    }
+
+    .profileIcon{
+        font-size: 30px;
+    }
+
+    .logOutDiv{
+        display: flex;
+    }
 }
