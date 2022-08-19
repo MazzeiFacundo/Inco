@@ -14,8 +14,7 @@ function LandingPage() {
 
     const [input, setInput] = useState({
         email: "",
-        password: "",
-        userName: "",
+        password: ""
     });
     const [errors, setErrors] = useState({});
 
@@ -33,27 +32,20 @@ function LandingPage() {
         try {
             const response = await axios.post("http://localhost:3001/login", input);
             console.log(response)
-            if (response.data.msgE) {
-                setInput({
-                    email: "",
-                    password: "",
-                    userName: "",
-                });
-                return;
-            }
             dispatch(getToken(response.data.token));
             window.localStorage.setItem(
                 "userCredentials",
                 JSON.stringify(response.data.token)
             );
             navigate("/home");
-            setInput({ email: "", password: "", userName: "" });
+            setInput({ email: "", password: "" });
         } catch (e) {
-            console.log("nope")
+            if (e.response.data.msgE === "Incorrect Password") setErrors({ password: e.response.data.msgE })
+            if (e.response.data.msgE === "This email adress has not been registered yet") setErrors({ email: e.response.data.msgE })
+            console.log(e.response.data.msgE)
             setInput({
                 email: "",
                 password: "",
-                userName: "",
             });
         }
     };
@@ -68,28 +60,11 @@ function LandingPage() {
 
     return (
         <div className="landingPageContainer">
-            <img className="imgLanding" src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/FJYA5LJ4PNEIVNBUDMQ66KV6UQ.jpg"></img>
-            <div className="rightLanding">
+            <div className="formContainer">
                 <div className="welcomeLanding">Welcome to Inco Real State</div>
                 <form
                     onSubmit={(e) => handleSubmit(e)}
                     className="formLogin">
-
-                    <div className="textFormLogin">User Name</div>
-                    <input
-                        type="text"
-                        name="userName"
-                        value={input.userName}
-                        onChange={(e) => handleChange(e)}
-                        className="inputLogin"
-                    ></input>
-
-                    {errors.userName ? (
-                        <div className="showErrorEmail">{errors.email}</div>
-                    ) : (
-                        <div className="hideErrorEmail">a</div>
-                    )}
-
 
                     <div className="textFormLogin">E-mail</div>
                     <input
@@ -99,10 +74,8 @@ function LandingPage() {
                         onChange={(e) => handleChange(e)}
                         className="inputLogin"
                     ></input>
-                    {errors.email ? (
+                    {errors.email && (
                         <div className="showErrorEmail">{errors.email}</div>
-                    ) : (
-                        <div className="hideErrorEmail">a</div>
                     )}
 
 
@@ -112,10 +85,15 @@ function LandingPage() {
                         type="text"
                         name="password"
                         value={input.password}
-                        onChange={handleChange}
+                        onChange={(e) => handleChange(e)}
                     ></input>
 
+                    {errors.password && (
+                        <div className="showErrorEmail">{errors.password}</div>
+                    )}
+
                     <button type="submit" className="buttonLogin">Log In</button>
+                    <a href="/register">Don't have an account? Register!</a>
                 </form>
             </div>
         </div>

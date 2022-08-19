@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import { productDetail, getCurrentProductDetail } from "../../features/products/productsSlice"
 import NavBar from "../NavBar/NavBar";
 import ImgGallery from "../ImgGallery/ImgGallery";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 function CardDetail() {
 
@@ -20,7 +22,10 @@ function CardDetail() {
     return (
         <div className="cardDetailsContainer">
             <NavBar></NavBar>
-
+            <div className="goBackCardDetailContainer">
+                <FontAwesomeIcon icon={faCircleChevronLeft} className='btnGoBack' />
+                <a className="goBackCardDetail" href="/home">Go back</a>
+            </div>
             {
                 (currentProduct || []).map((e) => {
                     console.log(currentProduct)

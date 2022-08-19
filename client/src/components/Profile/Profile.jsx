@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { showUserData, getCurrentUser } from "../../features/products/productsSlice"
 import FiltersProfile from "../FiltersProfile/FiltersProfile";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 function Profile() {
 
@@ -24,6 +26,10 @@ function Profile() {
         <div className="profileContainer">
             <NavBar></NavBar>
             <div className="userData">
+                <div className="goBackProfileContainer">
+                    <FontAwesomeIcon className="iconGoBackProfile" icon={faCircleChevronLeft}/>
+                    <a className="goBackProfile" href="/home">Go back</a>
+                </div>
                 <div className="userHeadline">
                     <img className="imgUser" src={`http://localhost:3001/users/getPhotoUser?userName=${currentUser.userName}`} alt="none" />
                     <div className="userHeadLineText">
@@ -43,7 +49,7 @@ function Profile() {
             <div className="userProducts">
                 {
                     (userProducts || []).map((e) => {
-                        return <Link to={"/Home/" + e.id}>
+                        return <a href={"/Home/" + e.id}>
                             <CardProfile
                                 key={e.id}
                                 id={e.id}
@@ -52,7 +58,7 @@ function Profile() {
                                 price={e.price}
                                 typeOfProduct={e.typeOfProduct}
                             ></CardProfile>
-                        </Link>
+                        </a>
                     })
                 }
             </div>

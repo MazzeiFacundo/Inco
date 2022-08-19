@@ -1,0 +1,123 @@
+
+.listProductContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: aquamarine;
+    height: 100vh;
+}
+
+.formContainerlistProduct{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    height: 500px;
+    width: 500px;
+    margin-left: 40px;
+    margin-bottom: 20px;
+    border: 1px gray solid;
+}
+
+.titleFormlistProduct{
+    display: flex;
+    height: min-content;
+    font-size: 30px;
+    margin-left: 30px;
+    margin-top: 15px;
+}
+
+.allInputsContainerListProduct{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    margin-top: -5px;
+}
+
+.inputContainerListProduct{
+    display: flex;
+    margin-top: 25px;
+    flex-direction: column;
+}
+
+.inputContainerDescriptionListProduct{
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+}
+
+.textInputListProduct{
+    display: flex;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.singleInputListProduct{
+    display: flex;
+    width: 420px;
+    height: 25px;
+}
+
+.singleInputDescriptionListProduct{
+    display: flex;
+    width: 420px;
+    height: 150px;
+}
+
+.allSelectsContainerListProduct{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.textSelectContainerListProduct{
+    display: flex;
+    justify-content: space-around; 
+}
+
+.selectContainerListProduct{
+    display: flex;
+    justify-content: space-around;
+}
+
+.singleSelectListProduct{
+    width: 200px;
+    height: 30px;
+}
+
+.submitBtnContainerListProduct{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+}
+
+.nextBtnContainerListProduct{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.nextBtnListProduct{
+    height: 30px;
+    width: 70px;
+    margin-right: 25px;
+}
+
+.submitBtnListProduct{
+    height: 40px;
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.errorProduct{
+    display: flex;
+    color: red;
+    font-size: 11px;
+    margin-top: 5px;
+    width: 420px;
+    height: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}

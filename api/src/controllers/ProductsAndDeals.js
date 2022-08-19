@@ -267,6 +267,44 @@ class ProductsAndDeals {
         }
     };
 
+    updatePhotoProduct = async (req, res) => {
+        let id = req.query.id;
+        let dataPhoto;
+
+        try {
+            dataPhoto = req.files.photoProduct.data;
+        } catch (e) {
+            console.log(e)
+        }
+        if (req.files) {
+            dataPhoto = req.files.photoProduct.data;
+        }
+
+        console.log(dataPhoto)
+
+        try {
+            const product = await Product.findOne({
+                where: { id: id },
+            });
+            if (!product) return res.status(404).json({ msgE: "Could not find your product" });
+
+            let productUpdate = await Product.update({
+                image: dataPhoto
+            },
+            { where: { id: product.dataValues.id } }
+            )
+
+            return res.status(201).json({
+                msg: "Product updated successfully",
+                product: product.id,
+                imageUpdate: dataPhoto
+            });
+        } catch (error) {
+            console.log(error)
+        }
+
+    };
+
     getPhotoGallery = async (req, res) => {
         const imageId = req.query.id;
         // const tokenDecoded = jwt.decode(tokenUser);
@@ -302,7 +340,6 @@ class ProductsAndDeals {
             res.status(404).json({ msgE: "Error to get photo" });
         }
     };
-
 
     listNewTypeOfDeal = async (req, res) => {
         let {

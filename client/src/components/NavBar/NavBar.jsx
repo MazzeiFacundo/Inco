@@ -2,8 +2,7 @@ import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./NavBar.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import user1 from "C:/Users/facum/Facu Programacion/PI-Videogames-main/client/src/resources/5700c04197ee9a4372a35ef16eb78f4e.png"
-import { faAddressCard, faDoorOpen, faHome } from "@fortawesome/free-solid-svg-icons";
+import { faAddressCard, faDoorOpen, faHome, faClipboard } from "@fortawesome/free-solid-svg-icons";
 
 export default function NavBar() {
     const location = useLocation();
@@ -23,17 +22,21 @@ export default function NavBar() {
             <div className="textNavLeft">
                 <div className="homeDiv">
                     <FontAwesomeIcon icon={faHome} className='profileIcon'></FontAwesomeIcon>
-                    <Link className="navText" to='/Home'>Home</Link>
+                    <a className="navText" href='/Home'>Home</a>
                 </div>
             </div>
             <div className="textNavRight">
                 <div className="profileDiv">
+                    <FontAwesomeIcon icon={faClipboard} className='profileIcon'></FontAwesomeIcon>
+                    <a className="navText" href='/listProduct'>List a product</a>
+                </div>
+                <div className="profileDiv">
                     <FontAwesomeIcon icon={faAddressCard} className='profileIcon'></FontAwesomeIcon>
-                    <Link className="navText" to='/profile'>My profile</Link>
+                    <a className="navText" href='/profile'>My profile</a>
                 </div>
                 <div className="logOutDiv">
                     <FontAwesomeIcon icon={faDoorOpen} className='profileIcon'></FontAwesomeIcon>
-                    <Link onClick={(e) => handleClick(e)} className="navText" to='/'>Exit</Link>
+                    <a onClick={(e) => handleClick(e)} className="navText" href='/'>Exit</a>
                 </div>
             </div>
 

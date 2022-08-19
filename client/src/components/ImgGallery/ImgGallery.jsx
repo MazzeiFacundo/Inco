@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, componentWillUnmount } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./ImgGallery.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -15,6 +15,11 @@ function ImgGallery(id) {
     useEffect(() => {
         const imagesGallery = dispatch(getProductsGallery(id.id))
     }, []);
+
+    // componentWillUnmount(() => {
+    //     console.log("desmontado")
+    // })
+    
 
     const handleOpenModal = (index) => {
         setSlideNumber(index)

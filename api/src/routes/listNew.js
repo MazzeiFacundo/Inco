@@ -10,5 +10,6 @@ router.use(fileUpload());
 router.post('/product', productsAndDeals.listNewProduct)
 router.post('/typeOfDeal', productsAndDeals.listNewTypeOfDeal)
 router.post('/galleryImage', productsAndDeals.addGalleryImage)
+router.post('/productImage', productsAndDeals.updatePhotoProduct)
 
 module.exports = router;

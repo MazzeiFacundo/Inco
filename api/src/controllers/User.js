@@ -64,17 +64,16 @@ class UserClass {
 
     loginUser = async (req, res) => {
         //User login validation function
-        const { email, userName, password } = req.body;
+        const { email, password } = req.body;
         try {
             const userResponse = await validation.validationLoginUser(
                 email,
-                userName,
                 password
             );
             if (userResponse) return res.status(404).json(userResponse);
 
             const userFoundDB = await User.findOne({
-                where: { [Op.or]: [{ userName: userName }, { email: email }] },
+                where: { [Op.or]: [{ email: email }] },
             });
             const token = jwt.sign(
                 {
@@ -87,7 +86,7 @@ class UserClass {
             );
             await User.update(
                 { token },
-                { where: { [Op.or]: [{ userName: userName }, { email: email }] } }
+                { where: { [Op.or]: [{ email: email }] } }
             );
             return res.status(200).json({
                 msg: "Everything is fine (:",

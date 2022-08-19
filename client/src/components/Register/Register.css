@@ -1,60 +1,87 @@
-.landingPageContainer{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #49562A;
-}
-
-.imgLanding {
-    height: 100vh;
-    width: 100%;
-    object-fit: cover;
-}
-
-.welcomeLanding{
-    display: flex;
-    font-size: 25px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.formContainer{
+.registerContainer{
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 430px;
-    background-color: white;
+    justify-content: center;
+    background-color: #AFC073;
+    height: 100vh;
 }
 
-.formLogin{
+.registerText{
+    display: flex;
+    font-size: 35px;
+    margin-bottom: -20px;
+}
+
+.formContainerRegister{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 800px;
+    height: 550px;
+}
+
+.inputsContainer{
+    display: flex;
+    width: 100%;
+    height: 420px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.inputDivLeft{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    height: 350px;
+    width: 320px;
     align-items: center;
-    width: 350px;
-    height: 300px;
 }
 
-.textFormLogin{
+.inputDivRight{
     display: flex;
-    font-size: 17px;
-    width: 271px;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 350px;
+    width: 320px;
+    align-items: center;
 }
 
-.inputLogin{
+.inputDiv{
     display: flex;
-    height: 30px;
-    width: 271px;
+    flex-direction: column;
+    width: 300px;
+}
+
+.inputText{
     margin-bottom: 5px;
 }
 
-.buttonLogin{
+.singleInput{
+    display: flex;
+    height: 35px;
+}
+
+.buttonRegisterDisabled{
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 20px;
-    margin-top: 40px;
+    width: 280px;
+    height: 40px;
+    border: none;
+    color: white;
+    background-color: #525252;
+    transition: 0.3s;
+}
+
+.buttonRegister{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
     width: 280px;
     height: 40px;
     border: none;
@@ -63,25 +90,9 @@
     transition: 0.3s;
 }
 
-.buttonLogin:hover{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    margin-top: 40px;
-    width: 280px;
-    height: 40px;
-    border: none;
-    color: white;
-    background-color: #49562A;
-}
-
-/* ERRORES */
-
-.showErrorEmail{
+.errorLogin{
     display: flex;
     color: red;
     margin: 0;
     font-size: 12px;
-    margin-top: -15px;
 }

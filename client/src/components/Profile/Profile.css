@@ -1,6 +1,5 @@
 .profileContainer{
     display: flex;
-    height: 100vh;
     width: 100%;
     padding-top: 70px;
     background-color: aqua;
@@ -9,12 +8,34 @@
 
 .userData{
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
     flex-direction: column;
+    align-items: center;
     width: 450px;
     height: 545px;
     background-color: orange;
+}
+
+.goBackProfileContainer{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    font-size: 20px;
+    background-color: transparent;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.goBackProfile{
+    display: flex;
+    text-decoration: none;
+    color: black;
+    margin-bottom: 2px;
+    margin-left: 10px;
+}
+
+.iconGoBackProfile{
+    display: flex;
 }
 
 .imgUser {
@@ -29,6 +50,8 @@
     width: 100%;
     align-items: center;
     justify-content: space-evenly;
+    margin-bottom: 100px;
+    margin-top: 40px;
 }
 
 .userNameProfile{

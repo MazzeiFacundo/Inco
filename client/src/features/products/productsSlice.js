@@ -12,6 +12,7 @@ export const productsSlice = createSlice({
         currentUser: {},
         currentUserById: {},
         currentUserProducts: [],
+        typeOfDeals: [],
     },
     reducers: {
         showAll: (state, action) => {
@@ -33,7 +34,7 @@ export const productsSlice = createSlice({
             state.currentProductDetails[0] = action.payload
         },
         showCurrentProductGallery: (state, action) => {
-            state.productGallery[0] = action.payload
+            state.productGallery = [action.payload]
         },
         getToken: (state, action) => {
             state.userToken = action.payload
@@ -43,6 +44,9 @@ export const productsSlice = createSlice({
         },
         getUserInfoById: (state, action) => {
             state.currentUserById = action.payload
+        },
+        getTypesOfDeals: (state, action) => {
+            state.typeOfDeals = action.payload
         }
     }
 });
@@ -94,10 +98,20 @@ export const getCurrentUserById = (userId) => async (dispatch) => {
     }
 };
 
+
 export const getProductsSearched = (productName) => async (dispatch) => {
     try {
         const response = await axios.get(`http://localhost:3001/display/allProducts?name=${productName}`);
         dispatch(showAll(response.data));
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+export const getAllTypesOfDeals = () => async (dispatch) => {
+    try {
+        const response = await axios.get('http://localhost:3001/display/allTypeOfDeals');
+        dispatch(getTypesOfDeals(response.data));
     } catch (err) {
         console.log(err);
     }
@@ -113,7 +127,8 @@ export const {
     getUserInfoById,
     showCurrentUserProducts,
     showCurrentProductDetails,
-    showCurrentProductGallery
+    showCurrentProductGallery,
+    getTypesOfDeals
 } = productsSlice.actions
 export const showProducts = (state) => state.product.currentProducts;
 export const showProductGallery = (state) => state.product.productGallery;
@@ -121,5 +136,6 @@ export const showUserData = (state) => state.product.currentUser;
 export const showUserDataById = (state) => state.product.currentUserById;
 export const userProducts = (state) => state.product.currentUserProducts;
 export const productDetail = (state) => state.product.currentProductDetails;
+export const typeOfDeals = (state) => state.product.typeOfDeals;
 
 export default productsSlice.reducer

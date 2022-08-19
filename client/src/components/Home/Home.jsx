@@ -48,7 +48,7 @@ function Home() {
                 {console.log(currentProducts)}
                 {
                     currentProducts.map((e) => {
-                        return <Link to={"/Home/" + e.id}>
+                        return <a href={"/Home/" + e.id}>
                             <Card
                                 key={e.id}
                                 id={e.id}
@@ -60,7 +60,7 @@ function Home() {
                                     return e.name
                                 })}
                             ></Card>
-                        </Link>
+                        </a>
                     })
                 }
             </div>
