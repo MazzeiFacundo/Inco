@@ -5,62 +5,80 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        height: 70px;
+        height: 60px;
         width: 100%;
-        background: #49562A;
-        border-image: linear-gradient(to right, #222222, #444444) 1;
+        background: #f1f1f1;
         z-index: 99;
+        border-top: 2px #d50000 solid;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+    -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+    -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
     }
 
-    .textNavLeft{
+
+    .textNavLeft {
         display: flex;
         justify-content: space-around;
-        width: 400px;
+        width: 250px;
+        color: #FFFFFF;
     }
 
-    .textNavRight{
+    .textNavRight {
         display: flex;
         justify-content: space-around;
-        width: 400px;
-        margin-right: 80px;
+        align-items: center;
+        width: 500px;
+        height: 50px;
+        margin-right: 40px;
+        color: #FFFFFF;
     }
 
     .navText {
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        color: white;
+        color: #3d3d3d;
         text-decoration: none;
-        font-family: 'Quicksand', sans-serif;
-        font-size: 17px;
+        font-size: 19px;
+        font-weight: 500;
         margin-left: 10px;
-        transition: 0.3s;
+        font-family: 'Poppins', sans-serif;
     }
 
+    .logoNav{
+        object-fit: cover;
+        margin-top: 5px;
+        height: 120px;
+    }
 
-    .navText:hover{
+    .homeDiv {
+        display: flex;
+    }
+
+    .profileDiv {
         display: flex;
         justify-content: center;
         align-items: center;
-        color: white;
-        text-decoration: none;
-        font-family: 'Quicksand', sans-serif;
-        font-size: 18px;
+        width: 150px;
+        height: 40px;
+        transition: 0.3s;
     }
 
-    .homeDiv{
-        display: flex;
+    .profileDiv:hover .navText {
+        color: #d50000;
+
     }
 
-    .profileDiv{
-        display: flex;
+    .logOutDiv:hover .navText {
+        color: #d50000;
+
     }
 
-    .profileIcon{
+    .profileIcon {
         font-size: 30px;
     }
 
-    .logOutDiv{
+    .logOutDiv {
         display: flex;
     }
 }

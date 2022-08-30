@@ -110,6 +110,13 @@ class ProductsAndDeals {
                 attributes: { exclude: ['image'] },
                 include: [
                     {
+                        model: TypeOfDeal,
+                        attributes: ["name"],
+                        through: {
+                            attributes: [],
+                        }
+                    },
+                    {
                         model: User,
                         attributes: { exclude: ['profileImage', 'password'] },
                     },
@@ -169,6 +176,11 @@ class ProductsAndDeals {
                 name,
                 description,
                 price,
+                productWidth,
+                productHeight,
+                rooms,
+                dorms,
+                bathrooms,
                 typeOfProduct,
                 typeOfDeal,
                 token
@@ -184,6 +196,11 @@ class ProductsAndDeals {
                 name,
                 description,
                 price,
+                productWidth,
+                productHeight,
+                rooms,
+                dorms,
+                bathrooms,
                 photo,
                 typeOfProduct,
                 image: photo.data,
@@ -291,7 +308,7 @@ class ProductsAndDeals {
             let productUpdate = await Product.update({
                 image: dataPhoto
             },
-            { where: { id: product.dataValues.id } }
+                { where: { id: product.dataValues.id } }
             )
 
             return res.status(201).json({

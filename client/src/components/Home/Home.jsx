@@ -31,6 +31,12 @@ function Home() {
         setInput("")
     }
 
+    function handleClear(e) {
+        e.preventDefault()
+        dispatch(getProductsSearched(""));
+        setInput("")
+    }
+
     function handleChange(e) {
         e.preventDefault();
         setInput(e.target.value);
@@ -42,19 +48,25 @@ function Home() {
             <NavBar></NavBar>
             <div className="homeCardContainer">
                 <div className="searchContainer">
-                    <input onChange={(e) => handleChange(e)} className="searchInputHome" placeholder="Search properties..."></input>
+                    <input onChange={(e) => handleChange(e)} value={input} className="searchInputHome" placeholder="Search properties..."></input>
                     <button onClick={(e) => handleClick(e)} className="searchButtonHome">Search</button>
+                    <button onClick={(e) => handleClear(e)} className="searchButtonHome">Reset</button>
                 </div>
                 {console.log(currentProducts)}
                 {
                     currentProducts.map((e) => {
-                        return <a href={"/Home/" + e.id}>
+                        return <a className="linkHome" href={"/Home/" + e.id}>
                             <Card
                                 key={e.id}
                                 id={e.id}
                                 name={e.name}
                                 description={e.description}
                                 price={e.price}
+                                productWidth={e.productWidth}
+                                productHeight={e.productHeight}
+                                rooms={e.rooms}
+                                dorms={e.dorms}
+                                bathrooms={e.bathrooms}
                                 typeOfProduct={e.typeOfProduct}
                                 typeOfDeals={e.typeOfDeals.map((e) => {
                                     return e.name

@@ -1,63 +1,79 @@
-
-.cardContainer{
+.cardContainer {
     display: flex;
-    background-color: brown;
-    width: 1000px;
+    background-color: rgb(247, 247, 247);
+    width: 1020px;
     height: 200px;
     border-radius: 5px;
     margin-top: 15px;
-    margin-left: 30px;
+    margin-left: 20px;
     margin-bottom: 15px;
+    border: 1px #cbd6dc solid;
     transition: 0.3s;
 }
 
-.cardContainer:hover{
-    display: flex;
-    background-color: brown;
-    width: 1000px;
-    height: 205px;
-    border-radius: 5px;
-    margin-top: 15px;
-    margin-left: 30px;
-    margin-bottom: 15px;
+.cardContainer:hover {
+    box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+    -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+    -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
 }
 
-.cardContainerProfile{
-    display: flex;
-    background-color: rebeccapurple;
-    width: 1000px;
-    height: 230px;
-    border-radius: 5px;
-    margin-top: 20px;
-    margin-left: 30px;
-    margin-bottom: 20px;
+
+.imgCard {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
-.imgCard{
+.allTextCardContainer {
     display: flex;
-    height: auto;
-}
-
-.imgCardP{
-    display: flex;
-    height: 20px;
-}
-
-.cardTextContainer{
-    display: flex;
-    justify-content: flex-start;
-    margin-left: 20px;
-    margin-top: 20px;
     flex-direction: column;
 }
 
-.cardTitle{
+.cardTitleContainer {
     display: flex;
-    font-size: 35px;
+    font-size: 30px;
+    margin-left: 12px;
+    width: 100%;
+    margin-top: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
 }
 
-.cardDescription{
+.cardHeadersContainer {
     display: flex;
-    margin-top: 20px;
-    font-size: 15px;
+    align-items: center;
+    width: 100%;
+    margin-left: 5px;
 }
+
+.cardText {
+    display: flex;
+    margin-left: 5px;
+    margin-right: 15px;
+
+}
+
+.cardTextPrice {
+    display: flex;
+    font-weight: 600;
+    margin-left: 9px;
+    margin-right: 10px;
+    color: #d50000;
+}
+
+.cardDescContainer {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin-left: 15px;
+    margin-top: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.heightIcon {
+    display: flex;
+
+}
+
+.cardTitle {}
+
+.cardDescription {}

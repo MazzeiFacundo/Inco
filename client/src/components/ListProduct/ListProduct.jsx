@@ -5,6 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { getToken, typeOfDeals, getAllTypesOfDeals } from "../../features/products/productsSlice";
 import { validateRegister } from "../../Validations/validateRegister";
 import { validateProduct } from "../../Validations/validateProduct"
+import logo from "../NavBar/Inco.png"
+import map from "../map.png"
+import logotext from "../logotext.png"
 import "./ListProduct.css"
 import axios from "axios";
 
@@ -21,7 +24,12 @@ function ListProduct() {
     const [input, setInput] = useState({
         name: "",
         description: "",
-        price: 0,
+        price: "",
+        productWidth: 0,
+        productHeight: 0,
+        rooms: 0,
+        dorms: 0,
+        bathrooms: 0,
         typeOfProduct: "",
         typeOfDeal: []
     })
@@ -110,6 +118,11 @@ function ListProduct() {
         fd.append("name", input.name);
         fd.append("description", input.description);
         fd.append("price", input.price);
+        fd.append("productWidth", input.productWidth);
+        fd.append("productHeight", input.productHeight);
+        fd.append("rooms", input.rooms);
+        fd.append("dorms", input.dorms);
+        fd.append("bathrooms", input.bathrooms);
         fd.append("typeOfProduct", input.typeOfProduct);
         fd.append("typeOfDeal", input.typeOfDeal);
 
@@ -123,7 +136,12 @@ function ListProduct() {
                 setInput({
                     name: "",
                     description: "",
-                    price: 0,
+                    price: "",
+                    productWidth: 0,
+                    productHeight: 0,
+                    rooms: 0,
+                    dorms: 0,
+                    bathrooms: 0,
                     typeOfProduct: "",
                     typeOfDeal: ""
                 });
@@ -141,7 +159,7 @@ function ListProduct() {
                     let fdProductGallery = new FormData();
                     fdProductGallery.append("photoGallery", img.image, "photoGallery")
                     return axios.post(`http://localhost:3001/listNew/galleryImage?id=${responseInput.data.productCreated.id}`,
-                    fdProductGallery, {
+                        fdProductGallery, {
                         headers: {
                             'Content-Type': 'multipart/form-data'
                         }
@@ -155,7 +173,12 @@ function ListProduct() {
             setInput({
                 name: "",
                 description: "",
-                price: 0,
+                price: "",
+                productWidth: 0,
+                productHeight: 0,
+                rooms: 0,
+                dorms: 0,
+                bathrooms: 0,
                 typeOfProduct: "",
                 typeOfDeal: ""
             });
@@ -164,7 +187,12 @@ function ListProduct() {
             setInput({
                 name: "",
                 description: "",
-                price: 0,
+                price: "",
+                productWidth: 0,
+                productHeight: 0,
+                rooms: 0,
+                dorms: 0,
+                bathrooms: 0,
                 typeOfProduct: "",
                 typeOfDeal: ""
             });
@@ -233,12 +261,12 @@ function ListProduct() {
                 {
                     slideNumber === 1 && (
                         <div>
-                            <div className="allSelectsContainerListProduct">
-                                <div className="textSelectContainerListProduct">
+                            <div className="">
+                                <div className="">
                                     <div className="textInputListProduct">Type of deal</div>
                                     <div className="textInputListProduct">Type of property</div>
                                 </div>
-                                <div className="selectContainerListProduct">
+                                <div className="">
                                     <select onChange={(e) => handleSelect(e)} className="singleSelectListProduct">
                                         {allTypeOfDeals && allTypeOfDeals.map((e) => {
                                             return (
@@ -254,7 +282,7 @@ function ListProduct() {
 
                                         })}
                                     </ul>
-                                    <select onChange={(e) => handleSelectType(e)} className="singleSelectListProduct">
+                                    <select onChange={(e) => handleSelectType(e)} className="">
                                         <option value="House">House</option>
                                         <option value="Apartment">Apartment</option>
                                         <option value="Land">Land</option>
@@ -262,13 +290,81 @@ function ListProduct() {
                                     </select>
                                     <div>{input.typeOfProduct}</div>
                                 </div>
+                                <div className="measurmentsText">Measurments</div>
+                                <div className="">
+                                    <div className="">
+                                        <div className="textInputListProduct">Width</div>
+                                        <input
+                                            value={input.productWidth}
+                                            name="productWidth"
+                                            onChange={(e) => handleChange(e)}
+                                            placeholder="Your product width"
+                                            className="">
+                                        </input>
+                                        {/* {errors.price && (
+                                    <div className="errorProduct">{errors.price}</div>
+                                )} */}
+                                    </div>
+                                    <div className="">
+                                        <div className="">Height</div>
+                                        <input
+                                            value={input.productHeight}
+                                            name="productHeight"
+                                            onChange={(e) => handleChange(e)}
+                                            placeholder="Your product height"
+                                            className="">
+                                        </input>
+                                        {/* {errors.price && (
+                                    <div className="errorProduct">{errors.price}</div>
+                                )} */}
+                                    </div>
+                                    <div className="measurmentsText">Accomodations</div>
+                                    <div>
+                                        <div className="">
+                                            <div className="">Rooms</div>
+                                            <input
+                                                value={input.rooms}
+                                                name="rooms"
+                                                onChange={(e) => handleChange(e)}
+                                                placeholder="Your product rooms"
+                                                className="">
+                                            </input>
+                                            {/* {errors.price && (
+                                    <div className="errorProduct">{errors.price}</div>
+                                )} */}
+                                        </div>
+                                        <div className="">
+                                            <div className="textInputListProduct">Dorms</div>
+                                            <input
+                                                value={input.dorms}
+                                                name="dorms"
+                                                onChange={(e) => handleChange(e)}
+                                                placeholder="Your product dorms"
+                                                className="">
+                                            </input>
+                                            {/* {errors.price && (
+                                    <div className="errorProduct">{errors.price}</div>
+                                )} */}
+                                        </div>
+                                        <div className="inputContainer3ListProduct">
+                                            <div className="textInputListProduct">Bathrooms</div>
+                                            <input
+                                                value={input.bathrooms}
+                                                name="bathrooms"
+                                                onChange={(e) => handleChange(e)}
+                                                placeholder="Your product bathrooms"
+                                                className="">
+                                            </input>
+                                            {/* {errors.price && (
+                                    <div className="errorProduct">{errors.price}</div>
+                                )} */}
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
                             </div>
-                            <input
-                                type="file"
-                                name="photoProfile"
-                                onChange={handleImage}
-                            />
-                            <img src={photoProduct} alt="" />
 
                             <div className="prevBtnContainerListProduct">
                                 <button onClick={prevSlide} className="prevBtnListProduct">Prev</button>
@@ -284,6 +380,12 @@ function ListProduct() {
                 {
                     slideNumber === 2 && (
                         <div>
+                            <input
+                                type="file"
+                                name="photoProfile"
+                                onChange={handleImage}
+                            />
+                            <img src={photoProduct} alt="" />
                             <div>
                                 <label>Image</label>
 
@@ -343,6 +445,17 @@ function ListProduct() {
 
 
             </form>
+            {
+                slideNumber === 0 && (
+                    <div className="leftText">
+                        <img className="logoTextListP" src={logotext}></img>
+                        <div></div>
+                        <div>
+                            <img className="mapListP" src={map}></img>
+                        </div>
+                    </div>
+                )
+            }
         </div>
     )
 }

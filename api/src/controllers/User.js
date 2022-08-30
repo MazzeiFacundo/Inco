@@ -236,7 +236,7 @@ class UserClass {
           let userFind = await User.findOne({ where: { userName: userNameQuery } });
           return !userFind
             ? res.status(404).json({ msgE: "User not Found" })
-            : res.status(200).end(userFind.profileImage);
+            : res.status(200).send(userFind.profileImage);
         } catch (error) {
           console.log(error);
           res.status(404).json({ msgE: "Error to get photo" });
@@ -302,6 +302,45 @@ class UserClass {
             console.log(error)
             return res.status(404).json({ msgE: "Fail Edit profile" });
         }
+    };
+
+    updatePhotoUser = async (req, res) => {
+        let id = req.query.id;
+        let dataPhoto;
+
+        try {
+            dataPhoto = req.files.photoUser.data;
+        } catch (e) {
+            console.log(e)
+            return
+        }
+        if (req.files) {
+            dataPhoto = req.files.photoUser.data;
+        }
+
+        console.log(dataPhoto)
+
+        try {
+            const user = await User.findOne({
+                where: { idUser: id },
+            });
+            if (!user) return res.status(404).json({ msgE: "Could not find your product" });
+
+            let userUpdate = await User.update({
+                profileImage: dataPhoto
+            },
+                { where: { idUser: user.dataValues.idUser } }
+            )
+
+            return res.status(201).json({
+                msg: "User updated successfully",
+                user: user.id,
+                imageUpdate: dataPhoto
+            });
+        } catch (error) {
+            console.log(error)
+        }
+
     };
 
     getPhotoUser = async (req, res) => {

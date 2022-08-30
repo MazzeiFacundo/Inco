@@ -6,6 +6,8 @@ import LandingPage from './components/LandingPage/LandingPage';
 import CardDetail from './components/CardDetail/CardDetail';
 import Register from './components/Register/Register';
 import ListProduct from './components/ListProduct/ListProduct';
+import Modal from './components/EditProfileModal/EditProfileModal'
+import EditProfileModal from './components/EditProfileModal/EditProfileModal';
 
 function App() {
   const location = useLocation();
@@ -18,6 +20,7 @@ function App() {
         <Route exact path="/profile" element={<Profile/>}/>
         <Route exact path="/register" element={<Register/>}/>
         <Route exact path="/listProduct" element={<ListProduct/>}/>
+        <Route exact path="/modal" element={<EditProfileModal/>}/>
       </Routes>
     </>
   );

@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./NavBar.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAddressCard, faDoorOpen, faHome, faClipboard } from "@fortawesome/free-solid-svg-icons";
+import logo from "./Inco.png"
 
 export default function NavBar() {
     const location = useLocation();
@@ -21,22 +22,23 @@ export default function NavBar() {
 
             <div className="textNavLeft">
                 <div className="homeDiv">
-                    <FontAwesomeIcon icon={faHome} className='profileIcon'></FontAwesomeIcon>
-                    <a className="navText" href='/Home'>Home</a>
+                    <a className="navText" href='/Home'>
+                        <img className="logoNav" src={logo} />
+                    </a>
                 </div>
             </div>
             <div className="textNavRight">
                 <div className="profileDiv">
-                    <FontAwesomeIcon icon={faClipboard} className='profileIcon'></FontAwesomeIcon>
+                    {/* <FontAwesomeIcon icon={faClipboard} className='profileIcon'></FontAwesomeIcon> */}
                     <a className="navText" href='/listProduct'>List a product</a>
                 </div>
                 <div className="profileDiv">
-                    <FontAwesomeIcon icon={faAddressCard} className='profileIcon'></FontAwesomeIcon>
+                    {/* <FontAwesomeIcon icon={faAddressCard} className='profileIcon'></FontAwesomeIcon> */}
                     <a className="navText" href='/profile'>My profile</a>
                 </div>
                 <div className="logOutDiv">
-                    <FontAwesomeIcon icon={faDoorOpen} className='profileIcon'></FontAwesomeIcon>
-                    <a onClick={(e) => handleClick(e)} className="navText" href='/'>Exit</a>
+                    {/* <FontAwesomeIcon icon={faDoorOpen} className='profileIcon'></FontAwesomeIcon> */}
+                    <a onClick={(e) => handleClick(e)} className="navText" href='/'>Log out</a>
                 </div>
             </div>
 

@@ -19,7 +19,7 @@ function ImgGallery(id) {
     // componentWillUnmount(() => {
     //     console.log("desmontado")
     // })
-    
+
 
     const handleOpenModal = (index) => {
         setSlideNumber(index)
@@ -32,16 +32,16 @@ function ImgGallery(id) {
     }
 
     const prevSlide = () => {
-        slideNumber === 0 
-        ? setSlideNumber(images.flat(1).length - 1) 
-        : setSlideNumber(slideNumber - 1)
-    
+        slideNumber === 0
+            ? setSlideNumber(images.flat(1).length - 1)
+            : setSlideNumber(slideNumber - 1)
+
     }
 
     const nextSlide = () => {
-        slideNumber + 1 === images.flat(1).length 
-        ? setSlideNumber(0) 
-        : setSlideNumber(slideNumber + 1)
+        slideNumber + 1 === images.flat(1).length
+            ? setSlideNumber(0)
+            : setSlideNumber(slideNumber + 1)
     }
 
     // const closeModalOnClick = () => {
@@ -51,13 +51,13 @@ function ImgGallery(id) {
     return (
         <div className="galleryContainer">
             {
-                openModal && 
+                openModal &&
                 <div className="sliderWrap">
-                    <FontAwesomeIcon onClick={handleCloseModal} icon={faCircleXmark} className='btnClose'/>
-                    <FontAwesomeIcon onClick={prevSlide} icon={faCircleChevronLeft} className='btnPrev'/>
-                    <FontAwesomeIcon onClick={nextSlide} icon={faCircleChevronRight} className='btnNext'/>
+                    <FontAwesomeIcon onClick={handleCloseModal} icon={faCircleXmark} className='btnClose' />
+                    <FontAwesomeIcon onClick={prevSlide} icon={faCircleChevronLeft} className='btnPrev' />
+                    <FontAwesomeIcon onClick={nextSlide} icon={faCircleChevronRight} className='btnNext' />
                     <div className="fullScreenImg">
-                        <img src={`http://localhost:3001/display/getPhotoGallery?id=${images.flat(1)[slideNumber].id}`} alt=''/>
+                        <img src={`http://localhost:3001/display/getPhotoGallery?id=${images.flat(1)[slideNumber].id}`} alt='' />
                     </div>
                     <div>{slideNumber + 1} of {images.flat(1).length}</div>
                 </div>
@@ -66,17 +66,19 @@ function ImgGallery(id) {
 
             <div className="galleryWrap">
                 {
-                   images && images.flat(1).map((e, index) => {
-                    return (
-                        <div 
-                        className="single" 
-                        key={index}
-                        onClick={() => handleOpenModal(index)}
-                        >
-                            <img src={`http://localhost:3001/display/getPhotoGallery?id=${e.id}`} alt='none'/>
-                        </div>
-                    )
-                   })
+                    images && images.flat(1).map((e, index) => {
+                        return (
+                            <div
+                                className="single"
+                                key={index}
+                                onClick={() => handleOpenModal(index)}
+                            >
+                                <img className={`${index < 4 ? "img" : "singleNoShow"}`}
+                                    src={`http://localhost:3001/display/getPhotoGallery?id=${e.id}`} alt='none'
+                                />
+                            </div>
+                        )
+                    })
                 }
             </div>
         </div>

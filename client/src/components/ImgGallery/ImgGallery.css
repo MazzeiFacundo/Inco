@@ -3,10 +3,9 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
+    justify-content: space-evenly;
+    flex-direction: column;
     max-width: 620px;
-    margin-top: 20px;
 }
 
 .galleryWrap .single{
@@ -87,5 +86,11 @@
     pointer-events: none;
     user-select: none;
     z-index: 999;
+}
+
+.singleNoShow {
+    display: none;
+    margin: 0;
+    padding: 0;
 }
 

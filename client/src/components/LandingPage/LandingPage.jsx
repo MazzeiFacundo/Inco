@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getToken } from "../../features/products/productsSlice";
 import { validate } from "../../Validations/validateLogin";
+import logo from "../NavBar/Inco.png"
 
 
 function LandingPage() {
@@ -61,10 +62,13 @@ function LandingPage() {
     return (
         <div className="landingPageContainer">
             <div className="formContainer">
-                <div className="welcomeLanding">Welcome to Inco Real State</div>
                 <form
                     onSubmit={(e) => handleSubmit(e)}
                     className="formLogin">
+
+                    <div className="welcomeLanding">
+                        <img className="logoLanding" src={logo} />
+                    </div>
 
                     <div className="textFormLogin">E-mail</div>
                     <input
@@ -82,7 +86,7 @@ function LandingPage() {
                     <div className="textFormLogin">Password</div>
                     <input
                         className="inputLogin"
-                        type="text"
+                        type="password"
                         name="password"
                         value={input.password}
                         onChange={(e) => handleChange(e)}
@@ -93,9 +97,11 @@ function LandingPage() {
                     )}
 
                     <button type="submit" className="buttonLogin">Log In</button>
-                    <a href="/register">Don't have an account? Register!</a>
+                    <div className="orDiv"><div className="textOr">Or</div></div>
+                    <a className="registerLogin" href="/register">Don't have an account? Register!</a>
                 </form>
             </div>
+            <img className="imgLanding" src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/FJYA5LJ4PNEIVNBUDMQ66KV6UQ.jpg"></img>
         </div>
     )
 }

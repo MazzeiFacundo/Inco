@@ -26,6 +26,31 @@ module.exports = (sequelize) => {
       allowNull: true
     },
 
+    bathrooms: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+
+    rooms: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+
+    dorms: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+
+    productWidth: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+
+    productHeight: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+
     typeOfProduct: {
       type: DataTypes.ENUM("House", "Apartment", "Land", "Duplex")
     },

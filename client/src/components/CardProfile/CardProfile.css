@@ -1,27 +1,35 @@
 
 .cardContainerP{
     display: flex;
-    background-color: blue;
-    width: 575px;
-    height: 130px;
+    align-items: center;
+    background-color: rgb(247, 247, 247);
+    width: 750px;
+    height: 151px;
     border-radius: 5px;
-    border: 1px red solid;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    border: 1px #cbd6dc solid;
+    transition: 0.3s;
+}
+
+.cardContainerP:hover{
+    box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+    -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+    -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
 }
 
 
 .imgCardP{
-    display: flex;
-    height: auto;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 .cardTextContainerP{
     display: flex;
-    justify-content: flex-start;
     margin-left: 20px;
-    margin-top: 10px;
+    justify-content: space-evenly;
+    height: 100%;
     flex-direction: column;
+    font-family: 'Poppins', sans-serif;
 }
 
 .cardTitleP{
@@ -31,5 +39,35 @@
 
 .cardDescriptionP{
     display: flex;
-    font-size: 15px;
+    width: 95%;
+    height: 100%;
+    font-size: 13px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.cardHeadersContainerP{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 13px;
+}
+
+.cardTextP {
+    display: flex;
+    margin-right: 8px;
+    margin-left: 8px;
+}
+
+.cardTextPriceP {
+    display: flex;
+    font-weight: 600;
+    color: #d50000;
+}
+
+.imgCardP{
+    height: 100%;
+    width: 200px;
+    object-fit: cover;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }

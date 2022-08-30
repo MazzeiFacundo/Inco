@@ -1,21 +1,32 @@
 
 .listProductContainer{
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    background-color: aquamarine;
+    flex-direction: row;
+    justify-content: flex-start;
+    background-color: #ececec;
     height: 100vh;
 }
+
 
 .formContainerlistProduct{
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: rgb(247, 247, 247);
     height: 500px;
     width: 500px;
+    margin-top: 95px;
     margin-left: 40px;
     margin-bottom: 20px;
-    border: 1px gray solid;
+    border: 1px #cbd6dc solid;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: 0.3s;
+}
+
+.formContainerlistProduct:hover{
+    box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+    -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+    -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
 }
 
 .titleFormlistProduct{
@@ -32,6 +43,10 @@
     align-items: center;
     height: 100%;
     margin-top: -5px;
+    border-top: 5px #d50000 solid;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    
 }
 
 .inputContainerListProduct{
@@ -55,35 +70,47 @@
 .singleInputListProduct{
     display: flex;
     width: 420px;
-    height: 25px;
+    height: 35px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 1px #cbd6dc solid;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.singleInputListProduct:focus{
+    outline: 1px #cbd6dc solid;
 }
 
 .singleInputDescriptionListProduct{
     display: flex;
     width: 420px;
-    height: 150px;
+    height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px #cbd6dc solid;
+    resize: none;
+    font-family: 'Poppins', sans-serif;
 }
 
-.allSelectsContainerListProduct{
+.measurmentsText{
     display: flex;
-    flex-direction: column;
-    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 27px;
+    font-family: 'Poppins', sans-serif;
 }
 
-.textSelectContainerListProduct{
-    display: flex;
-    justify-content: space-around; 
+
+
+
+
+
+
+.singleInputDescriptionListProduct:focus {
+    outline: none;
 }
 
-.selectContainerListProduct{
-    display: flex;
-    justify-content: space-around;
-}
-
-.singleSelectListProduct{
-    width: 200px;
-    height: 30px;
-}
 
 .submitBtnContainerListProduct{
     display: flex;
@@ -95,14 +122,46 @@
 .nextBtnContainerListProduct{
     display: flex;
     justify-content: end;
-    align-items: center;
+    align-items: flex-end;
+    width: 100%;
     margin-bottom: 20px;
 }
 
 .nextBtnListProduct{
-    height: 30px;
-    width: 70px;
-    margin-right: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 100px;
+    margin-top: 25px;
+    margin-right: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    background-color: #d50000;
+    box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+    -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+    -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+    transition: 0.3s;
+}
+
+.nextBtnListProduct:hover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    background-color: #860000;
+}
+
+.nextBtnListProduct:active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    background-color: #750000;
 }
 
 .submitBtnListProduct{
@@ -115,9 +174,44 @@
     display: flex;
     color: red;
     font-size: 11px;
-    margin-top: 5px;
+    margin-top: 1px;
     width: 420px;
     height: 0;
     margin-bottom: 0;
     padding-bottom: 0;
+}
+
+
+.leftText{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    width: 800px;
+    margin-top: 100px;
+    margin-left: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.textMapP {
+    margin-left: 20px;
+    font-size: 35px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.logoTextListP{
+    object-fit: cover;
+    height: 90px;
+    width: 200px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.mapListP{
+    object-fit: cover;
+    height:400px;
+    width: 800px;
+    margin: 0px;
+    padding: 0px;
 }

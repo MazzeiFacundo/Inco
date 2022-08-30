@@ -22,10 +22,10 @@ function CardDetail() {
     return (
         <div className="cardDetailsContainer">
             <NavBar></NavBar>
-            <div className="goBackCardDetailContainer">
+            {/* <div className="goBackCardDetailContainer">
                 <FontAwesomeIcon icon={faCircleChevronLeft} className='btnGoBack' />
                 <a className="goBackCardDetail" href="/home">Go back</a>
-            </div>
+            </div> */}
             {
                 (currentProduct || []).map((e) => {
                     console.log(currentProduct)
@@ -34,21 +34,37 @@ function CardDetail() {
                             <div className="detailsImgContainer">
                                 <img className="detailsImg" src={`http://localhost:3001/display/getPhotoProduct?id=${e.id}`} alt="none" />
                             </div>
-                            <div className="galleryContainer">
-                                <ImgGallery id={e.id}></ImgGallery>
+
+                            <div>
+                                <ImgGallery className="galleryContainer" id={e.id}></ImgGallery>
                             </div>
+
                             <div className="detailsTextContainer">
-                                <div className="detailsTypeOf">{e.typeOfProduct}</div>
                                 <div className="detailsName">{e.name}</div>
-                                <div className="detailsDescription">{e.description}</div>
+                                <div className="detailsTypeOf">
+                                    <div>{e.typeOfProduct + " for"}</div>
+                                    {e.typeOfDeals.map((e) => {
+                                        return (
+                                            <div className="detailsTypeOfDeal">{" " + e.name}</div>
+                                        )
+                                    })}
+                                </div>
+                                <div className="detailsDescriptionContainer">
+                                    <div className="detailsDescription">{e.description}</div>
+                                </div>
                                 <div className="detailsPrice">{e.price}</div>
+                                <div className="detailsUserInfoContainer">
+                                    <img className="imgUser" src={`http://localhost:3001/users/getPhotoUser?userName=${e.User.userName}`} alt="none" />
+                                    <div className="detailsUserText">
+                                        <div className="detailsTypeOf1">{e.User.fullName}</div>
+                                        <div className="detailsTypeOf1">{e.User.email}</div>
+                                        <div className="detailsTypeOf1">{e.User.userName}</div>
+                                        <div className="detailsTypeOf1">{e.User.telephone}</div>
+                                    </div>
+                                </div>
+
                             </div>
-                            <div className="detailsTextContainer">
-                                <div className="detailsTypeOf">{e.User.fullName}</div>
-                                <div className="detailsTypeOf">{e.User.email}</div>
-                                <div className="detailsTypeOf">{e.User.userName}</div>
-                                <div className="detailsTypeOf">{e.User.telephone}</div>
-                            </div>
+
                         </div>
                     )
                 })

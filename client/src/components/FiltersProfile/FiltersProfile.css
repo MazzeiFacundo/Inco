@@ -3,10 +3,9 @@
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
-    margin-top: 20px;
     border-radius: 5px;
     width: 200px;
-    height: 500px;
+    height: 479px;
     background-color: red;
 }
 
