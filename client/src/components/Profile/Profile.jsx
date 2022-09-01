@@ -2,6 +2,7 @@ import "./Profile.css"
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import CardProfile from "../CardProfile/CardProfile";
 import NavBar from "../NavBar/NavBar";
+import BottomHeader from "../BottomHeader/BottomHeader"; 
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import axios from "axios";

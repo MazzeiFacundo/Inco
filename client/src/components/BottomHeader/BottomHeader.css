@@ -1,0 +1,41 @@
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.bottom-h-general-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    background-color: rgb(247, 247, 247);
+    border-top: 1px #cbd6dc solid;
+    color: rgb(138,140,138);
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+}
+
+.bottom-h-main-text{
+    display: flex;
+    width: 100%;
+}
+
+.bottom-h-presentation-text{
+    display: flex;
+}
+
+.bottom-h-links-container{
+
+}
+
+.bottom-h-single-links{
+    display: flex;
+    margin-left: 10px;
+    margin-right: 5px;
+    text-decoration: none;
+    color: rgb(138,140,138);
+}

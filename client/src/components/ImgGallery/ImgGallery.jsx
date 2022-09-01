@@ -24,11 +24,14 @@ function ImgGallery(id) {
     const handleOpenModal = (index) => {
         setSlideNumber(index)
         setOpenModal(true)
+        if (typeof window != 'undefined' && window.document) {
+            document.body.style.overflow = 'hidden';
+        }
     }
 
     const handleCloseModal = () => {
         setOpenModal(false)
-
+        document.body.style.overflow = 'unset';
     }
 
     const prevSlide = () => {
@@ -49,31 +52,31 @@ function ImgGallery(id) {
     // }
 
     return (
-        <div className="galleryContainer">
+        <div className="img-g-general-container">
             {
                 openModal &&
-                <div className="sliderWrap">
-                    <FontAwesomeIcon onClick={handleCloseModal} icon={faCircleXmark} className='btnClose' />
-                    <FontAwesomeIcon onClick={prevSlide} icon={faCircleChevronLeft} className='btnPrev' />
-                    <FontAwesomeIcon onClick={nextSlide} icon={faCircleChevronRight} className='btnNext' />
-                    <div className="fullScreenImg">
-                        <img src={`http://localhost:3001/display/getPhotoGallery?id=${images.flat(1)[slideNumber].id}`} alt='' />
+                <div className="img-g-modal-container">
+                    <FontAwesomeIcon onClick={handleCloseModal} icon={faCircleXmark} className='img-g-modal-btn-close' />
+                    <FontAwesomeIcon onClick={prevSlide} icon={faCircleChevronLeft} className='img-g-modal-btn-prev' />
+                    <FontAwesomeIcon onClick={nextSlide} icon={faCircleChevronRight} className='img-g-modal-btn-next' />
+                    <div className="img-g-modal-img-container">
+                        <img className="img-g-modal-img" src={`http://localhost:3001/display/getPhotoGallery?id=${images.flat(1)[slideNumber].id}`} alt='' />
                     </div>
-                    <div>{slideNumber + 1} of {images.flat(1).length}</div>
+                    {/* <div>{slideNumber + 1} of {images.flat(1).length}</div> */}
                 </div>
             }
 
 
-            <div className="galleryWrap">
+            <div className="img-g-images-container">
                 {
                     images && images.flat(1).map((e, index) => {
                         return (
                             <div
-                                className="single"
+                                className="img-g-images-single-container"
                                 key={index}
                                 onClick={() => handleOpenModal(index)}
                             >
-                                <img className={`${index < 4 ? "img" : "singleNoShow"}`}
+                                <img className={`${index < 4 ? "img-g-images-single" : "img-g-images-single-hidden"}`}
                                     src={`http://localhost:3001/display/getPhotoGallery?id=${e.id}`} alt='none'
                                 />
                             </div>

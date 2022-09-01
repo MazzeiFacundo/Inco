@@ -2,8 +2,12 @@
     display: flex;
     padding-top: 50px;
     background-color: #ececec;
-    align-items: flex-end;
-    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.ara{
+    display: flex;
 }
 
 .homeCardContainer {
@@ -12,13 +16,17 @@
     align-items: center;
     width: 100%;
     padding-top: 30px;
-    margin-left: 20px;
 }
 
 .linkHome {
     display: flex;
     text-decoration: none;
     color: #3B3B3B;
+}
+
+.ara{
+    display: flex;
+    flex-direction: row-reverse;
 }
 
 .searchContainer {

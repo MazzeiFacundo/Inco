@@ -4,7 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getToken, typeOfDeals, getAllTypesOfDeals } from "../../features/products/productsSlice";
 import { validateRegister } from "../../Validations/validateRegister";
-import { validateProduct } from "../../Validations/validateProduct"
+import { validateProduct } from "../../Validations/validateProduct";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLongArrowAltUp, faExchangeAlt, faDoorOpen, faBed, faBath } from "@fortawesome/free-solid-svg-icons";
 import logo from "../NavBar/Inco.png"
 import map from "../map.png"
 import logotext from "../logotext.png"
@@ -25,11 +27,11 @@ function ListProduct() {
         name: "",
         description: "",
         price: "",
-        productWidth: 0,
-        productHeight: 0,
-        rooms: 0,
-        dorms: 0,
-        bathrooms: 0,
+        productWidth: "",
+        productHeight: "",
+        rooms: "",
+        dorms: "",
+        bathrooms: "",
         typeOfProduct: "",
         typeOfDeal: []
     })
@@ -137,11 +139,11 @@ function ListProduct() {
                     name: "",
                     description: "",
                     price: "",
-                    productWidth: 0,
-                    productHeight: 0,
-                    rooms: 0,
-                    dorms: 0,
-                    bathrooms: 0,
+                    productWidth: "",
+                    productHeight: "",
+                    rooms: "",
+                    dorms: "",
+                    bathrooms: "",
                     typeOfProduct: "",
                     typeOfDeal: ""
                 });
@@ -174,11 +176,11 @@ function ListProduct() {
                 name: "",
                 description: "",
                 price: "",
-                productWidth: 0,
-                productHeight: 0,
-                rooms: 0,
-                dorms: 0,
-                bathrooms: 0,
+                productWidth: "",
+                productHeight: "",
+                rooms: "",
+                dorms: "",
+                bathrooms: "",
                 typeOfProduct: "",
                 typeOfDeal: ""
             });
@@ -188,11 +190,11 @@ function ListProduct() {
                 name: "",
                 description: "",
                 price: "",
-                productWidth: 0,
-                productHeight: 0,
-                rooms: 0,
-                dorms: 0,
-                bathrooms: 0,
+                productWidth: "",
+                productHeight: "",
+                rooms: "",
+                dorms: "",
+                bathrooms: "",
                 typeOfProduct: "",
                 typeOfDeal: ""
             });
@@ -201,58 +203,58 @@ function ListProduct() {
 
 
     return (
-        <div className="listProductContainer">
+        <div className="list-p-container">
             <NavBar></NavBar>
-            <form className="formContainerlistProduct" onSubmit={(e) => handleSubmit(e)}>
+            <form className="list-p-form-container" onSubmit={(e) => handleSubmit(e)}>
                 {
                     slideNumber === 0 && (
-                        <div className="allInputsContainerListProduct">
-                            <div className="titleFormlistProduct">List your property!</div>
+                        <div className="list-p-slide-0-container">
+                            <div className="list-p-slide-0-title">List your property!</div>
 
-                            <div className="inputContainerListProduct">
-                                <div className="textInputListProduct">Product name</div>
+                            <div className="list-p-slide-0-single-input-container">
+                                <div className="list-p-slide-0-input-title">Product name</div>
                                 <input type="text"
                                     value={input.name}
                                     name="name"
                                     onChange={(e) => handleChange(e)}
                                     placeholder="Your product name"
-                                    className="singleInputListProduct">
+                                    className="list-p-slide-0-input-field">
                                 </input>
                                 {errors.name && (
-                                    <div className="errorProduct">{errors.name}</div>
+                                    <div className="list-p-form-errors">{errors.name}</div>
                                 )}
                             </div>
 
-                            <div className="inputContainerListProduct">
-                                <div className="textInputListProduct">Product price</div>
+                            <div className="list-p-slide-0-single-input-container">
+                                <div className="list-p-slide-0-input-title">Product price</div>
                                 <input
                                     value={input.price}
                                     name="price"
                                     onChange={(e) => handleChange(e)}
                                     placeholder="Your product price"
-                                    className="singleInputListProduct">
+                                    className="list-p-slide-0-input-field">
                                 </input>
                                 {errors.price && (
-                                    <div className="errorProduct">{errors.price}</div>
+                                    <div className="list-p-form-errors">{errors.price}</div>
                                 )}
                             </div>
 
-                            <div className="inputContainerDescriptionListProduct">
-                                <div className="textInputListProduct">Product description</div>
+                            <div className="list-p-slide-0-single-input-container-desc">
+                                <div className="list-p-slide-0-input-title">Product description</div>
                                 <textarea type="text"
                                     value={input.description}
                                     name="description"
                                     onChange={(e) => handleChange(e)}
                                     placeholder="Your product description"
-                                    className="singleInputDescriptionListProduct">
+                                    className="list-p-slide-0-input-field-desc">
                                 </textarea>
                                 {errors.description && (
-                                    <div className="errorProduct">{errors.description}</div>
+                                    <div className="list-p-form-errors">{errors.description}</div>
                                 )}
                             </div>
 
-                            <div className="nextBtnContainerListProduct">
-                                <button onClick={nextSlide} className="nextBtnListProduct">Next</button>
+                            <div className="list-p-btn-next-container">
+                                <button onClick={nextSlide} className="list-p-btn-next">Next</button>
                             </div>
                         </div>
                     )
@@ -260,119 +262,131 @@ function ListProduct() {
 
                 {
                     slideNumber === 1 && (
-                        <div>
-                            <div className="">
-                                <div className="">
-                                    <div className="textInputListProduct">Type of deal</div>
-                                    <div className="textInputListProduct">Type of property</div>
-                                </div>
-                                <div className="">
-                                    <select onChange={(e) => handleSelect(e)} className="singleSelectListProduct">
+                        <div className="list-p-slide-1-container">
+                            <div className="list-p-slide-1-specifications-header">Property specifications</div>
+                            <div className="list-p-slide-1-selects-container">
+                                <div className="list-p-slide-1-typeofdeals-container">
+                                    <select onChange={(e) => handleSelect(e)} className="list-p-slide-1-select-typeofdeal">
                                         {allTypeOfDeals && allTypeOfDeals.map((e) => {
                                             return (
                                                 <option value={e.name}>{e.name}</option>
                                             )
                                         })}
                                     </select>
-                                    <ul>
-                                        {input.typeOfDeal.map((e) => {
-                                            return (
-                                                <li>{e + " "}</li>
-                                            )
+                                </div>
 
-                                        })}
-                                    </ul>
-                                    <select onChange={(e) => handleSelectType(e)} className="">
+                                <div className="list-p-slide-1-typeofproducts-container">
+                                    <select onChange={(e) => handleSelectType(e)} className="list-p-slide-1-select-typeofproperty">
                                         <option value="House">House</option>
                                         <option value="Apartment">Apartment</option>
                                         <option value="Land">Land</option>
                                         <option value="Duplex">Duplex</option>
                                     </select>
-                                    <div>{input.typeOfProduct}</div>
                                 </div>
-                                <div className="measurmentsText">Measurments</div>
-                                <div className="">
-                                    <div className="">
-                                        <div className="textInputListProduct">Width</div>
+                            </div>
+                            {/* <div className="list-p-slide-1-displayer-containers">
+                                <div className="list-p-slide-1-displayer">
+                                    <div className="list-p-slide-1-typeofdeals-list">
+                                        {input.typeOfDeal.map((e) => {
+                                            return (
+                                                <div className="list-p-slide-1-typeofdeals-list-item">{e + " "}</div>
+                                            )
+
+                                        })}
+                                    </div>
+                                </div>
+                                <div className="list-p-slide-1-displayer">
+                                    <div className="list-p-slide-1-typeofproducts-list">{input.typeOfProduct}</div>
+                                </div>
+                            </div> */}
+
+                            <div className="list-p-slide-1-general-inputs-container">
+                                <div className="list-p-slide-1-measurments-header">Measurments</div>
+                                <div className="list-p-slide-1-general-inputs-measurments-container">
+                                    <div className="list-p-slide-1-single-input-container">
+                                        <div className="">Width</div>
                                         <input
                                             value={input.productWidth}
                                             name="productWidth"
                                             onChange={(e) => handleChange(e)}
-                                            placeholder="Your product width"
-                                            className="">
+                                            placeholder="0"
+                                            className="list-p-slide-1-single-input">
                                         </input>
+                                        <FontAwesomeIcon icon={faExchangeAlt} className='heightIcon'></FontAwesomeIcon>
                                         {/* {errors.price && (
                                     <div className="errorProduct">{errors.price}</div>
                                 )} */}
                                     </div>
-                                    <div className="">
+
+                                    <div className="list-p-slide-1-single-input-container">
                                         <div className="">Height</div>
                                         <input
                                             value={input.productHeight}
                                             name="productHeight"
                                             onChange={(e) => handleChange(e)}
-                                            placeholder="Your product height"
-                                            className="">
+                                            placeholder="0"
+                                            className="list-p-slide-1-single-input">
                                         </input>
+                                        <FontAwesomeIcon icon={faLongArrowAltUp} className='heightIcon'></FontAwesomeIcon>
                                         {/* {errors.price && (
                                     <div className="errorProduct">{errors.price}</div>
                                 )} */}
                                     </div>
-                                    <div className="measurmentsText">Accomodations</div>
-                                    <div>
-                                        <div className="">
-                                            <div className="">Rooms</div>
-                                            <input
-                                                value={input.rooms}
-                                                name="rooms"
-                                                onChange={(e) => handleChange(e)}
-                                                placeholder="Your product rooms"
-                                                className="">
-                                            </input>
-                                            {/* {errors.price && (
-                                    <div className="errorProduct">{errors.price}</div>
-                                )} */}
-                                        </div>
-                                        <div className="">
-                                            <div className="textInputListProduct">Dorms</div>
-                                            <input
-                                                value={input.dorms}
-                                                name="dorms"
-                                                onChange={(e) => handleChange(e)}
-                                                placeholder="Your product dorms"
-                                                className="">
-                                            </input>
-                                            {/* {errors.price && (
-                                    <div className="errorProduct">{errors.price}</div>
-                                )} */}
-                                        </div>
-                                        <div className="inputContainer3ListProduct">
-                                            <div className="textInputListProduct">Bathrooms</div>
-                                            <input
-                                                value={input.bathrooms}
-                                                name="bathrooms"
-                                                onChange={(e) => handleChange(e)}
-                                                placeholder="Your product bathrooms"
-                                                className="">
-                                            </input>
-                                            {/* {errors.price && (
-                                    <div className="errorProduct">{errors.price}</div>
-                                )} */}
-                                        </div>
-                                    </div>
-
-
                                 </div>
-
+                                <div className="list-p-slide-1-accomodations-header">Accomodations</div>
+                                <div className="list-p-slide-1-general-inputs-accomodations-container">
+                                    <div className="list-p-slide-1-single-input-container">
+                                        <div className="">Rooms</div>
+                                        <input
+                                            value={input.rooms}
+                                            name="rooms"
+                                            onChange={(e) => handleChange(e)}
+                                            placeholder="0"
+                                            className="list-p-slide-1-single-input">
+                                        </input>
+                                        <FontAwesomeIcon icon={faDoorOpen} className='heightIcon'></FontAwesomeIcon>
+                                        {/* {errors.price && (
+                                    <div className="errorProduct">{errors.price}</div>
+                                )} */}
+                                    </div>
+                                    <div className="list-p-slide-1-single-input-container">
+                                        <div className="">Dorms</div>
+                                        <input
+                                            value={input.dorms}
+                                            name="dorms"
+                                            onChange={(e) => handleChange(e)}
+                                            placeholder="0"
+                                            className="list-p-slide-1-single-input">
+                                        </input>
+                                        <FontAwesomeIcon icon={faBed} className='heightIcon'></FontAwesomeIcon>
+                                        {/* {errors.price && (
+                                    <div className="errorProduct">{errors.price}</div>
+                                )} */}
+                                    </div>
+                                    <div className="list-p-slide-1-single-input-container">
+                                        <div className="">Bathrooms</div>
+                                        <input
+                                            value={input.bathrooms}
+                                            name="bathrooms"
+                                            onChange={(e) => handleChange(e)}
+                                            placeholder="0"
+                                            className="list-p-slide-1-single-input">
+                                        </input>
+                                        <FontAwesomeIcon icon={faBath} className='heightIcon'></FontAwesomeIcon>
+                                        {/* {errors.price && (
+                                    <div className="errorProduct">{errors.price}</div>
+                                )} */}
+                                    </div>
+                                </div>
                             </div>
-
-                            <div className="prevBtnContainerListProduct">
-                                <button onClick={prevSlide} className="prevBtnListProduct">Prev</button>
+                            <div className="list-p-slide-1-btns-container">
+                                <div className="list-p-btn-prev-container">
+                                    <button onClick={prevSlide} className="list-p-btn-prev">Prev</button>
+                                </div>
+                                <div className="list-p-btn-next-container">
+                                    <button onClick={nextSlide} className="list-p-btn-next">Next</button>
+                                </div>
                             </div>
-                            <div className="nextBtnContainerListProduct">
-                                <button onClick={nextSlide} className="nextBtnListProduct">Next</button>
-                            </div>
-
                         </div>
                     )
                 }
@@ -433,11 +447,11 @@ function ListProduct() {
                                     })
                                 }
                             </div>
-                            <div className="prevBtnContainerListProduct">
-                                <button onClick={prevSlide} className="prevBtnListProduct">Prev</button>
+                            <div className="list-p-btn-prev-container">
+                                <button onClick={prevSlide} className="list-p-btn-prev">Prev</button>
                             </div>
-                            <div className="submitBtnContainerListProduct">
-                                <button type="submit" className="submitBtnListProduct">List property</button>
+                            <div className="list-p-btn-submit-container">
+                                <button type="submit" className="list-p-btn-submit">List property</button>
                             </div>
                         </div>
                     )
@@ -447,11 +461,10 @@ function ListProduct() {
             </form>
             {
                 slideNumber === 0 && (
-                    <div className="leftText">
-                        <img className="logoTextListP" src={logotext}></img>
-                        <div></div>
+                    <div className="list-p-slide-0-containerText">
+                        <img className="list-p-slide-0-img-logo" src={logotext}></img>
                         <div>
-                            <img className="mapListP" src={map}></img>
+                            <img className="list-p-slide-0-img-map" src={map}></img>
                         </div>
                     </div>
                 )
