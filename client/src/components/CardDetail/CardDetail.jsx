@@ -1,23 +1,36 @@
 import React, { useEffect, useState } from "react";
-import "./CardDetail.css"
+import "./CardDetail.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { productDetail, getCurrentProductDetail } from "../../features/products/productsSlice"
+import { productDetail, showUserData, getCurrentUser, getCurrentProductDetail } from "../../features/products/productsSlice"
 import NavBar from "../NavBar/NavBar";
 import ImgGallery from "../ImgGallery/ImgGallery";
 import BottomHeader from "../BottomHeader/BottomHeader";
+import EditProductModal from "../EditProductModal/EditProductModal";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLongArrowAltUp, faExchangeAlt, faDoorOpen, faBed, faBath } from "@fortawesome/free-solid-svg-icons";
+import { faLongArrowAltUp, faExchangeAlt, faDoorOpen, faBed, faBath, faClipboard } from "@fortawesome/free-solid-svg-icons";
 
 function CardDetail() {
 
     const dispatch = useDispatch();
     const currentProduct = useSelector(productDetail)
-
+    const currentUser = useSelector(showUserData)
     let params = useParams()
 
+    const [openModal, setOpenModal] = useState(false)
+
+    const handleOpenModal = () => {
+        setOpenModal(true)
+        if (typeof window != 'undefined' && window.document) {
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
     useEffect(() => {
-        const productDetails = dispatch(getCurrentProductDetail(params.id))
+        const userCredentials = window.localStorage.getItem("userCredentials");
+        const userToken = JSON.parse(userCredentials);
+        const currentUser = dispatch(getCurrentUser(userToken))
+        const currentProduct = dispatch(getCurrentProductDetail(params.id))
     }, []);
 
     return (
@@ -30,6 +43,7 @@ function CardDetail() {
             {
                 (currentProduct || []).map((e) => {
                     console.log(currentProduct)
+                    console.log(currentUser)
                     return (
                         <div className="detail-p-container">
                             <div className="detail-p-gallery-component-container">
@@ -40,14 +54,48 @@ function CardDetail() {
                             </div>
 
                             <div className="detail-p-all-text-container">
-                                <div className="detail-p-name-text">{e.name}</div>
-                                <div className="detail-p-type-of-text-container">
-                                    {e.typeOfDeals.map((el) => {
-                                        return (
-                                            <div className="detail-p-type-of-text">{e.typeOfProduct + " for " + el.name.toLowerCase()}</div>
+                                <div className="detail-p-header-container">
+                                    <div className="detail-p-name-text">{e.name}</div>
+                                    {
+                                        currentUser.idUser === e.UserIdUser && (
+                                            <div>
+                                                <button className="detail-p-edit-p-btn" onClick={() => handleOpenModal()}>Edit</button>
+                                                {openModal &&
+                                                    <EditProductModal
+                                                        userId={currentUser.idUser}
+                                                        pId={e.id}
+                                                        pName={e.name}
+                                                        pDescription={e.description}
+                                                        pPrice={e.price}
+                                                        pLocation={e.location}
+                                                        pRooms={e.rooms}
+                                                        pDorms={e.dorms}
+                                                        pBathrooms={e.bathrooms}
+                                                        pWidth={e.productWidth}
+                                                        pHeight={e.productHeight}
+                                                        pTypeOfProduct={e.typeOfProduct}
+                                                        pTypeOfDeal={e.typeOfDeal}
+                                                        closeModal={setOpenModal}
+                                                    />
+                                                }
+                                            </div>
                                         )
-                                    })}
+                                    }
                                 </div>
+                                {
+                                    e.secondTypeOfDeal ? (
+                                        <div className="detail-p-type-of-text-container">
+                                            <div className="detail-p-type-of-text">{e.typeOfProduct + " for " + e.typeOfDeal.toLowerCase()}</div>
+                                            <div className="detail-p-type-of-two-text">{"or " + e.secondTypeOfDeal.toLowerCase()}</div>
+                                        </div>
+                                    ) : <div className="detail-p-type-of-text">{e.typeOfProduct + " for " + e.typeOfDeal.toLowerCase()}</div>
+
+                                }
+
+
+
+
+                                <div className="detail-p-location">{"Located in " + e.location}</div>
                                 <div className="detail-p-price-text">{"USD " + "$" + e.price}</div>
 
                                 <div className="detail-p-accomodations-container">
@@ -58,7 +106,7 @@ function CardDetail() {
                                     <FontAwesomeIcon icon={faBath} className='detail-p-accomodations-icon'></FontAwesomeIcon>
                                     <div className="detail-p-accomodations-text">{e.bathrooms + " Bathrooms"}</div>
                                 </div>
-                              
+
                                 <div className="detail-p-measurements-container">
                                     <FontAwesomeIcon icon={faExchangeAlt} className='detail-p-measurements-icon'></FontAwesomeIcon>
                                     <div className="detail-p-measurements-text">{"Width: " + e.productWidth + "m"}<sup>2</sup></div>

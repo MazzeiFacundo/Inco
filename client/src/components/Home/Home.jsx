@@ -4,9 +4,11 @@ import Card from "../Card/Card";
 import Filters from "../Filters/Filters";
 import BottomHeader from "../BottomHeader/BottomHeader";
 import "./Home.css"
-import { showAll, showAllAsc, showAllDesc, showAllProducts, showProducts, getProductsSearched } from "../../features/products/productsSlice"
+import { showAllProducts, showAllProductsASC, showAllProductsDESC, showProducts, getProductsSearched } from "../../features/products/productsSlice"
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLongArrowAltUp, faLongArrowAltDown } from "@fortawesome/free-solid-svg-icons";
 
 function Home() {
 
@@ -43,12 +45,11 @@ function Home() {
         setInput(e.target.value);
     }
 
-
     return (
         <div className="homeContainer">
             <NavBar></NavBar>
             <div className="ara">
-            <Filters></Filters>
+                <Filters></Filters>
                 <div className="homeCardContainer">
                     <div className="searchContainer">
                         <input onChange={(e) => handleChange(e)} value={input} className="searchInputHome" placeholder="Search properties..."></input>
@@ -67,15 +68,15 @@ function Home() {
                                     name={e.name}
                                     description={e.description}
                                     price={e.price}
+                                    location={e.location}
                                     productWidth={e.productWidth}
                                     productHeight={e.productHeight}
                                     rooms={e.rooms}
                                     dorms={e.dorms}
                                     bathrooms={e.bathrooms}
                                     typeOfProduct={e.typeOfProduct}
-                                    typeOfDeals={e.typeOfDeals.map((e) => {
-                                        return e.name
-                                    })}
+                                    typeOfDeals={e.typeOfDeals}
+                                    secondTypeOfDeal={e.secondTypeOfDeal}
                                 ></Card>
                             </a>
                         })

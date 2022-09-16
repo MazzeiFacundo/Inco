@@ -52,6 +52,11 @@
 
 }
 
+.cardTextLocation{
+    display: flex;
+    margin-left: 14px;
+}
+
 .cardTextPrice {
     display: flex;
     font-weight: 600;

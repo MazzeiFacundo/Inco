@@ -11,6 +11,7 @@ function Card(
         name,
         description, 
         price,
+        location,
         productWidth,
         productHeight,
         rooms,
@@ -42,6 +43,7 @@ function Card(
                     <FontAwesomeIcon icon={faBath} className='heightIcon'></FontAwesomeIcon>
                     <div className="cardText">{bathrooms + " Bathrooms"}</div>
                 </div>
+                <div className="cardTextLocation">{"Location: " + location}</div>
                 <div className="cardDescContainer">
                     <div className="cardDescription">{description}</div>
                 </div>

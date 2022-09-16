@@ -1,7 +1,8 @@
 const axios = require('axios');
-const { Product, TypeOfDeal, User, Images } = require("../db.js");
+const { Product, User, Images } = require("../db.js");
 const { Op } = require("sequelize");
 const jwt = require("jsonwebtoken");
+const e = require('express');
 
 
 class ProductsAndDeals {
@@ -25,13 +26,6 @@ class ProductsAndDeals {
             const searchInDb = async () => {
                 return await Product.findAll({
                     attributes: { exclude: ['image', 'galleryImages'] },
-                    include: {
-                        model: TypeOfDeal,
-                        attributes: ["name"],
-                        through: {
-                            attributes: [],
-                        },
-                    }
                 })
             }
             const dbResults = await searchInDb();
@@ -52,14 +46,8 @@ class ProductsAndDeals {
     getAllProductsASC = async (req, res) => {
         const searchInDb = async () => {
             return await Product.findAll({
+                attributes: { exclude: ['image', 'galleryImages'] },
                 order: [['price', 'ASC']],
-                include: {
-                    model: TypeOfDeal,
-                    attributes: ["name"],
-                    through: {
-                        attributes: [],
-                    },
-                }
             })
         }
         const dbResults = await searchInDb();
@@ -70,14 +58,8 @@ class ProductsAndDeals {
     getAllProductsDESC = async (req, res) => {
         const searchInDb = async () => {
             return await Product.findAll({
+                attributes: { exclude: ['image', 'galleryImages'] },
                 order: [['price', 'DESC']],
-                include: {
-                    model: TypeOfDeal,
-                    attributes: ["name"],
-                    through: {
-                        attributes: [],
-                    },
-                }
             })
         }
         const dbResults = await searchInDb();
@@ -85,16 +67,143 @@ class ProductsAndDeals {
         res.status(200).send(dbResults);
     }
 
-    getAllTypeOfDeals = async (req, res) => {
+    getAllProductsOneRoom = async (req, res) => {
         const searchInDb = async () => {
-            return await TypeOfDeal.findAll({
-                include: {
-                    model: Product,
-                    attributes: ["name"],
-                    through: {
-                        attributes: [],
-                    },
-                }
+            return await Product.findAll({
+                attributes: { exclude: ['image', 'galleryImages'] },
+                where: { rooms: 1 },
+            })
+        }
+        const dbResults = await searchInDb();
+        console.log(dbResults);
+        res.status(200).send(dbResults);
+    }
+
+    getAllProductsTwoRoom = async (req, res) => {
+        const searchInDb = async () => {
+            return await Product.findAll({
+                attributes: { exclude: ['image', 'galleryImages'] },
+                where: { rooms: 2 },
+            })
+        }
+        const dbResults = await searchInDb();
+        console.log(dbResults);
+        res.status(200).send(dbResults);
+    }
+
+    getAllProductsThreeRoom = async (req, res) => {
+        const searchInDb = async () => {
+            return await Product.findAll({
+                attributes: { exclude: ['image', 'galleryImages'] },
+                where: { rooms: 3 },
+            })
+        }
+        const dbResults = await searchInDb();
+        console.log(dbResults);
+        res.status(200).send(dbResults);
+    }
+
+    getAllProductsFourRoomsPlus = async (req, res) => {
+        const searchInDb = async () => {
+            return await Product.findAll({
+                attributes: { exclude: ['image', 'galleryImages'] },
+                where: { rooms: { [Op.gte]: 4 } },
+            })
+        }
+        const dbResults = await searchInDb();
+        console.log(dbResults);
+        res.status(200).send(dbResults);
+    }
+
+    getAllProductsOneBath = async (req, res) => {
+        const searchInDb = async () => {
+            return await Product.findAll({
+                attributes: { exclude: ['image', 'galleryImages'] },
+                where: { bathrooms: 1 },
+            })
+        }
+        const dbResults = await searchInDb();
+        console.log(dbResults);
+        res.status(200).send(dbResults);
+    }
+
+    getAllProductsTwoBath = async (req, res) => {
+        const searchInDb = async () => {
+            return await Product.findAll({
+                attributes: { exclude: ['image', 'galleryImages'] },
+                where: { bathrooms: 2 },
+            })
+        }
+        const dbResults = await searchInDb();
+        console.log(dbResults);
+        res.status(200).send(dbResults);
+    }
+
+    getAllProductsThreeBath = async (req, res) => {
+        const searchInDb = async () => {
+            return await Product.findAll({
+                attributes: { exclude: ['image', 'galleryImages'] },
+                where: { bathrooms: 3 },
+            })
+        }
+        const dbResults = await searchInDb();
+        console.log(dbResults);
+        res.status(200).send(dbResults);
+    }
+
+    getAllProductsFourBathPlus = async (req, res) => {
+        const searchInDb = async () => {
+            return await Product.findAll({
+                attributes: { exclude: ['image', 'galleryImages'] },
+                where: { bathrooms: { [Op.gte]: 4 } },
+            })
+        }
+        const dbResults = await searchInDb();
+        console.log(dbResults);
+        res.status(200).send(dbResults);
+    }
+
+    getAllProductsOneDorm = async (req, res) => {
+        const searchInDb = async () => {
+            return await Product.findAll({
+                attributes: { exclude: ['image', 'galleryImages'] },
+                where: { dorms: 1 },
+            })
+        }
+        const dbResults = await searchInDb();
+        console.log(dbResults);
+        res.status(200).send(dbResults);
+    }
+
+    getAllProductsTwoDorm = async (req, res) => {
+        const searchInDb = async () => {
+            return await Product.findAll({
+                attributes: { exclude: ['image', 'galleryImages'] },
+                where: { dorms: 2 },
+            })
+        }
+        const dbResults = await searchInDb();
+        console.log(dbResults);
+        res.status(200).send(dbResults);
+    }
+
+    getAllProductsThreeDorm = async (req, res) => {
+        const searchInDb = async () => {
+            return await Product.findAll({
+                attributes: { exclude: ['image', 'galleryImages'] },
+                where: { dorms: 3 },
+            })
+        }
+        const dbResults = await searchInDb();
+        console.log(dbResults);
+        res.status(200).send(dbResults);
+    }
+
+    getAllProductsFourDormPlus = async (req, res) => {
+        const searchInDb = async () => {
+            return await Product.findAll({
+                attributes: { exclude: ['image', 'galleryImages'] },
+                where: { dorms: { [Op.gte]: 4 } },
             })
         }
         const dbResults = await searchInDb();
@@ -109,13 +218,6 @@ class ProductsAndDeals {
                 where: { id: id },
                 attributes: { exclude: ['image'] },
                 include: [
-                    {
-                        model: TypeOfDeal,
-                        attributes: ["name"],
-                        through: {
-                            attributes: [],
-                        }
-                    },
                     {
                         model: User,
                         attributes: { exclude: ['profileImage', 'password'] },
@@ -176,6 +278,7 @@ class ProductsAndDeals {
                 name,
                 description,
                 price,
+                location,
                 productWidth,
                 productHeight,
                 rooms,
@@ -183,6 +286,7 @@ class ProductsAndDeals {
                 bathrooms,
                 typeOfProduct,
                 typeOfDeal,
+                secondTypeOfDeal,
                 token
             } = req.body
             const tokenDecode = jwt.decode(token);
@@ -196,6 +300,7 @@ class ProductsAndDeals {
                 name,
                 description,
                 price,
+                location,
                 productWidth,
                 productHeight,
                 rooms,
@@ -203,17 +308,13 @@ class ProductsAndDeals {
                 bathrooms,
                 photo,
                 typeOfProduct,
+                typeOfDeal,
+                secondTypeOfDeal,
                 image: photo.data,
                 // galleryImages: photoArray
             })
 
-            let typeOfDealDb = await TypeOfDeal.findAll({
-                where: { name: typeOfDeal }
-            })
-
             await productCreated.setUser(user.idUser)
-
-            await productCreated.addTypeOfDeal(typeOfDealDb);
 
             return res.status(201).json({
                 msg: "Product listed successfully",
@@ -225,6 +326,20 @@ class ProductsAndDeals {
 
 
     }
+
+    deleteProduct = async (req, res) => {
+        const { idProduct } = req.body;
+        try {
+            const product = await Product.findByPk(idProduct);
+            if (!product) return res.status(404).json({ msgE: "No product found" });
+            await product.destroy();
+
+            return res.status(200).json({ msg: "Product deleted succesfully" });
+        } catch (error) {
+            console.log(error)
+            return res.status(500).json({ msgE: error.message });
+        }
+    };
 
     addGalleryImage = async (req, res) => {
 
@@ -322,6 +437,66 @@ class ProductsAndDeals {
 
     };
 
+    updatePhotoGallery = async (req, res) => {
+        let id = req.query.id;
+        let dataPhoto;
+
+        try {
+            dataPhoto = req.files.photoProduct.data;
+        } catch (e) {
+            console.log(e)
+        }
+        if (req.files) {
+            dataPhoto = req.files.photoProduct.data;
+        }
+
+        console.log(dataPhoto)
+
+        try {
+            const imageGallery = await Images.findOne({
+                where: { id: id },
+            });
+            if (!imageGallery) return res.status(404).json({ msgE: "Could not find your image" });
+
+            let imageUpdated = await Images.update({
+                image: dataPhoto
+            },
+                { where: { id: imageGallery.dataValues.id } }
+            )
+
+            return res.status(201).json({
+                msg: "Image updated successfully",
+                product: imageGallery.id,
+                imageUpdate: dataPhoto
+            });
+        } catch (error) {
+            console.log(error)
+        }
+
+    };
+
+    deletePhotoGallery = async (req, res) => {
+        let id = req.query.id;
+
+        try {
+            const imageGallery = await Images.findOne({
+                where: { id: id },
+            });
+            if (!imageGallery) return res.status(404).json({ msgE: "Could not find your image" });
+
+            let imageDelete = await Images.destroy(
+                { where: { id: imageGallery.dataValues.id } }
+            )
+
+            return res.status(201).json({
+                msg: "Image deleted successfully",
+            });
+        } catch (error) {
+            console.log(error)
+        }
+
+    };
+
     getPhotoGallery = async (req, res) => {
         const imageId = req.query.id;
         // const tokenDecoded = jwt.decode(tokenUser);
@@ -358,16 +533,103 @@ class ProductsAndDeals {
         }
     };
 
-    listNewTypeOfDeal = async (req, res) => {
-        let {
-            name
-        } = req.body
+    editProduct = async (req, res) => {
+        const {
+            id,
+            name,
+            description,
+            price,
+            location,
+            typeOfProduct,
+            typeOfDeal,
+            secondTypeOfDeal,
+            rooms,
+            dorms,
+            bathrooms,
+            productWidth,
+            productHeight
+        } = req.body;
 
-        let dealCreated = await TypeOfDeal.create({
-            name
-        })
+        if (!id) return res.status(404).json({ msgE: "No id provided" })
 
-        res.send("New deal listed successfully")
+        try {
+            /*-Primero busco el usuario para luego buscarlo cuando quiero actualizar los datos por el id*/
+            const productFound = await Product.findOne({
+                where: { id: id }, attributes: { exclude: ['image'] }
+            });
+            if (!productFound) res.status(404).json({ msgE: "Product not found" });
+            const productUpdate = await Product.update(
+                {
+                    name:
+                        name && name !== productFound.dataValues.name
+                            ? name
+                            : productFound.dataValues.name,
+
+                    description:
+                        description && description !== productFound.dataValues.description
+                            ? description
+                            : productFound.dataValues.description,
+
+                    price:
+                        price && price !== productFound.dataValues.price
+                            ? price
+                            : productFound.dataValues.price,
+
+                    location:
+                        location && location !== productFound.dataValues.location
+                            ? location
+                            : productFound.dataValues.location,
+
+                    rooms:
+                        rooms && rooms !== productFound.dataValues.rooms
+                            ? rooms
+                            : productFound.dataValues.rooms,
+
+                    dorms:
+                        dorms && dorms !== productFound.dataValues.dorms
+                            ? dorms
+                            : productFound.dataValues.dorms,
+
+                    bathrooms:
+                        bathrooms && bathrooms !== productFound.dataValues.bathrooms
+                            ? bathrooms
+                            : productFound.dataValues.bathrooms,
+
+                    productWidth:
+                        productWidth && productWidth !== productFound.dataValues.productWidth
+                            ? productWidth
+                            : productFound.dataValues.productWidth,
+
+                    productHeight:
+                        productHeight && productHeight !== productFound.dataValues.productHeight
+                            ? productHeight
+                            : productFound.dataValues.productHeight,
+                    typeOfProduct:
+                        typeOfProduct && typeOfProduct !== productFound.dataValues.typeOfProduct
+                            ? typeOfProduct
+                            : productFound.dataValues.typeOfProduct,
+
+                    typeOfDeal:
+                        typeOfDeal && typeOfDeal !== productFound.dataValues.typeOfDeal
+                            ? typeOfDeal
+                            : productFound.dataValues.typeOfDeal,
+
+                    secondTypeOfDeal:
+                        secondTypeOfDeal && secondTypeOfDeal !== productFound.dataValues.secondTypeOfDeal
+                            ? secondTypeOfDeal
+                            : null,
+                },
+                { where: { id: productFound.dataValues.id } }
+            );
+
+            const productUpdatedSend = await Product.findOne({ where: { id: id }, attributes: { exclude: ['image'] } });
+            return !productUpdate.length
+                ? res.status(404).json({ msgE: "Fail Edit product" })
+                : res.status(200).json({ msg: "Successful edit", productUpdatedSend });
+        } catch (error) {
+            console.log(error)
+            return res.status(404).json({ msgE: "Fail Edit product" });
+        }
     }
 
 }

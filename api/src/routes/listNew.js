@@ -8,8 +8,11 @@ const productsAndDeals = new ProductsAndDeals()
 
 router.use(fileUpload());
 router.post('/product', productsAndDeals.listNewProduct)
-router.post('/typeOfDeal', productsAndDeals.listNewTypeOfDeal)
+router.delete('/deleteProduct', productsAndDeals.deleteProduct)
+router.post('/productEdition', productsAndDeals.editProduct)
 router.post('/galleryImage', productsAndDeals.addGalleryImage)
 router.post('/productImage', productsAndDeals.updatePhotoProduct)
+router.post('/galleryImageUpdate', productsAndDeals.updatePhotoGallery)
+router.delete('/galleryImageDelete', productsAndDeals.deletePhotoGallery)
 
 module.exports = router;

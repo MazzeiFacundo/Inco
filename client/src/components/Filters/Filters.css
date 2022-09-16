@@ -1,26 +1,25 @@
-
-.filtersContainer{
+.filters-general-container {
     display: flex;
     flex-direction: column;
-    margin-top: 115px;
+    margin-top: 42px;
     margin-right: 30px;
     margin-left: 30px;
     margin-bottom: 15px;
     width: 380px;
-    height: 432px;
+    height: 506px;
     border: 1px #cbd6dc solid;
     border-radius: 5px;
     background-color: rgb(247, 247, 247);
     transition: 0.3s;
 }
 
-.filtersContainer:hover {
+.filters-general-container:hover {
     box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
     -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
     -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
 }
 
-.filtersApplied{
+.filters-header {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,24 +29,153 @@
     border-top-right-radius: 5px;
     border-bottom: 1px #cbd6dc solid;
     font-family: 'Poppins', sans-serif;
-    font-weight: 500;    
+    font-weight: 500;
     color: #d50000;
 }
 
-.filtersForm{
+.filters-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.filters-single-container-order {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    font-size: 20px;
+    margin-top: 10px;
+    font-family: 'Poppins', sans-serif;
 }
 
-
-.setOfFilters{
+.filters-single-btn-icon {
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 100px;
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 40px;
+    font-size: 13px;
+    border: none;
+    border-radius: 4px;
+    color: #3B3B3B;
+    border: 1px #cbd6dc solid;
+    background-color: transparent;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    box-shadow: 0px 0px 5px -4px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 0px 5px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 5px -4px rgba(0, 0, 0, 0.75);
+    transition: 0.3s;
+}
+
+.filters-single-btn-icon:hover {
+    background-color: #d50000;
+    color: #ffffff;
+    border: none;
+}
+
+.filters-single-icon {
+    display: flex;
+    margin-left: 5px;
+}
+
+.filters-single-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 13px;
+    margin-bottom: 13px;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+}
+
+.filters-single-btns-container {
+    display: flex;
     justify-content: space-evenly;
     width: 100%;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.filters-single-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 33px;
+    font-size: 15px;
+    border-radius: 4px;
+    color: #3B3B3B;
+    border: 1px #cbd6dc solid;
+    background-color: transparent;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    box-shadow: 0px 0px 5px -4px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 0px 5px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 5px -4px rgba(0, 0, 0, 0.75);
+    transition: 0.3s;
+}
+
+.filters-single-btn:hover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    background-color: #d50000;
+    border: none;
+}
+
+.filters-single-btn:active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    background-color: #c00000;
+}
+
+.filters-single-btns-reset-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filters-single-btn-reset{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 40px;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    background-color: #d50000;
+    box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+    -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+    -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+    transition: 0.3s;
+}
+
+.filters-single-btn-reset:hover{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    background-color: #860000;
+}
+
+.filters-single-btn-reset:active{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    background-color: #750000;
 }

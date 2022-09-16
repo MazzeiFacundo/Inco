@@ -26,6 +26,11 @@ module.exports = (sequelize) => {
       allowNull: true
     },
 
+    location: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
     bathrooms: {
       type: DataTypes.INTEGER,
       allowNull: true
@@ -53,6 +58,15 @@ module.exports = (sequelize) => {
 
     typeOfProduct: {
       type: DataTypes.ENUM("House", "Apartment", "Land", "Duplex")
+    },
+
+    typeOfDeal: {
+      type: DataTypes.ENUM("Sale", "Rent", "Touristic rent")
+    },
+
+    secondTypeOfDeal: {
+      type: DataTypes.ENUM("Sale", "Rent", "Touristic rent"),
+      allowNull: true
     },
 
     image: {

@@ -1,11 +1,12 @@
 import React, { useState, useEffect, componentWillUnmount } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./ImgGallery.css"
+import "./EditImgGallery.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleChevronLeft, faCircleChevronRight, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
-import { showProductGallery, getProductsGallery } from "../../features/products/productsSlice"
+import { showProductGallery, getProductsGallery, deleteGalleryImage } from "../../features/products/productsSlice"
+import axios from "axios";
 
-function ImgGallery(id) {
+function EditImgGallery(id) {
 
     const dispatch = useDispatch();
     const images = useSelector(showProductGallery)
@@ -47,6 +48,26 @@ function ImgGallery(id) {
             : setSlideNumber(slideNumber + 1)
     }
 
+    const handleSubmit = async (e, id) => {
+        console.log(id)
+        console.log(e.target.files[0]);
+        const fdGalleryImage = new FormData();
+        fdGalleryImage.append("photoProduct", e.target.files[0], "photoProduct")
+
+        try {
+            const responseProductImg = await axios.post(`http://localhost:3001/listNew/galleryImageUpdate?id=${id}`,
+                fdGalleryImage, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+            console.log(responseProductImg)
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     // const closeModalOnClick = () => {
     //     setOpenModal(false)
     // }
@@ -68,17 +89,27 @@ function ImgGallery(id) {
 
             <div className="img-g-images-container">
                 {
-                    images && images.flat(1).map((e, index) => {
-                        console.log(images)
+                    images && images.flat(1).map((el, index) => {
                         return (
                             <div
-                                className={`${index < 4 ? "img-g-images-single-container" : "img-g-images-single-hidden"}`}
+                                className="img-g-images-single-container"
                                 key={index}
                                 onClick={() => handleOpenModal(index)}
                             >
-                                <img className={`${index < 4 ? "img-g-images-single" : "img-g-images-single-hidden"}`}
-                                    src={`http://localhost:3001/display/getPhotoGallery?id=${e.id}`} alt='none'
+                                <img className={"img-g-images-single"}
+                                    src={`http://localhost:3001/display/getPhotoGallery?id=${el.id}`} alt='none'
                                 />
+                                <input
+                                    type="file"
+                                    name="photoProfile"
+                                    onChange={(e) => {
+                                        console.log(el.id)
+                                        handleSubmit(e, el.id)}}
+                                />
+                                <button type="button" onClick={() => {
+                                    dispatch(deleteGalleryImage(el.id))
+                                }}>
+                                    Delete image</button>
                             </div>
                         )
                     })
@@ -88,4 +119,4 @@ function ImgGallery(id) {
     )
 }
 
-export default ImgGallery;
+export default EditImgGallery;

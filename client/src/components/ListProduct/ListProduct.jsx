@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import NavBar from "../NavBar/NavBar";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getToken, typeOfDeals, getAllTypesOfDeals } from "../../features/products/productsSlice";
+import { getToken } from "../../features/products/productsSlice";
 import { validateRegister } from "../../Validations/validateRegister";
 import { validateProduct } from "../../Validations/validateProduct";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -17,9 +17,9 @@ function ListProduct() {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const allTypeOfDeals = useSelector(typeOfDeals)
 
     const [slideNumber, setSlideNumber] = useState(0)
+    const [secondTypeOfDeal, setSecondTypeOfDeal] = useState(false)
     const [imgList, setImgList] = useState([{ image: "" }])
     const [photoProduct, setPhotoProduct] = useState({});
     const [errors, setErrors] = useState({});
@@ -27,17 +27,18 @@ function ListProduct() {
         name: "",
         description: "",
         price: "",
+        location: "",
         productWidth: "",
         productHeight: "",
         rooms: "",
         dorms: "",
         bathrooms: "",
         typeOfProduct: "",
-        typeOfDeal: []
+        typeOfDeal: "",
+        secondTypeOfDeal: ""
     })
 
     useEffect(() => {
-        const typesOfDealsLocal = dispatch(getAllTypesOfDeals())
         const userCredentials = window.localStorage.getItem("userCredentials");
         const userToken = JSON.parse(userCredentials);
         console.log(JSON.parse(userCredentials))
@@ -71,6 +72,16 @@ function ListProduct() {
         console.log(photoProduct);
     };
 
+    const handleSecondTypeOfDeal = (e) => {
+        e.preventDefault()
+        setSecondTypeOfDeal(true)
+    };
+
+    const handleCloseSecondTypeOfDeal = (e) => {
+        e.preventDefault()
+        setSecondTypeOfDeal(false)
+    };
+
     const prevSlide = () => {
         slideNumber === 0
             ? setSlideNumber(0)
@@ -94,12 +105,32 @@ function ListProduct() {
         console.log(input)
     }
 
-    function handleSelect(e) {
+    function handleSelectTypeOfDeal(e) {
+        if(e.target.value === input.secondTypeOfDeal) {
+            return setInput({
+                ...input,
+                typeOfDeal: ""
+            })
+        }
         setInput({
             ...input,
-            typeOfDeal: [...input.typeOfDeal, e.target.value]
+            typeOfDeal: e.target.value
         })
     }
+
+    function handleSelectSecondTypeOfDeal(e) {
+        if(e.target.value === input.typeOfDeal) {
+            return setInput({
+                ...input,
+                secondTypeOfDeal: ""
+            })
+        }
+        setInput({
+            ...input,
+            secondTypeOfDeal: e.target.value
+        })
+    }
+
 
     function handleSelectType(e) {
         setInput({
@@ -120,6 +151,7 @@ function ListProduct() {
         fd.append("name", input.name);
         fd.append("description", input.description);
         fd.append("price", input.price);
+        fd.append("location", input.location)
         fd.append("productWidth", input.productWidth);
         fd.append("productHeight", input.productHeight);
         fd.append("rooms", input.rooms);
@@ -127,7 +159,8 @@ function ListProduct() {
         fd.append("bathrooms", input.bathrooms);
         fd.append("typeOfProduct", input.typeOfProduct);
         fd.append("typeOfDeal", input.typeOfDeal);
-
+        if(input.secondTypeOfDeal !== "") fd.append("secondTypeOfDeal", input.secondTypeOfDeal);
+       
         const fdProductImage = new FormData();
         fdProductImage.append("photoProduct", photoProduct, "photoProduct")
 
@@ -139,13 +172,15 @@ function ListProduct() {
                     name: "",
                     description: "",
                     price: "",
+                    location: "",
                     productWidth: "",
                     productHeight: "",
                     rooms: "",
                     dorms: "",
                     bathrooms: "",
                     typeOfProduct: "",
-                    typeOfDeal: ""
+                    typeOfDeal: "",
+                    secondTypeOfDeal: ""
                 });
                 return;
             }
@@ -176,13 +211,15 @@ function ListProduct() {
                 name: "",
                 description: "",
                 price: "",
+                location: "",
                 productWidth: "",
                 productHeight: "",
                 rooms: "",
                 dorms: "",
                 bathrooms: "",
                 typeOfProduct: "",
-                typeOfDeal: ""
+                typeOfDeal: "",
+                secondTypeOfDeal: ""
             });
         } catch (e) {
             console.log(e)
@@ -190,13 +227,15 @@ function ListProduct() {
                 name: "",
                 description: "",
                 price: "",
+                location: "",
                 productWidth: "",
                 productHeight: "",
                 rooms: "",
                 dorms: "",
                 bathrooms: "",
                 typeOfProduct: "",
-                typeOfDeal: ""
+                typeOfDeal: "",
+                secondTypeOfDeal: ""
             });
         }
     }
@@ -239,6 +278,20 @@ function ListProduct() {
                                 )}
                             </div>
 
+                            <div className="list-p-slide-0-single-input-container">
+                                <div className="list-p-slide-0-input-title">Product location</div>
+                                <input
+                                    value={input.location}
+                                    name="location"
+                                    onChange={(e) => handleChange(e)}
+                                    placeholder="Your product location"
+                                    className="list-p-slide-0-input-field">
+                                </input>
+                                {errors.price && (
+                                    <div className="list-p-form-errors">{errors.price}</div>
+                                )}
+                            </div>
+
                             <div className="list-p-slide-0-single-input-container-desc">
                                 <div className="list-p-slide-0-input-title">Product description</div>
                                 <textarea type="text"
@@ -266,15 +319,25 @@ function ListProduct() {
                             <div className="list-p-slide-1-specifications-header">Property specifications</div>
                             <div className="list-p-slide-1-selects-container">
                                 <div className="list-p-slide-1-typeofdeals-container">
-                                    <select onChange={(e) => handleSelect(e)} className="list-p-slide-1-select-typeofdeal">
-                                        {allTypeOfDeals && allTypeOfDeals.map((e) => {
-                                            return (
-                                                <option value={e.name}>{e.name}</option>
-                                            )
-                                        })}
+                                    <select onChange={(e) => handleSelectTypeOfDeal(e)} className="list-p-slide-1-select-typeofdeal">
+                                        <option value="Sale">Sale</option>
+                                        <option value="Rent">Rent</option>
+                                        <option value="Touristic rent">Touristic rent</option>
                                     </select>
                                 </div>
-
+                                <button onClick={(e) => handleSecondTypeOfDeal(e)}>Add a second deal</button>
+                                {
+                                    secondTypeOfDeal && (
+                                        <div className="list-p-slide-1-typeofdeals-container">
+                                            <button onClick={(e) => handleCloseSecondTypeOfDeal(e)}>X</button>
+                                            <select onChange={(e) => handleSelectSecondTypeOfDeal(e)} className="list-p-slide-1-select-typeofdeal">
+                                                <option value="Sale">Sale</option>
+                                                <option value="Rent">Rent</option>
+                                                <option value="Touristic rent">Touristic rent</option>
+                                            </select>
+                                        </div>
+                                    )
+                                }
                                 <div className="list-p-slide-1-typeofproducts-container">
                                     <select onChange={(e) => handleSelectType(e)} className="list-p-slide-1-select-typeofproperty">
                                         <option value="House">House</option>
