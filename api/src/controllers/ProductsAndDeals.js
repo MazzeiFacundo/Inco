@@ -296,31 +296,58 @@ class ProductsAndDeals {
             });
             if (!user) return res.status(404).json({ msgE: "Could not find your user" });
 
-            let productCreated = await Product.create({
-                name,
-                description,
-                price,
-                location,
-                productWidth,
-                productHeight,
-                rooms,
-                dorms,
-                bathrooms,
-                photo,
-                typeOfProduct,
-                typeOfDeal,
-                secondTypeOfDeal,
-                image: photo.data,
-                // galleryImages: photoArray
-            })
+            if (secondTypeOfDeal && secondTypeOfDeal.length < 1) {
+                let productCreated = await Product.create({
+                    name,
+                    description,
+                    price,
+                    location,
+                    productWidth,
+                    productHeight,
+                    rooms,
+                    dorms,
+                    bathrooms,
+                    photo,
+                    typeOfProduct,
+                    typeOfDeal,
+                    image: photo.data,
+                    // galleryImages: photoArray
+                })
 
-            await productCreated.setUser(user.idUser)
+                await productCreated.setUser(user.idUser)
 
-            return res.status(201).json({
-                msg: "Product listed successfully",
-                userName: user.userName,
-                productCreated
-            });
+                return res.status(201).json({
+                    msg: "Product listed successfully",
+                    userName: user.userName,
+                    productCreated
+                });
+            } else {
+                let productCreated = await Product.create({
+                    name,
+                    description,
+                    price,
+                    location,
+                    productWidth,
+                    productHeight,
+                    rooms,
+                    dorms,
+                    bathrooms,
+                    photo,
+                    typeOfProduct,
+                    typeOfDeal,
+                    secondTypeOfDeal,
+                    image: photo.data,
+                    // galleryImages: photoArray
+                })
+
+                await productCreated.setUser(user.idUser)
+
+                return res.status(201).json({
+                    msg: "Product listed successfully",
+                    userName: user.userName,
+                    productCreated
+                });
+            }
 
         } catch (error) { console.log(error) }
 
@@ -362,12 +389,6 @@ class ProductsAndDeals {
                 where: { id: id },
             });
             if (!product) return res.status(404).json({ msgE: "Could not find your product" });
-
-            const photo = await axios.get(
-                "https://us.123rf.com/450wm/aquir/aquir1909/aquir190907813/129839336-bot%C3%B3n-de-ejemplo-ejemplo-de-signo-verde-redondeado-ejemplo.jpg?ver=6",
-                { responseType: "arraybuffer" }
-            );
-            console.log(photo)
 
             let imageCreated = await Images.create({
                 image: dataPhoto
@@ -458,11 +479,27 @@ class ProductsAndDeals {
             });
             if (!imageGallery) return res.status(404).json({ msgE: "Could not find your image" });
 
-            let imageUpdated = await Images.update({
+            const product = await Product.findOne({
+                where: { id: imageGallery.dataValues.productId },
+            });
+            if (!product) return res.status(404).json({ msgE: "Could not find your product" });
+
+            let imageCreated = await Images.create({
                 image: dataPhoto
-            },
-                { where: { id: imageGallery.dataValues.id } }
-            )
+            })
+
+            await imageCreated.setProduct(product.id)
+
+            await Images.destroy({
+                where: { id: id },
+            });
+
+
+            // let imageUpdated = await Images.update({
+            //     image: dataPhoto
+            // },
+            //     { where: { id: imageGallery.dataValues.id } }
+            // )
 
             return res.status(201).json({
                 msg: "Image updated successfully",

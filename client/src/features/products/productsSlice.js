@@ -179,8 +179,6 @@ export const showAllProductsFourBathsPlus = (data) => async (dispatch) => {
     }
 };
 
-
-
 export const getCurrentProductDetail = (productId) => async (dispatch) => {
     try {
         const response = await axios.get(`http://localhost:3001/display/productById?id=${productId}`);

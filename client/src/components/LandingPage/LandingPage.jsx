@@ -51,6 +51,34 @@ function LandingPage() {
         }
     };
 
+    const handleSubmitGuest = async (e) => {
+        e.preventDefault();
+        console.log(input)
+        try {
+            const response = await axios.post("http://localhost:3001/login", 
+            {
+                email: "IncoGuestEmail@gmail.com",
+                password: "GuestPassword1"
+            });
+            console.log(response)
+            dispatch(getToken(response.data.token));
+            window.localStorage.setItem(
+                "userCredentials",
+                JSON.stringify(response.data.token)
+            );
+            navigate("/home");
+            setInput({ email: "", password: "" });
+        } catch (e) {
+            if (e.response.data.msgE === "Incorrect Password") setErrors({ password: e.response.data.msgE })
+            if (e.response.data.msgE === "This email adress has not been registered yet") setErrors({ email: e.response.data.msgE })
+            console.log(e.response.data.msgE)
+            setInput({
+                email: "",
+                password: "",
+            });
+        }
+    };
+
     const handleChange = (e) => {
         setInput({
             ...input,
@@ -96,7 +124,8 @@ function LandingPage() {
                         <div className="showErrorEmail">{errors.password}</div>
                     )}
 
-                    <button type="submit" className="buttonLogin">Log In</button>
+                    <button type="submit" className={errors.email || input.password.length < 3 ? "buttonLoginDisabled" : "buttonLogin"}>Log In</button>
+                    <button onClick={(e) => handleSubmitGuest(e)} type="submit" className="buttonLogin">Log in as a guest</button>
                     <div className="orDiv"><div className="textOr">Or</div></div>
                     <a className="registerLogin" href="/register">Don't have an account? Register!</a>
                 </form>

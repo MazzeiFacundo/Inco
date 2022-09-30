@@ -20,7 +20,7 @@ function Register() {
         email: "",
         password: "",
         repeatPassword: "",
-        tel: 0
+        tel: ""
     })
 
     function handleChange(e) {
@@ -47,7 +47,7 @@ function Register() {
                     email: "",
                     password: "",
                     repeatPassword: "",
-                    tel: 0
+                    tel: ""
                 });
                 return;
             }
@@ -63,17 +63,18 @@ function Register() {
                 email: "",
                 password: "",
                 repeatPassword: "",
-                tel: 0
+                tel: ""
             });
         } catch (e) {
-            console.log("nope")
+            if (e.response.data.msgE === "This username is already registered") setErrors({ userName: e.response.data.msgE })
+            if (e.response.data.msgE === "This email is already registered") setErrors({ email: e.response.data.msgE })
             setInput({
                 fullName: "",
                 userName: "",
                 email: "",
                 password: "",
                 repeatPassword: "",
-                tel: 0
+                tel: ""
             });
         }
     }
@@ -188,7 +189,13 @@ function Register() {
                 </div>
                 <div>
                     {
-                        errors.fullName || errors.userName || errors.email || errors.password
+                        errors.fullName || 
+                        errors.userName || 
+                        errors.email || 
+                        errors.tel || 
+                        errors.password || 
+                        input.repeatPassword !== input.password || 
+                        input.fullName.length < 3                        
                             ? <button type="submit" className="buttonRegisterDisabled">Register</button>
                             : <button type="submit" className="buttonRegister">Register</button>
                     }

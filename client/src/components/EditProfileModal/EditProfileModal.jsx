@@ -1,11 +1,13 @@
 import React, { useState, useEffect, componentWillUnmount } from "react";
 import { useNavigate } from "react-router-dom";
+import { validateProfileEdit } from "../../Validations/validateProfileEdit";
 import axios from "axios";
 import "./EditProfileModal.css"
 
 
 function EditProfileModal({ fullName, tel, description, closeModal }) {
 
+    const [errors, setErrors] = useState({});
     const [input, setInput] = useState({
         token: "",
         fullName: fullName,
@@ -34,7 +36,7 @@ function EditProfileModal({ fullName, tel, description, closeModal }) {
             ...input,
             [e.target.name]: e.target.value
         })
-        console.log(input)
+        setErrors(validateProfileEdit({ ...input, [e.target.name]: e.target.value }))
     }
 
     const handleCloseModal = () => {
@@ -80,6 +82,9 @@ function EditProfileModal({ fullName, tel, description, closeModal }) {
                         onChange={(e) => handleChange(e)}
                         placeholder="Enter your Full name"
                     />
+                    {errors.fullName && (
+                        <div className="errorLogin">{errors.fullName}</div>
+                    )}
                 </div>
                 <div>
                     <label>Contact number:</label>
@@ -90,6 +95,9 @@ function EditProfileModal({ fullName, tel, description, closeModal }) {
                         onChange={(e) => handleChange(e)}
                         placeholder="Enter your contact number"
                     />
+                    {errors.tel && (
+                        <div className="errorLogin">{errors.tel}</div>
+                    )}
                 </div>
                 <div>
                     <label>Description:</label>
@@ -100,8 +108,15 @@ function EditProfileModal({ fullName, tel, description, closeModal }) {
                         onChange={(e) => handleChange(e)}
                         placeholder="Enter your description"
                     />
-                </div>
-                <button type="submit" className="ep-modal-submit-btn">Edit profile information</button>
+                    {errors.description && (
+                        <div className="errorLogin">{errors.description}</div>
+                    )}
+                </div>   
+                {
+                    errors.fullName || errors.tel || errors.description
+                        ? <button type="submit" className="ep-modal-submit-btn-disabled">Edit profile information</button>
+                        : <button type="submit" className="ep-modal-submit-btn">Edit profile information</button>
+                }
             </form>
         </div>
     )

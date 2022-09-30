@@ -69,7 +69,6 @@ function ImgGallery(id) {
             <div className="img-g-images-container">
                 {
                     images && images.flat(1).map((e, index) => {
-                        console.log(images)
                         return (
                             <div
                                 className={`${index < 4 ? "img-g-images-single-container" : "img-g-images-single-hidden"}`}

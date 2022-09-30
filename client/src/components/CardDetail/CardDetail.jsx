@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./CardDetail.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { productDetail, showUserData, getCurrentUser, getCurrentProductDetail } from "../../features/products/productsSlice"
+import { productDetail, showUserData, getCurrentUser, getCurrentProductDetail, getProductsGallery, showProductGallery } from "../../features/products/productsSlice"
 import NavBar from "../NavBar/NavBar";
 import ImgGallery from "../ImgGallery/ImgGallery";
 import BottomHeader from "../BottomHeader/BottomHeader";
@@ -15,6 +15,7 @@ function CardDetail() {
     const dispatch = useDispatch();
     const currentProduct = useSelector(productDetail)
     const currentUser = useSelector(showUserData)
+    const currentGallery = useSelector(showProductGallery)
     let params = useParams()
 
     const [openModal, setOpenModal] = useState(false)
@@ -31,6 +32,7 @@ function CardDetail() {
         const userToken = JSON.parse(userCredentials);
         const currentUser = dispatch(getCurrentUser(userToken))
         const currentProduct = dispatch(getCurrentProductDetail(params.id))
+        const galleryCurrent = dispatch(getProductsGallery(params.id))
     }, []);
 
     return (
@@ -42,8 +44,6 @@ function CardDetail() {
             </div> */}
             {
                 (currentProduct || []).map((e) => {
-                    console.log(currentProduct)
-                    console.log(currentUser)
                     return (
                         <div className="detail-p-container">
                             <div className="detail-p-gallery-component-container">
@@ -75,6 +75,7 @@ function CardDetail() {
                                                         pHeight={e.productHeight}
                                                         pTypeOfProduct={e.typeOfProduct}
                                                         pTypeOfDeal={e.typeOfDeal}
+                                                        galleryLenght={currentGallery}
                                                         closeModal={setOpenModal}
                                                     />
                                                 }
@@ -102,7 +103,7 @@ function CardDetail() {
                                     <FontAwesomeIcon icon={faDoorOpen} className='detail-p-accomodations-icon'></FontAwesomeIcon>
                                     <div className="detail-p-accomodations-text">{e.rooms + " Rooms"}</div>
                                     <FontAwesomeIcon icon={faBed} className='detail-p-accomodations-icon'></FontAwesomeIcon>
-                                    <div className="detail-p-accomodations-text">{e.dorms + " Dormitory"}</div>
+                                    <div className="detail-p-accomodations-text">{e.dorms + " Dormitories"}</div>
                                     <FontAwesomeIcon icon={faBath} className='detail-p-accomodations-icon'></FontAwesomeIcon>
                                     <div className="detail-p-accomodations-text">{e.bathrooms + " Bathrooms"}</div>
                                 </div>
@@ -111,7 +112,7 @@ function CardDetail() {
                                     <FontAwesomeIcon icon={faExchangeAlt} className='detail-p-measurements-icon'></FontAwesomeIcon>
                                     <div className="detail-p-measurements-text">{"Width: " + e.productWidth + "m"}<sup>2</sup></div>
                                     <FontAwesomeIcon icon={faLongArrowAltUp} className='detail-p-measurements-icon'></FontAwesomeIcon>
-                                    <div className="detail-p-measurements-text">{"Height: " + e.productHeight + "m"}<sup>2</sup></div>
+                                    <div className="detail-p-measurements-text">{"Height: " + e.productHeight + "m"}</div>
                                 </div>
 
                                 <div className="detail-p-description-text-container">

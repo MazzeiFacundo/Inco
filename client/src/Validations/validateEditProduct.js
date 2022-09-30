@@ -1,4 +1,4 @@
-export function validateProduct(input) {
+export function validateEditProduct(input) {
     const errors = {};
 
     if (!/^(?=.*[A-Za-z ])[A-Za-z ]{8,35}$/.test(input.name)) {
@@ -13,14 +13,14 @@ export function validateProduct(input) {
                 if (!/^(?=.*[A-Za-z ])[A-Za-z ]{10,255}$/.test(input.description)) {
                     errors.description = "Property description must be between 10 and 255 characters long.";
                 } else
-                    if (!/^.{2,}$/.test(input.typeOfDeal)) {
-                        errors.typeOfDeal = "You must select a deal.";
+                    if (!/^[0-9]{1,2}$/.test(input.rooms)) {
+                        errors.rooms = "Property accomodations must be between 1 and 2 characters long and must only contain numbers.";
                     } else
-                        // if (!/^.{2,}$/.test(input.secondTypeOfDeal)) {
-                        //     errors.secondTypeOfDeal = "You must select a deal.";
-                        // } else
-                            if (!/^.{2,}$/.test(input.typeOfProduct)) {
-                                errors.typeOfProduct = "You must select a property type.";
+                        if (!/^[0-9]{1,2}$/.test(input.dorms)) {
+                            errors.dorms = "Property accomodations must be between 1 and 2 characters long and must only contain numbers.";
+                        } else
+                            if (!/^[0-9]{1,2}$/.test(input.bathrooms)) {
+                                errors.bathrooms = "Property accomodations must be between 1 and 2 characters long and must only contain numbers.";
                             } else
                                 if (!/^[0-9]{1,4}$/.test(input.productWidth)) {
                                     errors.productWidth = "Property measurements must be between 1 and 4 characters long and must only contain numbers.";
@@ -28,15 +28,11 @@ export function validateProduct(input) {
                                     if (!/^[0-9]{1,4}$/.test(input.productHeight)) {
                                         errors.productHeight = "Property measurements must be between 1 and 4 characters long and must only contain numbers.";
                                     } else
-                                        if (!/^[0-9]{1,2}$/.test(input.rooms)) {
-                                            errors.rooms = "Property accomodations must be between 1 and 2 characters long and must only contain numbers.";
+                                        if (!/^.{2,}$/.test(input.typeOfProduct)) {
+                                            errors.typeOfProduct = "You must select a property type.";
                                         } else
-                                            if (!/^[0-9]{1,2}$/.test(input.dorms)) {
-                                                errors.dorms = "Property accomodations must be between 1 and 2 characters long and must only contain numbers.";
-                                            } else
-                                                if (!/^[0-9]{1,2}$/.test(input.bathrooms)) {
-                                                    errors.bathrooms = "Property accomodations must be between 1 and 2 characters long and must only contain numbers.";
-                                                }
-
+                                            if (!/^.{2,}$/.test(input.typeOfDeal)) {
+                                                errors.typeOfDeal = "You must select a deal.";
+                                            }
     return errors;
 }

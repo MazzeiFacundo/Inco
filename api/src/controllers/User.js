@@ -29,6 +29,18 @@ class UserClass {
         if (!bcrypt.compareSync(repeatPassword, password))
             return res.status(409).json({ msgE: "Passwords do not match" });
 
+        const userEmailDB = await User.findOne({
+            where: { email: email },
+        });
+
+        if(userEmailDB) return res.status(409).json({ msgE: "This email is already registered" });
+
+        const userNameDB = await User.findOne({
+            where: { userName: userName },
+        });
+
+        if(userNameDB) return res.status(409).json({ msgE: "This username is already registered" });
+
         //Obtiene la foto del enlace en modo de bufer y la almacena en la DB como imagen de defecto.
         const photo = await axios.get(
             "https://i.pinimg.com/564x/e5/91/dc/e591dc82326cc4c86578e3eeecced792.jpg",
@@ -214,11 +226,11 @@ class UserClass {
         const token = req.query.token;
         const userFoundDB = await User.findOne({
             where: { token: token },
-            attributes: {exclude: ['profileImage']},
+            attributes: { exclude: ['profileImage'] },
             include: [
                 {
                     model: Product,
-                    attributes: {exclude: ['image', 'galleryImages']},
+                    attributes: { exclude: ['image', 'galleryImages'] },
                     include: [
                         { model: User, attributes: ["userName"] },
                     ],
@@ -233,15 +245,15 @@ class UserClass {
         const userNameQuery = req.query.userName;
         // const tokenDecoded = jwt.decode(tokenUser);
         try {
-          let userFind = await User.findOne({ where: { userName: userNameQuery } });
-          return !userFind
-            ? res.status(404).json({ msgE: "User not Found" })
-            : res.status(200).send(userFind.profileImage);
+            let userFind = await User.findOne({ where: { userName: userNameQuery } });
+            return !userFind
+                ? res.status(404).json({ msgE: "User not Found" })
+                : res.status(200).send(userFind.profileImage);
         } catch (error) {
-          console.log(error);
-          res.status(404).json({ msgE: "Error to get photo" });
+            console.log(error);
+            res.status(404).json({ msgE: "Error to get photo" });
         }
-      };
+    };
 
     editionBasicDataProfile = async (req, res) => {
         let dataPhoto;

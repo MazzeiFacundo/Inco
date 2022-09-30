@@ -20,3 +20,8 @@
 .ep-modal-close-modal-btn{
 
 }
+
+.ep-modal-submit-btn-disabled{
+    pointer-events: none;
+    background-color: gray;
+}

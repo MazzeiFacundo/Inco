@@ -106,66 +106,68 @@ function ListProduct() {
     }
 
     function handleSelectTypeOfDeal(e) {
-        if(e.target.value === input.secondTypeOfDeal) {
+        if (e.target.value === input.secondTypeOfDeal) {
             return setInput({
                 ...input,
-                typeOfDeal: ""
+                [e.target.name]: e.target.value
             })
         }
         setInput({
             ...input,
-            typeOfDeal: e.target.value
+            [e.target.name]: e.target.value
         })
+        setErrors(validateProduct({ ...input, [e.target.name]: e.target.value }))
     }
 
     function handleSelectSecondTypeOfDeal(e) {
-        if(e.target.value === input.typeOfDeal) {
+        if (e.target.value === input.typeOfDeal) {
             return setInput({
                 ...input,
-                secondTypeOfDeal: ""
+                [e.target.name]: e.target.value
             })
         }
         setInput({
             ...input,
-            secondTypeOfDeal: e.target.value
+            [e.target.name]: e.target.value
         })
+        setErrors(validateProduct({ ...input, [e.target.name]: e.target.value }))
     }
 
 
     function handleSelectType(e) {
         setInput({
             ...input,
-            typeOfProduct: e.target.value
+            [e.target.name]: e.target.value
         })
+        setErrors(validateProduct({ ...input, [e.target.name]: e.target.value }))
     }
 
     const handleSubmit = async (e) => {
-
         e.preventDefault();
-        setErrors(validateProduct({ ...input, [e.target.name]: e.target.value }))
         const userCredentials = window.localStorage.getItem("userCredentials");
-        const userToken = JSON.parse(userCredentials);
-
-        const fd = new FormData();
-        fd.append("token", userToken);
-        fd.append("name", input.name);
-        fd.append("description", input.description);
-        fd.append("price", input.price);
-        fd.append("location", input.location)
-        fd.append("productWidth", input.productWidth);
-        fd.append("productHeight", input.productHeight);
-        fd.append("rooms", input.rooms);
-        fd.append("dorms", input.dorms);
-        fd.append("bathrooms", input.bathrooms);
-        fd.append("typeOfProduct", input.typeOfProduct);
-        fd.append("typeOfDeal", input.typeOfDeal);
-        if(input.secondTypeOfDeal !== "") fd.append("secondTypeOfDeal", input.secondTypeOfDeal);
-       
-        const fdProductImage = new FormData();
-        fdProductImage.append("photoProduct", photoProduct, "photoProduct")
-
+            const userToken = JSON.parse(userCredentials);
+            const fd = new FormData();
+            if(userToken) fd.append("token", userToken);
+            if(input.name !== "") fd.append("name", input.name);
+            if(input.description !== "") fd.append("description", input.description);
+            if(input.price !== "") fd.append("price", input.price);
+            if(input.location !== "") fd.append("location", input.location)
+            if(input.productWidth !== "") fd.append("productWidth", input.productWidth);
+            if(input.productHeight !== "") fd.append("productHeight", input.productHeight);
+            if(input.rooms !== "") fd.append("rooms", input.rooms);
+            if(input.dorms !== "") fd.append("dorms", input.dorms);
+            if(input.bathrooms !== "") fd.append("bathrooms", input.bathrooms);
+            if(input.typeOfProduct !== "") fd.append("typeOfProduct", input.typeOfProduct);
+            if(input.typeOfDeal !== "") fd.append("typeOfDeal", input.typeOfDeal);
+            if (input.secondTypeOfDeal !== "") fd.append("secondTypeOfDeal", input.secondTypeOfDeal);
+    
+            const fdProductImage = new FormData();
+            if(photoProduct.name) fdProductImage.append("photoProduct", photoProduct, "photoProduct")
+    
+            console.log("start")
 
         try {
+            console.log("trycatch1")
             const responseInput = await axios.post("http://localhost:3001/listNew/product", fd);
             if (responseInput.data.msgE) {
                 setInput({
@@ -184,29 +186,6 @@ function ListProduct() {
                 });
                 return;
             }
-            const responseProductImg = await axios.post(`http://localhost:3001/listNew/productImage?id=${responseInput.data.productCreated.id}`,
-                fdProductImage, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
-
-            const singleImgResponse = async () => {
-                const images = await Promise.all(imgList.map(img => {
-                    let fdProductGallery = new FormData();
-                    fdProductGallery.append("photoGallery", img.image, "photoGallery")
-                    return axios.post(`http://localhost:3001/listNew/galleryImage?id=${responseInput.data.productCreated.id}`,
-                        fdProductGallery, {
-                        headers: {
-                            'Content-Type': 'multipart/form-data'
-                        }
-                    })
-                }))
-                return images
-            }
-            singleImgResponse()
-
-            navigate("/home");
             setInput({
                 name: "",
                 description: "",
@@ -221,23 +200,49 @@ function ListProduct() {
                 typeOfDeal: "",
                 secondTypeOfDeal: ""
             });
+
+            try {
+                console.log("trycatch2")
+                const responseProductImg = await axios.post(`http://localhost:3001/listNew/productImage?id=${responseInput.data.productCreated.id}`,
+                    fdProductImage, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                });
+            } catch (e) {
+                console.log(e)
+            }
+
+            try { 
+                console.log("trycatch3")
+                const singleImgResponse = async () => {
+                    const imgListFiltered = imgList.filter((e) => { return typeof e.image.name === "string" })
+                    if(imgListFiltered.length === 0) return
+                    const images = await Promise.all(imgListFiltered.map(img => {
+                        let fdProductGallery = new FormData();
+                        fdProductGallery.append("photoGallery", img.image, "photoGallery")
+                        return axios.post(`http://localhost:3001/listNew/galleryImage?id=${responseInput.data.productCreated.id}`,
+                            fdProductGallery, {
+                            headers: {
+                                'Content-Type': 'multipart/form-data'
+                            }
+                        })
+                    }))
+                    return images
+                }
+                singleImgResponse()            
+            } catch (e) {
+                console.log(e)
+            }
+
         } catch (e) {
             console.log(e)
-            setInput({
-                name: "",
-                description: "",
-                price: "",
-                location: "",
-                productWidth: "",
-                productHeight: "",
-                rooms: "",
-                dorms: "",
-                bathrooms: "",
-                typeOfProduct: "",
-                typeOfDeal: "",
-                secondTypeOfDeal: ""
-            });
         }
+
+        
+       
+        
+        navigate("/home");
     }
 
 
@@ -287,8 +292,8 @@ function ListProduct() {
                                     placeholder="Your product location"
                                     className="list-p-slide-0-input-field">
                                 </input>
-                                {errors.price && (
-                                    <div className="list-p-form-errors">{errors.price}</div>
+                                {errors.location && (
+                                    <div className="list-p-form-errors">{errors.location}</div>
                                 )}
                             </div>
 
@@ -307,8 +312,17 @@ function ListProduct() {
                             </div>
 
                             <div className="list-p-btn-next-container">
-                                <button onClick={nextSlide} className="list-p-btn-next">Next</button>
+                                {
+                                    errors.name ||
+                                        errors.price ||
+                                        errors.location ||
+                                        errors.description ||
+                                        input.name.length < 1
+                                        ? <button onClick={nextSlide} className="list-p-btn-next-disabled">Next</button>
+                                        : <button onClick={nextSlide} className="list-p-btn-next">Next</button>
+                                }
                             </div>
+
                         </div>
                     )
                 }
@@ -319,49 +333,61 @@ function ListProduct() {
                             <div className="list-p-slide-1-specifications-header">Property specifications</div>
                             <div className="list-p-slide-1-selects-container">
                                 <div className="list-p-slide-1-typeofdeals-container">
-                                    <select onChange={(e) => handleSelectTypeOfDeal(e)} className="list-p-slide-1-select-typeofdeal">
+                                    <select
+                                        onChange={(e) => handleSelectTypeOfDeal(e)}
+                                        className="list-p-slide-1-select-typeofdeal"
+                                        value={input.typeOfDeal}
+                                        name="typeOfDeal"
+                                    >
+                                        <option value="" selected disabled hidden>Select a deal</option>
                                         <option value="Sale">Sale</option>
                                         <option value="Rent">Rent</option>
                                         <option value="Touristic rent">Touristic rent</option>
                                     </select>
+                                    {errors.typeOfDeal && (
+                                        <div className="list-p-form-errors">{errors.typeOfDeal}</div>
+                                    )}
                                 </div>
                                 <button onClick={(e) => handleSecondTypeOfDeal(e)}>Add a second deal</button>
                                 {
                                     secondTypeOfDeal && (
                                         <div className="list-p-slide-1-typeofdeals-container">
                                             <button onClick={(e) => handleCloseSecondTypeOfDeal(e)}>X</button>
-                                            <select onChange={(e) => handleSelectSecondTypeOfDeal(e)} className="list-p-slide-1-select-typeofdeal">
+                                            <select
+                                                onChange={(e) => handleSelectSecondTypeOfDeal(e)}
+                                                className="list-p-slide-1-select-typeofdeal"
+                                                value={input.secondTypeOfDeal}
+                                                name="secondTypeOfDeal"
+                                            >
+                                                <option value="" selected disabled hidden>Select a deal</option>
                                                 <option value="Sale">Sale</option>
                                                 <option value="Rent">Rent</option>
                                                 <option value="Touristic rent">Touristic rent</option>
                                             </select>
+                                            {errors.secondTypeOfDeal && (
+                                                <div className="list-p-form-errors">{errors.secondTypeOfDeal}</div>
+                                            )}
                                         </div>
                                     )
                                 }
                                 <div className="list-p-slide-1-typeofproducts-container">
-                                    <select onChange={(e) => handleSelectType(e)} className="list-p-slide-1-select-typeofproperty">
+                                    <select
+                                        onChange={(e) => handleSelectType(e)}
+                                        className="list-p-slide-1-select-typeofproperty"
+                                        value={input.typeOfProduct}
+                                        name="typeOfProduct"
+                                    >
+                                        <option value="" selected disabled hidden>Property</option>
                                         <option value="House">House</option>
                                         <option value="Apartment">Apartment</option>
                                         <option value="Land">Land</option>
                                         <option value="Duplex">Duplex</option>
                                     </select>
+                                    {errors.typeOfProduct && (
+                                        <div className="list-p-form-errors">{errors.typeOfProduct}</div>
+                                    )}
                                 </div>
                             </div>
-                            {/* <div className="list-p-slide-1-displayer-containers">
-                                <div className="list-p-slide-1-displayer">
-                                    <div className="list-p-slide-1-typeofdeals-list">
-                                        {input.typeOfDeal.map((e) => {
-                                            return (
-                                                <div className="list-p-slide-1-typeofdeals-list-item">{e + " "}</div>
-                                            )
-
-                                        })}
-                                    </div>
-                                </div>
-                                <div className="list-p-slide-1-displayer">
-                                    <div className="list-p-slide-1-typeofproducts-list">{input.typeOfProduct}</div>
-                                </div>
-                            </div> */}
 
                             <div className="list-p-slide-1-general-inputs-container">
                                 <div className="list-p-slide-1-measurments-header">Measurments</div>
@@ -376,9 +402,9 @@ function ListProduct() {
                                             className="list-p-slide-1-single-input">
                                         </input>
                                         <FontAwesomeIcon icon={faExchangeAlt} className='heightIcon'></FontAwesomeIcon>
-                                        {/* {errors.price && (
-                                    <div className="errorProduct">{errors.price}</div>
-                                )} */}
+                                        {errors.productWidth && (
+                                            <div className="list-p-form-errors">{errors.productWidth}</div>
+                                        )}
                                     </div>
 
                                     <div className="list-p-slide-1-single-input-container">
@@ -391,9 +417,9 @@ function ListProduct() {
                                             className="list-p-slide-1-single-input">
                                         </input>
                                         <FontAwesomeIcon icon={faLongArrowAltUp} className='heightIcon'></FontAwesomeIcon>
-                                        {/* {errors.price && (
-                                    <div className="errorProduct">{errors.price}</div>
-                                )} */}
+                                        {errors.productHeight && (
+                                            <div className="list-p-form-errors">{errors.productHeight}</div>
+                                        )}
                                     </div>
                                 </div>
                                 <div className="list-p-slide-1-accomodations-header">Accomodations</div>
@@ -408,9 +434,9 @@ function ListProduct() {
                                             className="list-p-slide-1-single-input">
                                         </input>
                                         <FontAwesomeIcon icon={faDoorOpen} className='heightIcon'></FontAwesomeIcon>
-                                        {/* {errors.price && (
-                                    <div className="errorProduct">{errors.price}</div>
-                                )} */}
+                                        {errors.rooms && (
+                                            <div className="list-p-form-errors">{errors.rooms}</div>
+                                        )}
                                     </div>
                                     <div className="list-p-slide-1-single-input-container">
                                         <div className="">Dorms</div>
@@ -422,9 +448,9 @@ function ListProduct() {
                                             className="list-p-slide-1-single-input">
                                         </input>
                                         <FontAwesomeIcon icon={faBed} className='heightIcon'></FontAwesomeIcon>
-                                        {/* {errors.price && (
-                                    <div className="errorProduct">{errors.price}</div>
-                                )} */}
+                                        {errors.dorms && (
+                                            <div className="list-p-form-errors">{errors.dorms}</div>
+                                        )}
                                     </div>
                                     <div className="list-p-slide-1-single-input-container">
                                         <div className="">Bathrooms</div>
@@ -436,18 +462,43 @@ function ListProduct() {
                                             className="list-p-slide-1-single-input">
                                         </input>
                                         <FontAwesomeIcon icon={faBath} className='heightIcon'></FontAwesomeIcon>
-                                        {/* {errors.price && (
-                                    <div className="errorProduct">{errors.price}</div>
-                                )} */}
+                                        {errors.bathrooms && (
+                                            <div className="list-p-form-errors">{errors.bathrooms}</div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
+
                             <div className="list-p-slide-1-btns-container">
                                 <div className="list-p-btn-prev-container">
-                                    <button onClick={prevSlide} className="list-p-btn-prev">Prev</button>
+                                    {
+                                        errors.typeOfDeal ||
+                                            errors.secondTypeOfDeal ||
+                                            errors.productWidth ||
+                                            errors.productHeight ||
+                                            errors.rooms ||
+                                            errors.dorms ||
+                                            errors.bathrooms ||
+                                            input.rooms.length < 1
+                                            ? <button onClick={prevSlide} className="list-p-btn-prev-disabled">Prev</button>
+                                            : <button onClick={prevSlide} className="list-p-btn-prev">Prev</button>
+
+                                    }
                                 </div>
+
                                 <div className="list-p-btn-next-container">
-                                    <button onClick={nextSlide} className="list-p-btn-next">Next</button>
+                                    {
+                                        errors.typeOfDeal ||
+                                            errors.secondTypeOfDeal ||
+                                            errors.productWidth ||
+                                            errors.productHeight ||
+                                            errors.rooms ||
+                                            errors.dorms ||
+                                            errors.bathrooms ||
+                                            input.rooms.length < 1
+                                            ? <button onClick={nextSlide} className="list-p-btn-next-disabled">Next</button>
+                                            : <button onClick={nextSlide} className="list-p-btn-next">Next</button>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -471,16 +522,18 @@ function ListProduct() {
                                     return (
                                         <div key={index}>
                                             <div>
-                                                <input
-                                                    name="image"
-                                                    type="file"
-                                                    id="image"
-                                                    required
-                                                    onChange={(e) => handleImgChange(e, index)}
-                                                />
+                                                <label className="e-product-modal-add-img-single-input-label">Upload
+                                                    <input
+                                                        name="image"
+                                                        type="file"
+                                                        id="image"
+                                                        
+                                                        onChange={(e) => handleImgChange(e, index)}
+                                                    />
+                                                </label>
                                                 {/* <img src={imgList[index].image}/> */}
                                                 {
-                                                    imgList.length - 1 === index && imgList.length < 10 &&
+                                                    imgList.length - 1 === index && imgList.length < 9 &&
                                                     <button onClick={handleAddImg} type="button">
                                                         <span>Add an image</span>
                                                     </button>

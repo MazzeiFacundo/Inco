@@ -2,25 +2,68 @@ import React, { useState, useEffect, componentWillUnmount } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./EditImgGallery.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleChevronLeft, faCircleChevronRight, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
+import { faCircleChevronLeft, faCircleChevronRight, faCircleXmark, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { showProductGallery, getProductsGallery, deleteGalleryImage } from "../../features/products/productsSlice"
 import axios from "axios";
 
-function EditImgGallery(id) {
+function EditImgGallery({ id, galleryCount }) {
 
     const dispatch = useDispatch();
     const images = useSelector(showProductGallery)
+    const [imagesRefresh, setimagesRefresh] = useState(0)
+    const [componentRefresh, setComponentRefresh] = useState(0)
+    const [imagesDisplay, setImagesDisplay] = useState({})
     const [slideNumber, setSlideNumber] = useState(0)
     const [openModal, setOpenModal] = useState(false)
 
     useEffect(() => {
-        const imagesGallery = dispatch(getProductsGallery(id.id))
+        const imagesGallery = dispatch(getProductsGallery(id))
+        setTimeout(() => {
+            setImagesDisplay(images)
+            galleryCount(images.flat(1).length)
+        }, 100)
     }, []);
 
-    // componentWillUnmount(() => {
-    //     console.log("desmontado")
-    // })
+    useEffect(() => {
+        setimagesRefresh(imagesRefresh + 1)
+    }, [componentRefresh]);
 
+    const handleDelete = async (e, idImg) => {
+        e.preventDefault();
+        console.log("here")
+        setComponentRefresh(componentRefresh + 1)
+        try {
+            dispatch(deleteGalleryImage(idImg))
+            setTimeout(() => {
+                dispatch(getProductsGallery(id))
+                setimagesRefresh(imagesRefresh + 1)
+            }, 200)
+        } catch (error) {
+            console.log(error)
+        }
+        setimagesRefresh(imagesRefresh + 1)
+        galleryCount(images.flat(1).length - 1)
+        console.log(galleryCount(images.flat(1).length - 1))
+    }
+
+    const handleSubmit = async (e, idImg) => {
+        e.preventDefault()
+        console.log(idImg)
+        const fdGalleryImage = new FormData();
+        fdGalleryImage.append("photoProduct", e.target.files[0], "photoProduct")
+
+        try {
+            const responseProductImg = await axios.post(`http://localhost:3001/listNew/galleryImageUpdate?id=${idImg}`,
+                fdGalleryImage, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+            dispatch(getProductsGallery(id))
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const handleOpenModal = (index) => {
         setSlideNumber(index)
@@ -48,68 +91,45 @@ function EditImgGallery(id) {
             : setSlideNumber(slideNumber + 1)
     }
 
-    const handleSubmit = async (e, id) => {
-        console.log(id)
-        console.log(e.target.files[0]);
-        const fdGalleryImage = new FormData();
-        fdGalleryImage.append("photoProduct", e.target.files[0], "photoProduct")
-
-        try {
-            const responseProductImg = await axios.post(`http://localhost:3001/listNew/galleryImageUpdate?id=${id}`,
-                fdGalleryImage, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
-            console.log(responseProductImg)
-
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    // const closeModalOnClick = () => {
-    //     setOpenModal(false)
-    // }
-
     return (
-        <div className="img-g-general-container">
-            {
-                openModal &&
-                <div className="img-g-modal-container">
-                    <FontAwesomeIcon onClick={handleCloseModal} icon={faCircleXmark} className='img-g-modal-btn-close' />
-                    <FontAwesomeIcon onClick={prevSlide} icon={faCircleChevronLeft} className='img-g-modal-btn-prev' />
-                    <FontAwesomeIcon onClick={nextSlide} icon={faCircleChevronRight} className='img-g-modal-btn-next' />
-                    <div className="img-g-modal-img-container">
-                        <img src={`http://localhost:3001/display/getPhotoGallery?id=${images.flat(1)[slideNumber].id}`} alt='' />
-                    </div>
-                </div>
-            }
-
-
-            <div className="img-g-images-container">
+        <div className="img-g-edit-general-container">
+            <div className="img-g-edit-images-container">
                 {
-                    images && images.flat(1).map((el, index) => {
+                    images && images.flat(1).map((el) => {
                         return (
                             <div
-                                className="img-g-images-single-container"
-                                key={index}
-                                onClick={() => handleOpenModal(index)}
+                                className="img-g-edit-images-single-container"
+                                key={el.id}
                             >
-                                <img className={"img-g-images-single"}
+
+                                <img className={"img-g-edit-images-single"}
                                     src={`http://localhost:3001/display/getPhotoGallery?id=${el.id}`} alt='none'
                                 />
-                                <input
-                                    type="file"
-                                    name="photoProfile"
-                                    onChange={(e) => {
-                                        console.log(el.id)
-                                        handleSubmit(e, el.id)}}
-                                />
-                                <button type="button" onClick={() => {
-                                    dispatch(deleteGalleryImage(el.id))
-                                }}>
-                                    Delete image</button>
+                                <div>
+                                    <input
+                                        id="file-upload"
+                                        type="file"
+                                        name="photoProfile"
+                                        className="img-g-edit-images-single-input"
+                                        onChange={(e) => {
+                                            console.log(el.id)
+                                            handleSubmit(e, el.id)
+                                        }}
+                                    />
+                                </div>
+                                <div className="img-g-images-btns-container">
+                                    <button
+                                        className="img-g-single-img-delete-btn"
+                                        type="button"
+                                        onClick={(e) => {
+                                            console.log(el.id)
+                                            handleDelete(e, el.id)
+                                            // handleGalleryCount(images.length)
+                                        }}
+                                    >
+                                        Delete
+                                    </button>
+                                </div>
                             </div>
                         )
                     })
