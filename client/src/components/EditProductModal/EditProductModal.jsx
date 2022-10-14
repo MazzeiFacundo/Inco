@@ -93,16 +93,21 @@ function EditProductModal({
 
     function handleSelectTypeOfDeal(e) {
         if (e.target.value === input.secondTypeOfDeal) {
+            setErrors({ typeOfDeal: "You cannot list identical deals" })
+            setInput({
+                ...input,
+                [e.target.name]: ""
+            })
             return setInput({
                 ...input,
-                [e.target.name]: e.target.value
+                secondTypeOfDeal: ""
             })
         }
         setInput({
             ...input,
             [e.target.name]: e.target.value
         })
-        setErrors(validateEditProduct({ ...input, [e.target.name]: e.target.value }));
+        setErrors(validateEditProduct({ ...input, [e.target.name]: e.target.value }))
     }
 
     const handleSecondTypeOfDeal = (e) => {
@@ -117,15 +122,21 @@ function EditProductModal({
 
     function handleSelectSecondTypeOfDeal(e) {
         if (e.target.value === input.typeOfDeal) {
+            setErrors({ secondTypeOfDeal: "You cannot list identical deals" })
+            setInput({
+                ...input,
+                [e.target.name]: ""
+            })
             return setInput({
                 ...input,
-                secondTypeOfDeal: ""
+                typeOfDeal: ""
             })
         }
         setInput({
             ...input,
-            secondTypeOfDeal: e.target.value
+            [e.target.name]: e.target.value
         })
+        setErrors(validateEditProduct({ ...input, [e.target.name]: e.target.value }))
     }
 
     const handleAddImg = () => {
@@ -316,261 +327,280 @@ function EditProductModal({
                 (currentProduct || []).map((e) => {
                     return (
                         <div className="e-product-modal-form-container">
-                            <div className="ep-modal-close-modal-btn-container">
-                                <button className="ep-modal-close-modal-btn" onClick={() => handleCloseModal(false)}>X</button>
-                            </div>
                             {
                                 slideNumber === 0 && (
                                     <form className="e-product-modal-slide-zero-container" onSubmit={(e) => handleSubmit(e)}>
-                                        <div>
-                                            <div >
-                                                <div className="e-product-modal-form-fields-container">
+                                        <div className="e-product-modal-text-inputs-container">
+                                            <div className="e-product-modal-single-input-container">
+                                                <label className="e-product-modal-single-label">Product name</label>
+                                                <input
+                                                    autocomplete="off"
+                                                    type="text"
+                                                    value={input.name}
+                                                    name="name"
+                                                    onChange={(e) => handleChange(e)}
+                                                    placeholder={pName}
+                                                    className="e-product-modal-single-input"
+                                                />
+                                                {errors.name && (
+                                                    <div className="e-product-modal-error">{errors.name}</div>
+                                                )}
+                                            </div>
 
-                                                    <div className="e-product-modal-text-inputs-container">
-                                                        <label className="e-product-modal-single-label">Product name</label>
+                                            <div className="e-product-modal-single-input-container">
+                                                <label className="e-product-modal-single-label">Price</label>
+                                                <span className="list-p-price-span">
+                                                    <input
+                                                        autocomplete="off"
+                                                        value={input.price}
+                                                        name="price"
+                                                        onChange={(e) => handleChange(e)}
+                                                        placeholder={pPrice}
+                                                        className="e-product-modal-single-input"
+                                                    >
+                                                    </input>
+                                                </span>
+                                                {errors.price && (
+                                                    <div className="e-product-modal-error">{errors.price}</div>
+                                                )}
+                                            </div>
+
+                                            <div className="e-product-modal-single-input-container">
+                                                <label className="e-product-modal-single-label">Location</label>
+                                                <input
+                                                    autocomplete="off"
+                                                    value={input.location}
+                                                    name="location"
+                                                    onChange={(e) => handleChange(e)}
+                                                    placeholder={pLocation}
+                                                    className="e-product-modal-single-input"
+                                                >
+                                                </input>
+                                                {errors.location && (
+                                                    <div className="e-product-modal-error">{errors.location}</div>
+                                                )}
+                                            </div>
+
+                                            <div className="e-product-modal-single-input-container-desc">
+                                                <label className="e-product-modal-single-label">Description</label>
+                                                <textarea type="text"
+                                                    value={input.description}
+                                                    name="description"
+                                                    onChange={(e) => handleChange(e)}
+                                                    placeholder={pDescription}
+                                                    className="e-product-modal-single-desc-input"
+                                                >
+                                                </textarea>
+                                                {errors.description && (
+                                                    <div className="e-product-modal-error-desc">{errors.description}</div>
+                                                )}
+                                            </div>
+
+                                        </div>
+
+                                        <div className="e-product-modal-value-inputs-container">
+                                            <button className="ep-modal-close-modal-btn" onClick={() => handleCloseModal(false)}>X</button>
+
+                                            <label className="e-product-modal-main-labels">Accomodations</label>
+                                            <div className="e-product-modal-accomodations-container">
+                                                <div className="e-product-modal-acc-input-general-container">
+                                                    <label>Rooms</label>
+                                                    <div className="e-product-modal-acc-input-container">
+                                                        <FontAwesomeIcon className="e-product-modal-acc-input-icon" icon={faDoorOpen}></FontAwesomeIcon>
                                                         <input
                                                             autocomplete="off"
-                                                            type="text"
-                                                            value={input.name}
-                                                            name="name"
+                                                            value={input.rooms}
+                                                            name="rooms"
                                                             onChange={(e) => handleChange(e)}
-                                                            placeholder={pName}
-                                                            className="e-product-modal-single-input"
-                                                        />
-                                                        {errors.name && (
-                                                            <div className="showErrorEmail">{errors.name}</div>
-                                                        )}
-
-                                                        <label className="e-product-modal-single-label">Price</label>
-                                                        <input
-                                                            autocomplete="off"
-                                                            value={input.price}
-                                                            name="price"
-                                                            onChange={(e) => handleChange(e)}
-                                                            placeholder={pPrice}
-                                                            className="e-product-modal-single-input"
+                                                            placeholder={pRooms}
+                                                            className="e-product-modal-single-acc-input"
                                                         >
                                                         </input>
-                                                        {errors.price && (
-                                                            <div className="showErrorEmail">{errors.price}</div>
-                                                        )}
 
-                                                        <label className="e-product-modal-single-label">Location</label>
-                                                        <input
-                                                            autocomplete="off"
-                                                            value={input.location}
-                                                            name="location"
-                                                            onChange={(e) => handleChange(e)}
-                                                            placeholder={pLocation}
-                                                            className="e-product-modal-single-input"
-                                                        >
-                                                        </input>
-                                                        {errors.location && (
-                                                            <div className="showErrorEmail">{errors.location}</div>
-                                                        )}
-
-                                                        <label className="e-product-modal-single-label">Description</label>
-                                                        <textarea type="text"
-                                                            value={input.description}
-                                                            name="description"
-                                                            onChange={(e) => handleChange(e)}
-                                                            placeholder={pDescription}
-                                                            className="e-product-modal-single-desc-input"
-                                                        >
-                                                        </textarea>
-                                                        {errors.description && (
-                                                            <div className="showErrorEmail">{errors.description}</div>
-                                                        )}
-
-                                                        <div className="e-product-btn-next-container">
-                                                            <button onClick={nextSlide} className="e-product-btn-next">Edit product images</button>
-                                                        </div>
-                                                    </div>
-
-                                                    <div className="e-product-modal-value-inputs-container">
-                                                        <label className="e-product-modal-main-labels">Accomodations</label>
-                                                        <div className="e-product-modal-accomodations-container">
-
-                                                            <div className="e-product-modal-acc-input-general-container">
-                                                                <label>Rooms</label>
-                                                                <div className="e-product-modal-acc-input-container">
-                                                                    <FontAwesomeIcon className="e-product-modal-acc-input-icon" icon={faDoorOpen}></FontAwesomeIcon>
-                                                                    <input
-                                                                        autocomplete="off"
-                                                                        value={input.rooms}
-                                                                        name="rooms"
-                                                                        onChange={(e) => handleChange(e)}
-                                                                        placeholder={pRooms}
-                                                                        className="e-product-modal-single-acc-input"
-                                                                    >
-                                                                    </input>
-                                                                    {errors.rooms && (
-                                                                        <div className="showErrorEmail">{errors.rooms}</div>
-                                                                    )}
-                                                                </div>
-                                                            </div>
-
-                                                            <div className="e-product-modal-acc-input-general-container">
-                                                                <label>Dormitories</label>
-                                                                <div className="e-product-modal-acc-input-container">
-                                                                    <FontAwesomeIcon className="e-product-modal-acc-input-icon" icon={faBed}></FontAwesomeIcon>
-                                                                    <input
-                                                                        autocomplete="off"
-                                                                        value={input.dorms}
-                                                                        name="dorms"
-                                                                        onChange={(e) => handleChange(e)}
-                                                                        placeholder={pDorms}
-                                                                        className="e-product-modal-single-acc-input"
-                                                                    >
-                                                                    </input>
-                                                                    {errors.dorms && (
-                                                                        <div className="showErrorEmail">{errors.dorms}</div>
-                                                                    )}
-                                                                </div>
-                                                            </div>
-
-                                                            <div className="e-product-modal-acc-input-general-container">
-                                                                <label>Bathrooms</label>
-                                                                <div className="e-product-modal-acc-input-container">
-                                                                    <FontAwesomeIcon className="e-product-modal-acc-input-icon" icon={faBath}></FontAwesomeIcon>
-                                                                    <input
-                                                                        autocomplete="off"
-                                                                        value={input.bathrooms}
-                                                                        name="bathrooms"
-                                                                        onChange={(e) => handleChange(e)}
-                                                                        placeholder={pBathrooms}
-                                                                        className="e-product-modal-single-acc-input"
-                                                                    >
-                                                                    </input>
-                                                                    {errors.bathrooms && (
-                                                                        <div className="showErrorEmail">{errors.bathrooms}</div>
-                                                                    )}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <label className="e-product-modal-main-labels">Measurements</label>
-                                                        <div className="e-product-modal-measurements-container">
-                                                            <div className="e-product-modal-acc-input-general-container">
-                                                                <label>Width</label>
-                                                                <div className="e-product-modal-acc-input-container">
-                                                                    <FontAwesomeIcon className="e-product-modal-acc-input-icon" icon={faExchangeAlt}></FontAwesomeIcon>
-                                                                    <input
-                                                                        autocomplete="off"
-                                                                        value={input.productWidth}
-                                                                        name="productWidth"
-                                                                        onChange={(e) => handleChange(e)}
-                                                                        placeholder={pWidth}
-                                                                        className="e-product-modal-single-acc-input"
-                                                                    >
-                                                                    </input>
-                                                                    {errors.productWidth && (
-                                                                        <div className="showErrorEmail">{errors.productWidth}</div>
-                                                                    )}
-                                                                </div>
-                                                            </div>
-
-                                                            <div className="e-product-modal-acc-input-general-container">
-                                                                <label>Height</label>
-                                                                <div className="e-product-modal-acc-input-container">
-                                                                    <FontAwesomeIcon className="e-product-modal-acc-input-icon" icon={faLongArrowAltUp}></FontAwesomeIcon>
-                                                                    <input
-                                                                        autocomplete="off"
-                                                                        value={input.productHeight}
-                                                                        name="productHeight"
-                                                                        onChange={(e) => handleChange(e)}
-                                                                        placeholder={pHeight}
-                                                                        className="e-product-modal-single-acc-input"
-                                                                    >
-                                                                    </input>
-                                                                    {errors.productHeight && (
-                                                                        <div className="showErrorEmail">{errors.productHeight}</div>
-                                                                    )}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div className="e-product-modal-selects-container">
-
-                                                            <div className="e-product-modal-single-select-container">
-                                                                <label>Type of product</label>
-                                                                <select
-                                                                    className="e-product-modal-single-select"
-                                                                    onChange={(e) => handleSelectType(e)}
-                                                                    value={input.typeOfProduct}
-                                                                    name="typeOfProduct"
-                                                                >
-                                                                    <option value="" selected disabled hidden>Property</option>
-                                                                    <option value="House">House</option>
-                                                                    <option value="Apartment">Apartment</option>
-                                                                    <option value="Land">Land</option>
-                                                                    <option value="Duplex">Duplex</option>
-                                                                </select>
-                                                                {errors.typeOfProduct && (
-                                                                    <div className="list-p-form-errors">{errors.typeOfProduct}</div>
-                                                                )}
-                                                            </div>
-
-                                                            <div className="e-product-modal-single-select-container">
-                                                                <label>Deal</label>
-                                                                <select
-                                                                    className="e-product-modal-single-select"
-                                                                    onChange={(e) => handleSelectTypeOfDeal(e)}
-                                                                    value={input.typeOfDeal}
-                                                                    name="typeOfDeal"
-                                                                >
-                                                                    <option value="" selected disabled hidden>Select a deal</option>
-                                                                    <option value="Sale">Sale</option>
-                                                                    <option value="Rent">Rent</option>
-                                                                    <option value="Touristic rent">Touristic rent</option>
-                                                                </select>
-                                                                {errors.typeOfDeal && (
-                                                                    <div className="list-p-form-errors">{errors.typeOfDeal}</div>
-                                                                )}
-                                                            </div>
-                                                            {
-                                                                !secondTypeOfDeal && (
-                                                                    <button className="e-product-modal-second-deal-btn" onClick={(e) => handleSecondTypeOfDeal(e)}>Add a second deal</button>
-                                                                )
-                                                            }
-                                                            {
-                                                                secondTypeOfDeal && (
-                                                                    <div className="e-product-modal-single-select-container">
-                                                                        <label>Second deal</label>
-                                                                        <select
-                                                                            className="e-product-modal-single-select"
-                                                                            onChange={(e) => handleSelectSecondTypeOfDeal(e)}
-                                                                            value={input.secondTypeOfDeal}
-                                                                            name="secondTypeOfDeal"
-                                                                        >
-                                                                            <option value="" selected disabled hidden>Select a deal</option>
-                                                                            <option value="Sale">Sale</option>
-                                                                            <option value="Rent">Rent</option>
-                                                                            <option value="Touristic rent">Touristic rent</option>
-                                                                        </select>
-                                                                        <button className="e-product-modal-remove-deal-btn" onClick={(e) => handleCloseSecondTypeOfDeal(e)}>Remove second deal</button>
-                                                                    </div>
-                                                                )
-                                                            }
-                                                        </div>
-                                                        {
-                                                                errors.name ||
-                                                                errors.price ||
-                                                                errors.location ||                                  
-                                                                errors.description ||
-                                                                errors.rooms ||
-                                                                errors.dorms ||
-                                                                errors.bathrooms ||
-                                                                errors.productWidth ||
-                                                                errors.productHeight ||
-                                                                errors.typeOfProduct ||
-                                                                errors.typeOfDeal ||                                                               
-                                                                input.typeOfDeal.length < 1
-                                                                ? <button type="submit" className="e-product-modal-submit-btn-disabled">Edit product information</button>
-                                                                : <button type="submit" className="e-product-modal-submit-btn">Edit product information</button>
-                                                        }
                                                     </div>
                                                 </div>
+
+                                                <div className="e-product-modal-acc-input-general-container">
+                                                    <label>Dormitories</label>
+                                                    <div className="e-product-modal-acc-input-container">
+                                                        <FontAwesomeIcon className="e-product-modal-acc-input-icon" icon={faBed}></FontAwesomeIcon>
+                                                        <input
+                                                            autocomplete="off"
+                                                            value={input.dorms}
+                                                            name="dorms"
+                                                            onChange={(e) => handleChange(e)}
+                                                            placeholder={pDorms}
+                                                            className="e-product-modal-single-acc-input"
+                                                        >
+                                                        </input>
+
+                                                    </div>
+                                                </div>
+
+                                                <div className="e-product-modal-acc-input-general-container">
+                                                    <label>Bathrooms</label>
+                                                    <div className="e-product-modal-acc-input-container">
+                                                        <FontAwesomeIcon className="e-product-modal-acc-input-icon" icon={faBath}></FontAwesomeIcon>
+                                                        <input
+                                                            autocomplete="off"
+                                                            value={input.bathrooms}
+                                                            name="bathrooms"
+                                                            onChange={(e) => handleChange(e)}
+                                                            placeholder={pBathrooms}
+                                                            className="e-product-modal-single-acc-input"
+                                                        >
+                                                        </input>
+
+                                                    </div>
+                                                </div>
+                                                {errors.rooms && (
+                                                    <div className="e-product-modal-error-numbers">{errors.rooms}</div>
+                                                )}
+                                                {errors.dorms && (
+                                                    <div className="e-product-modal-error-numbers">{errors.dorms}</div>
+                                                )}
+                                                {errors.bathrooms && (
+                                                    <div className="e-product-modal-error-numbers">{errors.bathrooms}</div>
+                                                )}
                                             </div>
+                                            <label className="e-product-modal-main-labels">Measurements</label>
+                                            <div className="e-product-modal-measurements-container">
+                                                <div className="e-product-modal-acc-input-general-container">
+                                                    <label>Width</label>
+                                                    <div className="e-product-modal-acc-input-container">
+                                                        <FontAwesomeIcon className="e-product-modal-acc-input-icon" icon={faExchangeAlt}></FontAwesomeIcon>
+                                                        <input
+                                                            autocomplete="off"
+                                                            value={input.productWidth}
+                                                            name="productWidth"
+                                                            onChange={(e) => handleChange(e)}
+                                                            placeholder={pWidth}
+                                                            className="e-product-modal-single-acc-input"
+                                                        >
+                                                        </input>
+
+                                                    </div>
+                                                </div>
+
+                                                <div className="e-product-modal-acc-input-general-container">
+                                                    <label>Height</label>
+                                                    <div className="e-product-modal-acc-input-container">
+                                                        <FontAwesomeIcon className="e-product-modal-acc-input-icon" icon={faLongArrowAltUp}></FontAwesomeIcon>
+                                                        <input
+                                                            autocomplete="off"
+                                                            value={input.productHeight}
+                                                            name="productHeight"
+                                                            onChange={(e) => handleChange(e)}
+                                                            placeholder={pHeight}
+                                                            className="e-product-modal-single-acc-input"
+                                                        >
+                                                        </input>
+
+                                                    </div>
+                                                </div>
+                                                {errors.productWidth && (
+                                                    <div className="e-product-modal-error-numbers-measurements">{errors.productWidth}</div>
+                                                )}
+                                                {errors.productHeight && (
+                                                    <div className="e-product-modal-error-numbers-measurements">{errors.productHeight}</div>
+                                                )}
+                                            </div>
+
+                                            <div className="e-product-modal-selects-container">
+
+                                                <div className="e-product-modal-single-select-container">
+                                                    <label className="e-product-modal-single-select-label">Deal</label>
+                                                    <select
+                                                        className="e-product-modal-single-select"
+                                                        onChange={(e) => handleSelectTypeOfDeal(e)}
+                                                        value={input.typeOfDeal}
+                                                        name="typeOfDeal"
+                                                    >
+                                                        <option value="" selected disabled hidden>Select a deal</option>
+                                                        <option value="Sale">Sale</option>
+                                                        <option value="Rent">Rent</option>
+                                                        <option value="Touristic rent">Touristic rent</option>
+                                                    </select>
+                                                    {errors.typeOfDeal && (
+                                                        <div className="e-product-modal-error-select">{errors.typeOfDeal}</div>
+                                                    )}
+                                                </div>
+                                                {
+                                                    !secondTypeOfDeal && (
+                                                        <button className="e-product-modal-second-deal-btn" onClick={(e) => handleSecondTypeOfDeal(e)}>Add a second deal</button>
+                                                    )
+                                                }
+                                                {
+                                                    secondTypeOfDeal && (
+                                                        <div className="e-product-modal-single-select-container">
+                                                            <label className="e-product-modal-single-select-label">Second deal</label>
+                                                            <select
+                                                                className="e-product-modal-single-select"
+                                                                onChange={(e) => handleSelectSecondTypeOfDeal(e)}
+                                                                value={input.secondTypeOfDeal}
+                                                                name="secondTypeOfDeal"
+                                                            >
+                                                                <option value="" selected disabled hidden>Select a deal</option>
+                                                                <option value="Sale">Sale</option>
+                                                                <option value="Rent">Rent</option>
+                                                                <option value="Touristic rent">Touristic rent</option>
+                                                            </select>
+                                                            {errors.secondTypeOfDeal && (
+                                                                <div className="e-product-modal-error-select-second-deal">{errors.secondTypeOfDeal}</div>
+                                                            )}
+                                                            <button className="e-product-modal-remove-deal-btn" onClick={(e) => handleCloseSecondTypeOfDeal(e)}>Remove second deal</button>
+                                                        </div>
+                                                    )
+                                                }
+
+                                                <div className="e-product-modal-single-select-container">
+                                                    <label className="e-product-modal-single-select-label">Type of product</label>
+                                                    <select
+                                                        className="e-product-modal-single-select"
+                                                        onChange={(e) => handleSelectType(e)}
+                                                        value={input.typeOfProduct}
+                                                        name="typeOfProduct"
+                                                    >
+                                                        <option value="" selected disabled hidden>Property</option>
+                                                        <option value="House">House</option>
+                                                        <option value="Apartment">Apartment</option>
+                                                        <option value="Land">Land</option>
+                                                        <option value="Duplex">Duplex</option>
+                                                    </select>
+                                                    {errors.typeOfProduct && (
+                                                        <div className="e-product-modal-error-select">{errors.typeOfProduct}</div>
+                                                    )}
+                                                </div>
+
+
+                                            </div>
+
+
+                                        </div>
+                                        <div className="e-product-modal-slide-zero-btns-container">
+                                            <div className="e-product-btn-next-container">
+                                                <button onClick={nextSlide} className="e-product-btn-next">Edit product image and gallery</button>
+                                            </div>
+                                            <div className="e-product-modal-slide-zero-or-div">
+                                                <div className="e-product-modal-slide-zero-text-or">Or</div>
+                                            </div>
+                                            {
+                                                errors.name ||
+                                                    errors.price ||
+                                                    errors.location ||
+                                                    errors.description ||
+                                                    errors.rooms ||
+                                                    errors.dorms ||
+                                                    errors.bathrooms ||
+                                                    errors.productWidth ||
+                                                    errors.productHeight ||
+                                                    errors.typeOfProduct ||
+                                                    errors.typeOfDeal ||
+                                                    errors.secondTypeOfDeal ||
+                                                    input.typeOfDeal.length < 1
+                                                    ? <button type="button" className="e-product-modal-submit-btn-disabled">Edit product information</button>
+                                                    : <button type="submit" className="e-product-modal-submit-btn">Edit product information</button>
+                                            }
                                         </div>
                                     </form>
                                 )
@@ -580,26 +610,6 @@ function EditProductModal({
                             {
                                 slideNumber === 1 && (
                                     <div className="e-product-modal-p-img-container">
-                                        <div className="e-product-modal-img-gallery-container">
-                                            <div className="e-product-modal-img-container">
-                                                <img className="e-product-modal-img" src={`http://localhost:3001/display/getPhotoProduct?id=${e.id}`} alt="none" />
-                                            </div>
-                                            <input
-                                                className="e-product-modal-img-gallery-input"
-                                                type="file"
-                                                name="photoProfile"
-                                                onChange={(e) => handleSubmitProductImg(e)}
-                                            />
-                                        </div>
-                                        <EditImgGallery
-                                            className="detail-p-gallery-imgs-container"
-                                            id={e.id}
-                                            refreshGallery={closeModal}
-                                            galleryCount={setGalleryCount}
-                                        >
-                                        </EditImgGallery>
-
-
                                         <form
                                             id="galleryForm"
                                             className="e-product-modal-add-imgs-form-container"
@@ -648,46 +658,72 @@ function EditProductModal({
                                                                         {
                                                                             imgList.length > 1 &&
                                                                             <button className="e-product-modal-add-img-single-remove-btn" onClick={(() => handleRemoveImg(index))} type="button">
-                                                                                <span>Remove</span>
+                                                                                <span>X</span>
                                                                             </button>
                                                                         }
                                                                     </div>
 
                                                                     {
                                                                         imgList.length - 1 === index && imgList.length < 9 &&
-                                                                        <button
-                                                                            className={galleryCount < 9
-                                                                                ? "e-product-modal-add-img-single-add-btn"
-                                                                                : "e-product-modal-add-img-single-add-btn-alt"
-                                                                            } onClick={handleAddImg} type="button">
-                                                                            <span>Add an image</span>
-                                                                        </button>
+                                                                        <div className="e-product-modal-add-img-single-add-btn-container">
+                                                                            <button
+                                                                                className={galleryCount < 9
+                                                                                    ? "e-product-modal-add-img-single-add-btn"
+                                                                                    : "e-product-modal-add-img-single-add-btn-alt"
+                                                                                } onClick={handleAddImg} type="button">
+                                                                                <span>Add an image</span>
+                                                                            </button>
+                                                                        </div>
                                                                     }
                                                                 </div>
                                                             )
                                                         })}
-
-                                                    {
-                                                        !submitGalleryE && (
-                                                            <button form="galleryForm" type="submit"
-                                                                className={galleryCount < 9
-                                                                    ? "e-product-modal-add-img-submit-btn"
-                                                                    : "e-product-modal-add-img-submit-btn-alt"
-                                                                }>Upload images</button>
-                                                        )
-                                                    }
                                                 </div>
                                             </div>
+
+                                            <div className="e-product-modal-add-img-submit-btn-container">
+                                                {
+                                                    !submitGalleryE && (
+                                                        <button form="galleryForm" type="submit"
+                                                            className=
+                                                            {
+                                                                galleryCount < 9
+                                                                    ? "e-product-modal-add-img-submit-btn"
+                                                                    : "e-product-modal-add-img-submit-btn-alt"
+                                                            }
+                                                        >Upload images</button>
+                                                    )
+                                                }
+                                            </div>
+                                        </form>
+                                        <EditImgGallery
+                                            className="detail-p-gallery-imgs-container"
+                                            id={e.id}
+                                            refreshGallery={closeModal}
+                                            galleryCount={setGalleryCount}
+                                        >
+                                        </EditImgGallery>
+                                        <div className="e-product-modal-img-gallery-container">
+                                            <button className="ep-modal-close-modal-btn-slide-2" onClick={() => handleCloseModal(false)}>X</button>
+                                            <div className="e-product-modal-img-container">
+                                                <img className="e-product-modal-img" src={`http://localhost:3001/display/getPhotoProduct?id=${e.id}`} alt="none" />
+                                            </div>
+                                            <label className="e-product-modal-img-gallery-input-label">Change product cover photo
+                                                <input
+                                                    className="e-product-modal-img-gallery-input"
+                                                    type="file"
+                                                    name="photoProfile"
+                                                    onChange={(e) => handleSubmitProductImg(e)}
+                                                />
+                                            </label>
                                             <div className="e-product-modal-prev-btn-container">
                                                 <button onClick={prevSlide} className="e-product-modal-prev-btn">Edit product information</button>
                                             </div>
-                                        </form>
-
+                                        </div>
 
                                     </div>
                                 )
                             }
-
                         </div>
 
                     )

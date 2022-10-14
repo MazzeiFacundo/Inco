@@ -1,8 +1,40 @@
 .detail-p-general-container {
     display: flex;
     flex-direction: column;
-    padding-top: 100px;
+    padding-top: 85px;
     background-color: #ececec;
+}
+
+@keyframes detail-p-general-container {
+    from {
+        opacity: 0%;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes detail-p-general-container {
+    from {
+        opacity: 0%;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.detail-p-general-container img {
+    animation: detail-p-general-container 0.5s;
+}
+
+.detail-p-general-container img {
+    animation: detail-p-general-container 0.5s;
+}
+
+.detail-p-general-container div {
+    animation: detail-p-general-container 0.5s;
 }
 
 .detail-p-container {
@@ -15,12 +47,14 @@
 
 .detail-p-header-container{
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
 }
 
 .detail-p-edit-p-btn{
+    cursor: pointer;
+    position: fixed;
     display: flex;
+    align-self: flex-end;
     align-items: center;
     justify-content: center;
     height: 30px;
@@ -67,6 +101,7 @@
 }
 
 .detail-p-img {
+    pointer-events: none;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -91,7 +126,7 @@
     align-self: center;
     flex-direction: column;
     width: 440px;
-    height: 481px;
+    height: 505px;
     margin-left: 35px;
     background-color: rgb(247, 247, 247);
     border: 1px #cbd6dc solid;
@@ -102,10 +137,9 @@
 
 .detail-p-name-text {
     display: flex;
-    font-size: 22px;
+    font-size: 17px;
     margin-top: 10px;
     margin-left: 13px;
-    max-height: 50px;
 }
 
 .detail-p-type-of-text-container {
@@ -131,6 +165,7 @@
     margin-left: 13px;
     margin-top: 5px;
     font-weight: 600;
+    color: #d50000;
 }
 
 .detail-p-measurements-container{
@@ -169,36 +204,38 @@
     display: flex;
     margin-left: 5px;
     margin-right: 15px;
+    max-height: 300px;
 }
 
 .detail-p-description-text-container {
     display: flex;
-    align-self: center;
+    align-items: center;
+    padding-left: 15px;
     width: 100%;
+    height: 300px;
+    max-height: 300px;
     font-size: 15px;
     border-bottom: 1px #cbd6dc solid;
-    margin-top: 20px;
 }
 
 .detail-p-description-text {
     width: 400px;
-    padding-left: 15px;
-    padding-bottom: 20px;
 }
 
 .detail-p-user-data-container {
     display: flex;
     align-items: center;
-    height: 100%;
+    height: 300px;
     width: 100%;
 }
 
 .detail-p-user-img {
+    pointer-events: none;
     display: flex;
     object-fit: cover;
     width: 110px;
     height: 110px;
-    border-radius: 100px;
+    clip-path: circle();
     margin-left: 15px;
 }
 

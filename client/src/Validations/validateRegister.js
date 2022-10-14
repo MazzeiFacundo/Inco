@@ -9,9 +9,9 @@ export function validateRegister(input) {
             errors.userName = "Your user name must be between 3 and 20 characters long and must not contain dots.";
         } else
             if (
-                !/^(?=.*[A-Za-z ñ Ñ])(?=.*\d)[A-Za-z ñ Ñ\d@$!%*#?&^_-]{8,15}$/.test(input.password)
+                !/^(?=.*[A-Za-z ñ Ñ])(?=.*\d)[A-Za-z ñ Ñ\d@$!%*#?&^_-]{8,30}$/.test(input.password)
             ) {
-                errors.password = "Your password must be between 8 and 15 characters and contain at least one number.";
+                errors.password = "Your password must be between 8 and 30 characters and contain at least one number.";
             } else
                 if (
                     !/^[0-9]{7,15}$/.test(input.tel)

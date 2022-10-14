@@ -75,7 +75,7 @@ function Home() {
                                     dorms={e.dorms}
                                     bathrooms={e.bathrooms}
                                     typeOfProduct={e.typeOfProduct}
-                                    typeOfDeals={e.typeOfDeals}
+                                    typeOfDeal={e.typeOfDeal}
                                     secondTypeOfDeal={e.secondTypeOfDeal}
                                 ></Card>
                             </a>

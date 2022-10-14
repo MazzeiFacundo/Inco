@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import { getToken } from "../../features/products/productsSlice";
 import { validate } from "../../Validations/validateLogin";
 import logo from "../NavBar/Inco.png"
+import banner from "../maplogotext.png"
+import houseSlide3 from "../house1.jpg"
 
 
 function LandingPage() {
@@ -55,11 +57,11 @@ function LandingPage() {
         e.preventDefault();
         console.log(input)
         try {
-            const response = await axios.post("http://localhost:3001/login", 
-            {
-                email: "IncoGuestEmail@gmail.com",
-                password: "GuestPassword1"
-            });
+            const response = await axios.post("http://localhost:3001/login",
+                {
+                    email: "IncoGuestEmail@gmail.com",
+                    password: "GuestPassword1"
+                });
             console.log(response)
             dispatch(getToken(response.data.token));
             window.localStorage.setItem(
@@ -100,6 +102,7 @@ function LandingPage() {
 
                     <div className="textFormLogin">E-mail</div>
                     <input
+                        autocomplete="off"
                         type="text"
                         name="email"
                         value={input.email}
@@ -130,7 +133,7 @@ function LandingPage() {
                     <a className="registerLogin" href="/register">Don't have an account? Register!</a>
                 </form>
             </div>
-            <img className="imgLanding" src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/FJYA5LJ4PNEIVNBUDMQ66KV6UQ.jpg"></img>
+                <img className="imgLanding" src={houseSlide3}></img>
         </div>
     )
 }

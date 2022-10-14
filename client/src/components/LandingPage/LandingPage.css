@@ -1,20 +1,32 @@
 .landingPageContainer {
     display: flex;
     align-items: center;
+    justify-content: space-around;
     height: 100vh;
     font-family: 'Poppins', sans-serif;
 }
 
-.imgLanding {
-    margin-left: 420px;
-    position: fixed;
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
     height: 100vh;
-    width: 70%;
-    object-fit: cover;
-    z-index: 1;
+    border-right: 2px #d50000 solid;
+    z-index: 2;
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.97);
     -webkit-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.97);
     -moz-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.97);
+}
+
+.imgLanding {
+    pointer-events: none;
+    height: 100vh;
+    width: 80%;
+    object-fit: cover;
+    z-index: 1;
 }
 
 .welcomeLanding {
@@ -28,24 +40,10 @@
 }
 
 .logoLanding{
+    pointer-events: none;
     object-fit: cover;
     width: 150px;
     height: 80px;
-}
-
-.formContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    width: 520px;
-    height: 100%;
-    background-color: #ececec;
-    border-right: 2px #d50000 solid;
-    z-index: 2;
-    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.97);
-    -webkit-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.97);
-    -moz-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.97);
 }
 
 .formLogin {
@@ -55,7 +53,6 @@
     align-items: center;
     width: 350px;
     height: 500px;
-    margin-left: 80px;
     background-color: rgb(247, 247, 247);
     border: 1px #cbd6dc solid;
     border-radius: 5px;
@@ -82,6 +79,10 @@
     margin-bottom: 15px;
 }
 
+.inputLogin:focus {
+    outline: none;
+}
+
 .buttonLoginDisabled{
     pointer-events: none;
     display: flex;
@@ -104,6 +105,7 @@
 }
 
 .buttonLogin {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -175,6 +177,7 @@
     display: flex;
     color: red;
     margin: 0;
+    padding: 0px;
     font-size: 12px;
     margin-top: -15px;
 }

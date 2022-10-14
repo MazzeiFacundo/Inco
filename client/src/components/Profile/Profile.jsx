@@ -2,7 +2,7 @@ import "./Profile.css"
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import CardProfile from "../CardProfile/CardProfile";
 import NavBar from "../NavBar/NavBar";
-import BottomHeader from "../BottomHeader/BottomHeader"; 
+import BottomHeader from "../BottomHeader/BottomHeader";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
@@ -65,7 +65,7 @@ function Profile() {
                 </div> */}
                 <div className="redBorder">
                     <div className="userHeadline">
-                        <button onClick={() => handleOpenModal()}>Edit you profile</button>
+                        <button className="editPBtn" onClick={() => handleOpenModal()}>Edit you profile</button>
                         {openModal &&
                             <div className="ep-modal-in-pf">
                                 <EditProfileModal
@@ -77,12 +77,18 @@ function Profile() {
                                 </EditProfileModal>
                             </div>
                         }
-                        <img className="imgUser" src={`http://localhost:3001/users/getPhotoUser?userName=${currentUser.userName}`} alt="none" />
-                        <input
-                            type="file"
-                            name="photoProfile"
-                            onChange={(e) => handleSubmit(e)}
-                        />
+                        <div className="ep-modal-input-label-container">
+                            <img className="imgUser" src={`http://localhost:3001/users/getPhotoUser?userName=${currentUser.userName}`} alt="none" />
+                            <label className="ep-modal-input-label">Change profile picture
+                                <input
+                                    className="ep-modal-input"
+                                    type="file"
+                                    name="photoProfile"
+                                    onChange={(e) => handleSubmit(e)}
+                                />
+                            </label>
+                        </div>
+
                         <div className="userHeadLineText">
                             <div className="userNameProfile">{currentUser.fullName}</div>
                             <div className="amountOfProducts">{currentUser.email}</div>

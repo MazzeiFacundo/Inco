@@ -105,19 +105,19 @@ function EditImgGallery({ id, galleryCount }) {
                                 <img className={"img-g-edit-images-single"}
                                     src={`http://localhost:3001/display/getPhotoGallery?id=${el.id}`} alt='none'
                                 />
-                                <div>
-                                    <input
-                                        id="file-upload"
-                                        type="file"
-                                        name="photoProfile"
-                                        className="img-g-edit-images-single-input"
-                                        onChange={(e) => {
-                                            console.log(el.id)
-                                            handleSubmit(e, el.id)
-                                        }}
-                                    />
-                                </div>
                                 <div className="img-g-images-btns-container">
+                                    <label className="img-g-edit-images-single-input-label">Replace
+                                        <input
+                                            id="file-upload"
+                                            type="file"
+                                            name="photoProfile"
+                                            className="img-g-edit-images-single-input"
+                                            onChange={(e) => {
+                                                console.log(el.id)
+                                                handleSubmit(e, el.id)
+                                            }}
+                                        />
+                                    </label>
                                     <button
                                         className="img-g-single-img-delete-btn"
                                         type="button"

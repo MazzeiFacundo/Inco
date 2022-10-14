@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { getToken } from "../../features/products/productsSlice";
 import { validateRegister } from "../../Validations/validateRegister";
 import "./Register.css"
+import logo from "../NavBar/Inco.png"
 import axios from "axios";
 
 function Register() {
@@ -89,18 +90,27 @@ function Register() {
 
     return (
         <div className="registerContainer">
-            <a href="/">
-                <button>Go back</button>
-            </a>
+
             <form className="formContainerRegister" onSubmit={(e) => handleSubmit(e)}
             >
-                <div className="registerText">Welcome to Inco! Creating an account is free!</div>
+                <a className="goBackRegisterContainer" href="/">
+                    <button 
+                    className="goBackRegister"
+                    type="button"
+                    >Go back</button>
+                </a>
+                <div className="logoLandingRegisterDiv">
+                    <img className="logoLandingRegister" src={logo} />
+                    <div className="registerText">Welcome to Inco! Creating an account is free!</div>
+                </div>
+
 
                 <div className="inputsContainer">
                     <div className="inputDivLeft">
                         <div className="inputDiv">
                             <label className="inputText">Name:</label>
                             <input
+                                autocomplete="off"
                                 className="singleInput"
                                 type="text"
                                 value={input.fullName}
@@ -115,6 +125,7 @@ function Register() {
                         <div className="inputDiv">
                             <label className="inputText">User Name:</label>
                             <input
+                                autocomplete="off"
                                 className="singleInput"
                                 type="text"
                                 value={input.userName}
@@ -129,6 +140,7 @@ function Register() {
                         <div className="inputDiv">
                             <label className="inputText">Password:</label>
                             <input
+                                autocomplete="off"
                                 className="singleInput"
                                 type="text"
                                 value={input.password}
@@ -146,6 +158,7 @@ function Register() {
                         <div className="inputDiv">
                             <label className="inputText">Telphone:</label>
                             <input
+                                autocomplete="off"
                                 className="singleInput"
                                 type="text"
                                 value={input.tel}
@@ -160,6 +173,7 @@ function Register() {
                         <div className="inputDiv">
                             <label className="inputText">Email:</label>
                             <input
+                                autocomplete="off"
                                 className="singleInput"
                                 type="text"
                                 value={input.email}
@@ -174,6 +188,7 @@ function Register() {
                         <div className="inputDiv">
                             <label className="inputText">Repeat password:</label>
                             <input
+                                autocomplete="off"
                                 className="singleInput"
                                 type="text"
                                 value={input.repeatPassword}
@@ -189,13 +204,13 @@ function Register() {
                 </div>
                 <div>
                     {
-                        errors.fullName || 
-                        errors.userName || 
-                        errors.email || 
-                        errors.tel || 
-                        errors.password || 
-                        input.repeatPassword !== input.password || 
-                        input.fullName.length < 3                        
+                        errors.fullName ||
+                            errors.userName ||
+                            errors.email ||
+                            errors.tel ||
+                            errors.password ||
+                            input.repeatPassword !== input.password ||
+                            input.fullName.length < 3
                             ? <button type="submit" className="buttonRegisterDisabled">Register</button>
                             : <button type="submit" className="buttonRegister">Register</button>
                     }

@@ -10,7 +10,7 @@ export function validateEditProduct(input) {
             if (!/^[A-Za-z0-9 ]{3,35}$/.test(input.location)) {
                 errors.location = "Property location must be between 3 and 35 characters long and must only contain letters or numbers.";
             } else
-                if (!/^(?=.*[A-Za-z ])[A-Za-z ]{10,255}$/.test(input.description)) {
+                if (!/^.{1,255}$/.test(input.description)) {
                     errors.description = "Property description must be between 10 and 255 characters long.";
                 } else
                     if (!/^[0-9]{1,2}$/.test(input.rooms)) {
@@ -28,11 +28,11 @@ export function validateEditProduct(input) {
                                     if (!/^[0-9]{1,4}$/.test(input.productHeight)) {
                                         errors.productHeight = "Property measurements must be between 1 and 4 characters long and must only contain numbers.";
                                     } else
-                                        if (!/^.{2,}$/.test(input.typeOfProduct)) {
-                                            errors.typeOfProduct = "You must select a property type.";
+                                        if (!/^.{2,}$/.test(input.typeOfDeal)) {
+                                            errors.typeOfDeal = "You must select a deal.";
                                         } else
-                                            if (!/^.{2,}$/.test(input.typeOfDeal)) {
-                                                errors.typeOfDeal = "You must select a deal.";
+                                            if (!/^.{2,}$/.test(input.typeOfProduct)) {
+                                                errors.typeOfProduct = "You must select a property type.";
                                             }
     return errors;
 }

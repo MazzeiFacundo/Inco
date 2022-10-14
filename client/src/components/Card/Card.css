@@ -33,9 +33,19 @@
     font-size: 30px;
     margin-left: 12px;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 3px;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
+}
+
+.cardDealsContainer{
+    display: flex;
+    margin-left: 9px;
+    font-weight: 600;
+}
+
+.cardTextDeal{
+    margin-left: -11px;
 }
 
 .cardHeadersContainer {
@@ -53,6 +63,8 @@
 
 .cardTextLocation{
     display: flex;
+    font-weight: 600;
+    margin-top: 5px;
     margin-left: 14px;
 }
 
@@ -66,16 +78,16 @@
 
 .cardDescContainer {
     display: flex;
-    width: 100%;
+    max-width: 100%;
     height: 100%;
     margin-left: 15px;
-    margin-top: 20px;
+    margin-top: 5px;
+    font-size: 15px;
     font-family: 'Poppins', sans-serif;
 }
 
 .heightIcon {
     display: flex;
-
 }
 
 .cardTitle {}

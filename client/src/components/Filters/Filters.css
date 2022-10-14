@@ -52,6 +52,7 @@
 }
 
 .filters-single-btn-icon {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -75,6 +76,12 @@
 
 .filters-single-btn-icon:hover {
     background-color: #d50000;
+    color: #ffffff;
+    border: none;
+}
+
+.filters-single-btn-icon:active {
+    background-color: #c00000;
     color: #ffffff;
     border: none;
 }
@@ -103,6 +110,7 @@
 }
 
 .filters-single-btn {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -145,6 +153,7 @@
 }
 
 .filters-single-btn-reset{
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -6,6 +6,38 @@
     flex-direction: column;
 }
 
+@keyframes homeContainer {
+    from {
+        opacity: 0%;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes homeContainer {
+    from {
+        opacity: 0%;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.homeContainer img {
+    animation: homeContainer 0.5s;
+}
+
+.homeContainer img {
+    animation: homeContainer 0.5s;
+}
+
+.homeContainer div {
+    animation: homeContainer 0.5s;
+}
+
 .ara{
     display: flex;
 }
@@ -56,6 +88,7 @@
 }
 
 .searchButtonHome {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;

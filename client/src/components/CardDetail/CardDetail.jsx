@@ -56,10 +56,12 @@ function CardDetail() {
                             <div className="detail-p-all-text-container">
                                 <div className="detail-p-header-container">
                                     <div className="detail-p-name-text">{e.name}</div>
+                                    <button className="detail-p-edit-p-btn" onClick={() => handleOpenModal()}>Edit</button>
+
+                                    
                                     {
                                         currentUser.idUser === e.UserIdUser && (
                                             <div>
-                                                <button className="detail-p-edit-p-btn" onClick={() => handleOpenModal()}>Edit</button>
                                                 {openModal &&
                                                     <EditProductModal
                                                         userId={currentUser.idUser}
@@ -82,38 +84,39 @@ function CardDetail() {
                                             </div>
                                         )
                                     }
+                                    {
+                                        e.secondTypeOfDeal ? (
+                                            <div className="detail-p-type-of-text-container">
+                                                <div className="detail-p-type-of-text">{e.typeOfProduct + " for " + e.typeOfDeal.toLowerCase()}</div>
+                                                <div className="detail-p-type-of-two-text">{"or " + e.secondTypeOfDeal.toLowerCase()}</div>
+                                            </div>
+                                        ) : <div className="detail-p-type-of-text">{e.typeOfProduct + " for " + e.typeOfDeal.toLowerCase()}</div>
+
+                                    }
+
+
+
+
+                                    <div className="detail-p-location">{"Located in " + e.location}</div>
+                                    <div className="detail-p-price-text">{"USD " + "$" + e.price}</div>
+
+                                    <div className="detail-p-accomodations-container">
+                                        <FontAwesomeIcon icon={faDoorOpen} className='detail-p-accomodations-icon'></FontAwesomeIcon>
+                                        <div className="detail-p-accomodations-text">{e.rooms + " Rooms"}</div>
+                                        <FontAwesomeIcon icon={faBed} className='detail-p-accomodations-icon'></FontAwesomeIcon>
+                                        <div className="detail-p-accomodations-text">{e.dorms + " Dormitories"}</div>
+                                        <FontAwesomeIcon icon={faBath} className='detail-p-accomodations-icon'></FontAwesomeIcon>
+                                        <div className="detail-p-accomodations-text">{e.bathrooms + " Bathrooms"}</div>
+                                    </div>
+
+                                    <div className="detail-p-measurements-container">
+                                        <FontAwesomeIcon icon={faExchangeAlt} className='detail-p-measurements-icon'></FontAwesomeIcon>
+                                        <div className="detail-p-measurements-text">{"Sqft: " + e.productWidth + "ft"}<sup>2</sup></div>
+                                        <FontAwesomeIcon icon={faLongArrowAltUp} className='detail-p-measurements-icon'></FontAwesomeIcon>
+                                        <div className="detail-p-measurements-text">{"Height: " + e.productHeight + "ft"}</div>
+                                    </div>
                                 </div>
-                                {
-                                    e.secondTypeOfDeal ? (
-                                        <div className="detail-p-type-of-text-container">
-                                            <div className="detail-p-type-of-text">{e.typeOfProduct + " for " + e.typeOfDeal.toLowerCase()}</div>
-                                            <div className="detail-p-type-of-two-text">{"or " + e.secondTypeOfDeal.toLowerCase()}</div>
-                                        </div>
-                                    ) : <div className="detail-p-type-of-text">{e.typeOfProduct + " for " + e.typeOfDeal.toLowerCase()}</div>
 
-                                }
-
-
-
-
-                                <div className="detail-p-location">{"Located in " + e.location}</div>
-                                <div className="detail-p-price-text">{"USD " + "$" + e.price}</div>
-
-                                <div className="detail-p-accomodations-container">
-                                    <FontAwesomeIcon icon={faDoorOpen} className='detail-p-accomodations-icon'></FontAwesomeIcon>
-                                    <div className="detail-p-accomodations-text">{e.rooms + " Rooms"}</div>
-                                    <FontAwesomeIcon icon={faBed} className='detail-p-accomodations-icon'></FontAwesomeIcon>
-                                    <div className="detail-p-accomodations-text">{e.dorms + " Dormitories"}</div>
-                                    <FontAwesomeIcon icon={faBath} className='detail-p-accomodations-icon'></FontAwesomeIcon>
-                                    <div className="detail-p-accomodations-text">{e.bathrooms + " Bathrooms"}</div>
-                                </div>
-
-                                <div className="detail-p-measurements-container">
-                                    <FontAwesomeIcon icon={faExchangeAlt} className='detail-p-measurements-icon'></FontAwesomeIcon>
-                                    <div className="detail-p-measurements-text">{"Width: " + e.productWidth + "m"}<sup>2</sup></div>
-                                    <FontAwesomeIcon icon={faLongArrowAltUp} className='detail-p-measurements-icon'></FontAwesomeIcon>
-                                    <div className="detail-p-measurements-text">{"Height: " + e.productHeight + "m"}</div>
-                                </div>
 
                                 <div className="detail-p-description-text-container">
                                     <div className="detail-p-description-text">{e.description}</div>
@@ -133,7 +136,7 @@ function CardDetail() {
                     )
                 })
             }
-            <BottomHeader></BottomHeader>
+            {/* <BottomHeader></BottomHeader> */}
         </div>
     )
 }
