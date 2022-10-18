@@ -37,7 +37,7 @@ function CardProfile({ id,
                     <FontAwesomeIcon icon={faBath} className='heightIcon'></FontAwesomeIcon>
                     <div className="cardTextP">{bathrooms + " Bathrooms"}</div>
                 </div>
-                {/* <div className="cardDescriptionP">{description}</div> */}
+                <div className="cardDescriptionP">{description}</div>
             </div>
         </div>
     )

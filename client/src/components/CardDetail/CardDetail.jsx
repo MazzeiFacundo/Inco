@@ -56,12 +56,16 @@ function CardDetail() {
                             <div className="detail-p-all-text-container">
                                 <div className="detail-p-header-container">
                                     <div className="detail-p-name-text">{e.name}</div>
-                                    <button className="detail-p-edit-p-btn" onClick={() => handleOpenModal()}>Edit</button>
 
-                                    
                                     {
                                         currentUser.idUser === e.UserIdUser && (
-                                            <div>
+                                            <button className="detail-p-edit-p-btn" onClick={() => handleOpenModal()}>Edit</button>
+                                        )
+                                    }
+                                    {
+                                        currentUser.idUser === e.UserIdUser && (
+                                            <div className="detail-p-edit-p-btn-container">
+                                               
                                                 {openModal &&
                                                     <EditProductModal
                                                         userId={currentUser.idUser}

@@ -3,10 +3,11 @@
     display: flex;
     align-items: center;
     background-color: rgb(247, 247, 247);
-    width: 750px;
-    height: 151px;
+    width: 800px;
+    height: 165px;
     border-radius: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    margin-right: 15px;
     border: 1px #cbd6dc solid;
     transition: 0.3s;
 }
@@ -25,7 +26,7 @@
 
 .cardTextContainerP{
     display: flex;
-    margin-left: 20px;
+    margin-left: 10px;
     justify-content: space-evenly;
     height: 100%;
     flex-direction: column;
@@ -34,7 +35,7 @@
 
 .cardTitleP{
     display: flex;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .cardDescriptionP{

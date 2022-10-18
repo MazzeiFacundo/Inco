@@ -56,44 +56,44 @@ function Profile() {
     }
 
     return (
-        <div className="profileContainer">
+        <div className="profileContainerGeneral">
             <NavBar></NavBar>
             <div className="userData">
-                {/* <div className="goBackProfileContainer">
-                    <FontAwesomeIcon className="iconGoBackProfile" icon={faCircleChevronLeft}/>
-                    <a className="goBackProfile" href="/home">Go back</a>
-                </div> */}
-                <div className="redBorder">
-                    <div className="userHeadline">
-                        <button className="editPBtn" onClick={() => handleOpenModal()}>Edit you profile</button>
-                        {openModal &&
-                            <div className="ep-modal-in-pf">
-                                <EditProfileModal
-                                    fullName={currentUser.fullName}
-                                    tel={currentUser.telephone}
-                                    description={currentUser.description}
-                                    closeModal={setOpenModal}
-                                >
-                                </EditProfileModal>
-                            </div>
-                        }
-                        <div className="ep-modal-input-label-container">
-                            <img className="imgUser" src={`http://localhost:3001/users/getPhotoUser?userName=${currentUser.userName}`} alt="none" />
-                            <label className="ep-modal-input-label">Change profile picture
-                                <input
-                                    className="ep-modal-input"
-                                    type="file"
-                                    name="photoProfile"
-                                    onChange={(e) => handleSubmit(e)}
-                                />
-                            </label>
+                <div className="btnsContainer">
+                    <div className="goBackProfileContainer">
+                        <a className="goBackProfile" href="/home">Go back</a>
+                    </div>
+                    <button className="editPBtn" onClick={() => handleOpenModal()}>Edit you profile</button>
+                    {openModal &&
+                        <div className="ep-modal-in-pf">
+                            <EditProfileModal
+                                fullName={currentUser.fullName}
+                                tel={currentUser.telephone}
+                                description={currentUser.description}
+                                closeModal={setOpenModal}
+                            >
+                            </EditProfileModal>
                         </div>
+                    }
+                </div>
 
-                        <div className="userHeadLineText">
-                            <div className="userNameProfile">{currentUser.fullName}</div>
-                            <div className="amountOfProducts">{currentUser.email}</div>
-                            <div>tel: {currentUser.telephone}</div>
-                        </div>
+                <div className="userHeadline">
+                    <div className="ep-modal-input-label-container">
+                        <img className="imgUser" src={`http://localhost:3001/users/getPhotoUser?userName=${currentUser.userName}`} alt="none" />
+                        <label className="ep-modal-input-label">Change profile picture
+                            <input
+                                className="ep-modal-input"
+                                type="file"
+                                name="photoProfile"
+                                onChange={(e) => handleSubmit(e)}
+                            />
+                        </label>
+                    </div>
+
+                    <div className="userHeadLineText">
+                        <div className="userNameProfile">{currentUser.fullName}</div>
+                        <div className="amountOfProducts">{currentUser.email}</div>
+                        <div>tel: {currentUser.telephone}</div>
                     </div>
                 </div>
                 <div className="descriptionProfile">
@@ -102,31 +102,35 @@ function Profile() {
                 {console.log(currentUser)}
 
             </div>
+            <div className="profileContainer">
 
-            {console.log(currentUser.products)}
-            <div className="userProducts">
-                {
-                    (userProducts || []).map((e) => {
-                        return <a className="linkProfileP" href={"/Home/" + e.id}>
-                            <CardProfile
-                                key={e.id}
-                                id={e.id}
-                                name={e.name}
-                                description={e.description}
-                                price={e.price}
-                                productWidth={e.productWidth}
-                                productHeight={e.productHeight}
-                                rooms={e.rooms}
-                                dorms={e.dorms}
-                                bathrooms={e.bathrooms}
-                                typeOfProduct={e.typeOfProduct}
-                            ></CardProfile>
-                        </a>
-                    })
-                }
+
+                {console.log(currentUser.products)}
+                <div className="userProducts">
+                    {
+                        (userProducts || []).map((e) => {
+                            return <a className="linkProfileP" href={"/Home/" + e.id}>
+                                <CardProfile
+                                    key={e.id}
+                                    id={e.id}
+                                    name={e.name}
+                                    description={e.description}
+                                    price={e.price}
+                                    productWidth={e.productWidth}
+                                    productHeight={e.productHeight}
+                                    rooms={e.rooms}
+                                    dorms={e.dorms}
+                                    bathrooms={e.bathrooms}
+                                    typeOfProduct={e.typeOfProduct}
+                                ></CardProfile>
+                            </a>
+                        })
+                    }
+                </div>
+
             </div>
-            {/* <FiltersProfile></FiltersProfile> */}
         </div>
+
     )
 }
 

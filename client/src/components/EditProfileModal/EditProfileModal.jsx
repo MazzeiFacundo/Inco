@@ -71,11 +71,18 @@ function EditProfileModal({ fullName, tel, description, closeModal }) {
 
     return (
         <div className="ep-modal-container">
-            <button className="ep-modal-close-modal-btn" onClick={() => handleCloseModal(false)}>X</button>
-            <form onSubmit={(e) => handleSubmit(e)}>
-                <div>
-                    <label>Full name:</label>
+            <button
+                className="ep-close-modal-btn"
+                onClick={() => handleCloseModal(false)}
+            >X</button>
+            <form
+                className="ep-modal-form"
+                onSubmit={(e) => handleSubmit(e)}>
+                <div className="ep-modal-single-input-container">
+                    <label className="ep-modal-single-input-label">Full name:</label>
                     <input
+                        autoComplete="off"
+                        className="ep-modal-single-input"
                         type="text"
                         value={input.fullName}
                         name="fullName"
@@ -83,12 +90,14 @@ function EditProfileModal({ fullName, tel, description, closeModal }) {
                         placeholder="Enter your Full name"
                     />
                     {errors.fullName && (
-                        <div className="errorLogin">{errors.fullName}</div>
+                        <div className="ep-modal-error">{errors.fullName}</div>
                     )}
                 </div>
-                <div>
-                    <label>Contact number:</label>
+                <div className="ep-modal-single-input-container">
+                    <label className="ep-modal-single-input-label">Contact number:</label>
                     <input
+                        autoComplete="off"
+                        className="ep-modal-single-input"
                         type="text"
                         value={input.tel}
                         name="tel"
@@ -96,12 +105,14 @@ function EditProfileModal({ fullName, tel, description, closeModal }) {
                         placeholder="Enter your contact number"
                     />
                     {errors.tel && (
-                        <div className="errorLogin">{errors.tel}</div>
+                        <div className="ep-modal-error">{errors.tel}</div>
                     )}
                 </div>
-                <div>
-                    <label>Description:</label>
-                    <input
+                <div className="ep-modal-single-input-container-description">
+                    <label className="ep-modal-single-input-label">Description:</label>
+                    <textarea
+                        autoComplete="off"
+                        className="ep-modal-single-input-description"
                         type="text"
                         value={input.description}
                         name="description"
@@ -109,9 +120,9 @@ function EditProfileModal({ fullName, tel, description, closeModal }) {
                         placeholder="Enter your description"
                     />
                     {errors.description && (
-                        <div className="errorLogin">{errors.description}</div>
+                        <div className="ep-modal-error-desc">{errors.description}</div>
                     )}
-                </div>   
+                </div>
                 {
                     errors.fullName || errors.tel || errors.description
                         ? <button type="submit" className="ep-modal-submit-btn-disabled">Edit profile information</button>
