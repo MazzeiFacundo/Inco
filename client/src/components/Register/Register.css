@@ -1,218 +1,2627 @@
-.registerContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent;
-    height: 100vh;
-    font-family: 'Poppins', sans-serif;
-}
-
-@keyframes registerContainer {
-    from {
-        opacity: 0%;
+@media screen and (min-width: 1281px) {
+    .registerContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        height: 100vh;
+        font-family: 'Poppins', sans-serif;
     }
-
-    to {
-        opacity: 1;
+    
+    @keyframes registerContainer {
+        from {
+            opacity: 0%;
+        }
+    
+        to {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes registerContainer {
+        from {
+            opacity: 0%;
+        }
+    
+        to {
+            opacity: 1;
+        }
+    }
+    
+    .registerContainer img {
+        animation: registerContainer 0.5s;
+    }
+    
+    .registerContainer img {
+        animation: registerContainer 0.5s;
+    }
+    
+    .registerContainer div {
+        animation: registerContainer 0.5s;
+    }
+    
+    .goBackRegisterContainer{
+        text-decoration: none;
+        width: 100%;
+        margin-left: 20px;
+    }
+    
+    .goBackRegister{
+        cursor: pointer;
+        position: fixed;
+        text-decoration: none;
+        height: 35px;
+        width: 90px;
+        font-size: 17px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: #d50000;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .goBackRegister:hover{
+        color: #ffffff;
+        background-color: #860000;
+    }
+    
+    .goBackRegister:active{
+        color: #ffffff;
+        background-color: #750000;
+    }
+    
+    .registerText{
+        display: flex;
+        font-size: 15px;
+    }
+    
+    .formContainerRegister{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 1100px;
+        height: 550px;
+        background-color: rgb(247, 247, 247);
+        border: 1px #cbd6dc solid;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+    
+    .logoLandingRegisterDiv{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: -20px;
+        width: 100%;
+    }
+    
+    .logoLandingRegister{
+        pointer-events: none;
+        object-fit: cover;
+        width: 150px;
+        height: 80px;
+    }
+    
+    .inputsContainer{
+        display: flex;
+        width: 100%;
+        height: 370px;
+    }
+    
+    .inputDivLeft{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        width: 50%;
+        align-items: center;
+    }
+    
+    .inputDivRight{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        width: 50%;
+        align-items: center;
+    }
+    
+    .inputDiv{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .inputText{
+        margin-bottom: 5px;
+    }
+    
+    .singleInput{
+        display: flex;
+        height: 35px;
+        width: 350px;
+    }
+    
+    .singleInput:focus {
+        outline: none;
+    }
+    
+    .buttonRegisterDisabled{
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 190px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: gray;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .buttonRegister{
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 190px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: #d50000;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .buttonRegister:hover{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        background-color: #860000;
+    }
+    
+    .buttonRegister:active{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        background-color: #750000;
+    }
+    
+    .errorLogin{
+        position: fixed;
+        display: flex;
+        color: red;
+        margin: 0;
+        font-size: 12px;
+        max-width: 350px;
+        margin-top: 73px;
+    }
+}
+@media screen and (max-width: 1280px) {
+    .registerContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        height: 100vh;
+        font-family: 'Poppins', sans-serif;
+        background-color: #750000;
+    }
+    
+    @keyframes registerContainer {
+        from {
+            opacity: 0%;
+        }
+    
+        to {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes registerContainer {
+        from {
+            opacity: 0%;
+        }
+    
+        to {
+            opacity: 1;
+        }
+    }
+    
+    .registerContainer img {
+        animation: registerContainer 0.5s;
+    }
+    
+    .registerContainer img {
+        animation: registerContainer 0.5s;
+    }
+    
+    .registerContainer div {
+        animation: registerContainer 0.5s;
+    }
+    
+    .goBackRegisterContainer{
+        text-decoration: none;
+        width: 100%;
+        margin-left: 20px;
+    }
+    
+    .goBackRegister{
+        cursor: pointer;
+        position: fixed;
+        text-decoration: none;
+        height: 35px;
+        width: 90px;
+        font-size: 17px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: #d50000;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .goBackRegister:hover{
+        color: #ffffff;
+        background-color: #860000;
+    }
+    
+    .goBackRegister:active{
+        color: #ffffff;
+        background-color: #750000;
+    }
+    
+    .registerText{
+        display: flex;
+        font-size: 15px;
+    }
+    
+    .formContainerRegister{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 1100px;
+        height: 550px;
+        background-color: rgb(247, 247, 247);
+        border: 1px #cbd6dc solid;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+    
+    .logoLandingRegisterDiv{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: -20px;
+        width: 100%;
+    }
+    
+    .logoLandingRegister{
+        pointer-events: none;
+        object-fit: cover;
+        width: 150px;
+        height: 80px;
+    }
+    
+    .inputsContainer{
+        display: flex;
+        width: 100%;
+        height: 370px;
+    }
+    
+    .inputDivLeft{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        width: 50%;
+        align-items: center;
+    }
+    
+    .inputDivRight{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        width: 50%;
+        align-items: center;
+    }
+    
+    .inputDiv{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .inputText{
+        margin-bottom: 5px;
+    }
+    
+    .singleInput{
+        display: flex;
+        height: 35px;
+        width: 350px;
+    }
+    
+    .singleInput:focus {
+        outline: none;
+    }
+    
+    .buttonRegisterDisabled{
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 190px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: gray;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .buttonRegister{
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 190px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: #d50000;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .buttonRegister:hover{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        background-color: #860000;
+    }
+    
+    .buttonRegister:active{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        background-color: #750000;
+    }
+    
+    .errorLogin{
+        position: fixed;
+        display: flex;
+        color: red;
+        margin: 0;
+        font-size: 12px;
+        max-width: 350px;
+        margin-top: 73px;
+    }
+}
+@media screen and (max-width: 1280px) and (max-height: 800px){
+    .registerContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        height: 100vh;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    @keyframes registerContainer {
+        from {
+            opacity: 0%;
+        }
+    
+        to {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes registerContainer {
+        from {
+            opacity: 0%;
+        }
+    
+        to {
+            opacity: 1;
+        }
+    }
+    
+    .registerContainer img {
+        animation: registerContainer 0.5s;
+    }
+    
+    .registerContainer img {
+        animation: registerContainer 0.5s;
+    }
+    
+    .registerContainer div {
+        animation: registerContainer 0.5s;
+    }
+    
+    .goBackRegisterContainer{
+        text-decoration: none;
+        width: 100%;
+        margin-left: 20px;
+    }
+    
+    .goBackRegister{
+        cursor: pointer;
+        position: fixed;
+        text-decoration: none;
+        height: 35px;
+        width: 90px;
+        font-size: 17px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: #d50000;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .goBackRegister:hover{
+        color: #ffffff;
+        background-color: #860000;
+    }
+    
+    .goBackRegister:active{
+        color: #ffffff;
+        background-color: #750000;
+    }
+    
+    .registerText{
+        display: flex;
+        font-size: 15px;
+    }
+    
+    .formContainerRegister{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 1100px;
+        height: 550px;
+        background-color: rgb(247, 247, 247);
+        border: 1px #cbd6dc solid;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+    
+    .logoLandingRegisterDiv{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: -20px;
+        width: 100%;
+    }
+    
+    .logoLandingRegister{
+        pointer-events: none;
+        object-fit: cover;
+        width: 150px;
+        height: 80px;
+    }
+    
+    .inputsContainer{
+        display: flex;
+        width: 100%;
+        height: 370px;
+    }
+    
+    .inputDivLeft{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        width: 50%;
+        align-items: center;
+    }
+    
+    .inputDivRight{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        width: 50%;
+        align-items: center;
+    }
+    
+    .inputDiv{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .inputText{
+        margin-bottom: 5px;
+    }
+    
+    .singleInput{
+        display: flex;
+        height: 35px;
+        width: 350px;
+    }
+    
+    .singleInput:focus {
+        outline: none;
+    }
+    
+    .buttonRegisterDisabled{
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 190px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: gray;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .buttonRegister{
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 190px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: #d50000;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .buttonRegister:hover{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        background-color: #860000;
+    }
+    
+    .buttonRegister:active{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        background-color: #750000;
+    }
+    
+    .errorLogin{
+        position: fixed;
+        display: flex;
+        color: red;
+        margin: 0;
+        font-size: 12px;
+        max-width: 350px;
+        margin-top: 73px;
+    }
+}
+@media screen and (max-width: 1280px) and (max-height: 600px){
+    .registerContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        height: 100vh;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    @keyframes registerContainer {
+        from {
+            opacity: 0%;
+        }
+    
+        to {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes registerContainer {
+        from {
+            opacity: 0%;
+        }
+    
+        to {
+            opacity: 1;
+        }
+    }
+    
+    .registerContainer img {
+        animation: registerContainer 0.5s;
+    }
+    
+    .registerContainer img {
+        animation: registerContainer 0.5s;
+    }
+    
+    .registerContainer div {
+        animation: registerContainer 0.5s;
+    }
+    
+    .goBackRegisterContainer{
+        text-decoration: none;
+        width: 100%;
+        margin-left: 20px;
+    }
+    
+    .goBackRegister{
+        cursor: pointer;
+        position: fixed;
+        text-decoration: none;
+        height: 35px;
+        width: 90px;
+        font-size: 17px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: #d50000;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .goBackRegister:hover{
+        color: #ffffff;
+        background-color: #860000;
+    }
+    
+    .goBackRegister:active{
+        color: #ffffff;
+        background-color: #750000;
+    }
+    
+    .registerText{
+        display: flex;
+        font-size: 15px;
+    }
+    
+    .formContainerRegister{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 850px;
+        height: 420px;
+        background-color: rgb(247, 247, 247);
+        border: 1px #cbd6dc solid;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+    
+    .logoLandingRegisterDiv{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .logoLandingRegister{
+        pointer-events: none;
+        object-fit: cover;
+        width: 120px;
+        height: 60px;
+    }
+    
+    .inputsContainer{
+        display: flex;
+        width: 100%;
+        height: 250px;
+    }
+    
+    .inputDivLeft{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        width: 50%;
+        align-items: center;
+    }
+    
+    .inputDivRight{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        width: 50%;
+        align-items: center;
+    }
+    
+    .inputDiv{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .inputText{
+        margin-bottom: 5px;
+    }
+    
+    .singleInput{
+        display: flex;
+        height: 35px;
+        width: 300px;
+    }
+    
+    .singleInput:focus {
+        outline: none;
+    }
+    
+    .buttonRegisterDisabled{
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        width: 150px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: gray;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .buttonRegister{
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        width: 150px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: #d50000;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .buttonRegister:hover{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        background-color: #860000;
+    }
+    
+    .buttonRegister:active{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        background-color: #750000;
+    }
+    
+    .errorLogin{
+        position: fixed;
+        display: flex;
+        color: red;
+        margin: 0;
+        font-size: 12px;
+        max-width: 350px;
+        margin-top: 73px;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .registerContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        height: 100vh;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    @keyframes registerContainer {
+        from {
+            opacity: 0%;
+        }
+    
+        to {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes registerContainer {
+        from {
+            opacity: 0%;
+        }
+    
+        to {
+            opacity: 1;
+        }
+    }
+    
+    .registerContainer img {
+        animation: registerContainer 0.5s;
+    }
+    
+    .registerContainer img {
+        animation: registerContainer 0.5s;
+    }
+    
+    .registerContainer div {
+        animation: registerContainer 0.5s;
+    }
+    
+    .goBackRegisterContainer{
+        text-decoration: none;
+        width: 100%;
+        margin-left: 20px;
+    }
+    
+    .goBackRegister{
+        cursor: pointer;
+        position: fixed;
+        text-decoration: none;
+        height: 35px;
+        width: 90px;
+        font-size: 17px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: #d50000;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .goBackRegister:hover{
+        color: #ffffff;
+        background-color: #860000;
+    }
+    
+    .goBackRegister:active{
+        color: #ffffff;
+        background-color: #750000;
+    }
+    
+    .registerText{
+        display: flex;
+        font-size: 15px;
+    }
+    
+    .formContainerRegister{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 900px;
+        height: 500px;
+        background-color: rgb(247, 247, 247);
+        border: 1px #cbd6dc solid;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+    
+    .logoLandingRegisterDiv{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: -20px;
+        width: 100%;
+    }
+    
+    .logoLandingRegister{
+        pointer-events: none;
+        object-fit: cover;
+        width: 150px;
+        height: 80px;
+    }
+    
+    .inputsContainer{
+        display: flex;
+        width: 100%;
+        height: 300px;
+    }
+    
+    .inputDivLeft{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        width: 50%;
+        align-items: center;
+    }
+    
+    .inputDivRight{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        width: 50%;
+        align-items: center;
+    }
+    
+    .inputDiv{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .inputText{
+        margin-bottom: 5px;
+    }
+    
+    .singleInput{
+        display: flex;
+        height: 35px;
+        width: 300px;
+    }
+    
+    .singleInput:focus {
+        outline: none;
+    }
+    
+    .buttonRegisterDisabled{
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 190px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: gray;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .buttonRegister{
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 190px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: #d50000;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .buttonRegister:hover{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        background-color: #860000;
+    }
+    
+    .buttonRegister:active{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        background-color: #750000;
+    }
+    
+    .errorLogin{
+        position: fixed;
+        display: flex;
+        color: red;
+        margin: 0;
+        font-size: 12px;
+        max-width: 350px;
+        margin-top: 73px;
+    }
+}
+@media screen and (max-width: 800px) {
+    .registerContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        height: 100vh;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    @keyframes registerContainer {
+        from {
+            opacity: 0%;
+        }
+    
+        to {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes registerContainer {
+        from {
+            opacity: 0%;
+        }
+    
+        to {
+            opacity: 1;
+        }
+    }
+    
+    .registerContainer img {
+        animation: registerContainer 0.5s;
+    }
+    
+    .registerContainer img {
+        animation: registerContainer 0.5s;
+    }
+    
+    .registerContainer div {
+        animation: registerContainer 0.5s;
+    }
+    
+    .goBackRegisterContainer{
+        text-decoration: none;
+        width: 100%;
+        margin-left: 20px;
+    }
+    
+    .goBackRegister{
+        cursor: pointer;
+        position: fixed;
+        text-decoration: none;
+        height: 35px;
+        width: 90px;
+        font-size: 17px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: #d50000;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .goBackRegister:hover{
+        color: #ffffff;
+        background-color: #860000;
+    }
+    
+    .goBackRegister:active{
+        color: #ffffff;
+        background-color: #750000;
+    }
+    
+    .registerText{
+        display: flex;
+        font-size: 15px;
+    }
+    
+    .formContainerRegister{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 700px;
+        height: 450px;
+        background-color: rgb(247, 247, 247);
+        border: 1px #cbd6dc solid;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+    
+    .logoLandingRegisterDiv{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: -20px;
+        width: 100%;
+    }
+    
+    .logoLandingRegister{
+        pointer-events: none;
+        object-fit: cover;
+        width: 120px;
+        height: 60px;
+    }
+    
+    .inputsContainer{
+        display: flex;
+        width: 100%;
+        height: 300px;
+    }
+    
+    .inputDivLeft{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        width: 50%;
+        align-items: center;
+    }
+    
+    .inputDivRight{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        width: 50%;
+        align-items: center;
+    }
+    
+    .inputDiv{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .inputText{
+        margin-bottom: 5px;
+    }
+    
+    .singleInput{
+        display: flex;
+        height: 35px;
+        width: 270px;
+    }
+    
+    .singleInput:focus {
+        outline: none;
+    }
+    
+    .buttonRegisterDisabled{
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 150px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: gray;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .buttonRegister{
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 150px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: #d50000;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .buttonRegister:hover{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        background-color: #860000;
+    }
+    
+    .buttonRegister:active{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        background-color: #750000;
+    }
+    
+    .errorLogin{
+        position: fixed;
+        display: flex;
+        color: red;
+        margin: 0;
+        font-size: 11px;
+        max-width: 300px;
+        margin-top: 71px;
+    }
+}
+@media screen and (max-width: 414px) {
+    .registerContainer{
+        display: flex;
+        background-color: transparent;
+        height: 100vh;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    @keyframes registerContainer {
+        from {
+            opacity: 0%;
+        }
+    
+        to {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes registerContainer {
+        from {
+            opacity: 0%;
+        }
+    
+        to {
+            opacity: 1;
+        }
+    }
+    
+    .registerContainer img {
+        animation: registerContainer 0.5s;
+    }
+    
+    .registerContainer img {
+        animation: registerContainer 0.5s;
+    }
+    
+    .registerContainer div {
+        animation: registerContainer 0.5s;
+    }
+    
+    .goBackRegisterContainer{
+        text-decoration: none;
+        width: 100%;
+        margin-left: 20px;
+    }
+    
+    .goBackRegister{
+        cursor: pointer;
+        position: fixed;
+        text-decoration: none;
+        height: 35px;
+        width: 90px;
+        font-size: 17px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: #d50000;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .goBackRegister:hover{
+        color: #ffffff;
+        background-color: #860000;
+    }
+    
+    .goBackRegister:active{
+        color: #ffffff;
+        background-color: #750000;
+    }
+    
+    .registerText{
+        display: flex;
+        font-size: 15px;
+    }
+    
+    .formContainerRegister{
+        display: flex;
+        flex-direction: column;
+        width: 414px;
+        height: 100vh;
+        background-color: rgb(247, 247, 247);
+        border: 1px #cbd6dc solid;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+    
+    .logoLandingRegisterDiv{
+        display: flex;
+        width: 100%;
+    }
+    
+    .logoLandingRegister{
+        pointer-events: none;
+        object-fit: cover;
+        width: 150px;
+        height: 80px;
+    }
+    
+    .inputsContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 600px;
+    }
+    
+    .inputDivLeft{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        width: 50%;
+        align-items: center;
+    }
+    
+    .inputDivRight{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        width: 50%;
+        align-items: center;
+    }
+    
+    .inputDiv{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .inputText{
+        margin-bottom: 5px;
+    }
+    
+    .singleInput{
+        display: flex;
+        height: 35px;
+        width: 320px;
+    }
+    
+    .singleInput:focus {
+        outline: none;
+    }
+    
+    .buttonRegisterDisabled{
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 150px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: gray;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .buttonRegister{
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 150px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: #d50000;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .buttonRegister:hover{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        background-color: #860000;
+    }
+    
+    .buttonRegister:active{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        background-color: #750000;
+    }
+    
+    .errorLogin{
+        position: fixed;
+        display: flex;
+        color: red;
+        margin: 0;
+        font-size: 11px;
+        max-width: 300px;
+        margin-top: 71px;
+    }
+}
+@media screen and (max-width: 390px) {
+    .registerContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent;
+        height: 100vh;
+        width: 390px;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    @keyframes registerContainer {
+        from {
+            opacity: 0%;
+        }
+    
+        to {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes registerContainer {
+        from {
+            opacity: 0%;
+        }
+    
+        to {
+            opacity: 1;
+        }
+    }
+    
+    .registerContainer img {
+        animation: registerContainer 0.5s;
+    }
+    
+    .registerContainer img {
+        animation: registerContainer 0.5s;
+    }
+    
+    .registerContainer div {
+        animation: registerContainer 0.5s;
+    }
+    
+    .goBackRegisterContainer{
+        text-decoration: none;
+        width: 100%;
+        margin-left: 20px;
+    }
+    
+    .goBackRegister{
+        cursor: pointer;
+        position: fixed;
+        text-decoration: none;
+        height: 35px;
+        width: 90px;
+        font-size: 17px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: #d50000;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .goBackRegister:hover{
+        color: #ffffff;
+        background-color: #860000;
+    }
+    
+    .goBackRegister:active{
+        color: #ffffff;
+        background-color: #750000;
+    }
+    
+    .registerText{
+        display: flex;
+        font-size: 15px;
+    }
+    
+    .formContainerRegister{
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 390px;
+        background-color: rgb(247, 247, 247);
+        border: 1px #cbd6dc solid;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+    
+    .logoLandingRegisterDiv{
+        display: flex;
+        width: 100%;
+        height: 100px;
+    }
+    
+    .logoLandingRegister{
+        pointer-events: none;
+        object-fit: cover;
+        width: 120px;
+        height: 60px;
+    }
+    
+    .inputsContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 500px;
+    }
+    
+    .inputDivLeft{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        width: 50%;
+        align-items: center;
+    }
+    
+    .inputDivRight{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        width: 50%;
+        align-items: center;
+    }
+    
+    .inputDiv{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .inputText{
+        margin-bottom: 5px;
+    }
+    
+    .singleInput{
+        display: flex;
+        height: 35px;
+        width: 320px;
+    }
+    
+    .singleInput:focus {
+        outline: none;
+    }
+    
+    .buttonRegisterDisabled{
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 150px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: gray;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .buttonRegister{
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 150px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: #d50000;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .buttonRegister:hover{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        background-color: #860000;
+    }
+    
+    .buttonRegister:active{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        background-color: #750000;
+    }
+    
+    .errorLogin{
+        position: fixed;
+        display: flex;
+        color: red;
+        margin: 0;
+        font-size: 11px;
+        max-width: 300px;
+        margin-top: 71px;
+    }
+}
+/* @media screen and (max-width: 390px) {
+    .registerContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent;
+        height: 100vh;
+        width: 360px;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    @keyframes registerContainer {
+        from {
+            opacity: 0%;
+        }
+    
+        to {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes registerContainer {
+        from {
+            opacity: 0%;
+        }
+    
+        to {
+            opacity: 1;
+        }
+    }
+    
+    .registerContainer img {
+        animation: registerContainer 0.5s;
+    }
+    
+    .registerContainer img {
+        animation: registerContainer 0.5s;
+    }
+    
+    .registerContainer div {
+        animation: registerContainer 0.5s;
+    }
+    
+    .goBackRegisterContainer{
+        text-decoration: none;
+        width: 100%;
+        margin-left: 20px;
+    }
+    
+    .goBackRegister{
+        cursor: pointer;
+        position: fixed;
+        text-decoration: none;
+        height: 35px;
+        width: 90px;
+        font-size: 17px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: #d50000;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .goBackRegister:hover{
+        color: #ffffff;
+        background-color: #860000;
+    }
+    
+    .goBackRegister:active{
+        color: #ffffff;
+        background-color: #750000;
+    }
+    
+    .registerText{
+        display: flex;
+        font-size: 15px;
+    }
+    
+    .formContainerRegister{
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 360px;
+        background-color: rgb(247, 247, 247);
+        border: 1px #cbd6dc solid;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+    
+    .logoLandingRegisterDiv{
+        display: flex;
+        width: 100%;
+        height: 100px;
+    }
+    
+    .logoLandingRegister{
+        pointer-events: none;
+        object-fit: cover;
+        width: 120px;
+        height: 60px;
+    }
+    
+    .inputsContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 500px;
+    }
+    
+    .inputDivLeft{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        width: 50%;
+        align-items: center;
+    }
+    
+    .inputDivRight{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        width: 50%;
+        align-items: center;
+    }
+    
+    .inputDiv{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .inputText{
+        margin-bottom: 5px;
+    }
+    
+    .singleInput{
+        display: flex;
+        height: 35px;
+        width: 320px;
+    }
+    
+    .singleInput:focus {
+        outline: none;
+    }
+    
+    .buttonRegisterDisabled{
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 150px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: gray;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .buttonRegister{
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 150px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: #d50000;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .buttonRegister:hover{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        background-color: #860000;
+    }
+    
+    .buttonRegister:active{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        background-color: #750000;
+    }
+    
+    .errorLogin{
+        position: fixed;
+        display: flex;
+        color: red;
+        margin: 0;
+        font-size: 11px;
+        max-width: 300px;
+        margin-top: 71px;
+    }
+} */
+@media screen and (max-width: 375px) {
+    .registerContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent;
+        height: 100vh;
+        width: 375px;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    @keyframes registerContainer {
+        from {
+            opacity: 0%;
+        }
+    
+        to {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes registerContainer {
+        from {
+            opacity: 0%;
+        }
+    
+        to {
+            opacity: 1;
+        }
+    }
+    
+    .registerContainer img {
+        animation: registerContainer 0.5s;
+    }
+    
+    .registerContainer img {
+        animation: registerContainer 0.5s;
+    }
+    
+    .registerContainer div {
+        animation: registerContainer 0.5s;
+    }
+    
+    .goBackRegisterContainer{
+        display: flex;
+        text-decoration: none;
+        width: 100%;
+        justify-content: flex-end;
+        margin-right: 65px;
+    }
+    
+    .goBackRegister{
+        cursor: pointer;
+        position: fixed;
+        text-decoration: none;
+        height: 35px;
+        width: 90px;
+        font-size: 17px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: #d50000;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .goBackRegister:hover{
+        color: #ffffff;
+        background-color: #860000;
+    }
+    
+    .goBackRegister:active{
+        color: #ffffff;
+        background-color: #750000;
+    }
+    
+    .registerText{
+        display: none;
+        font-size: 15px;
+    }
+    
+    .formContainerRegister{
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 375px;
+        background-color: rgb(247, 247, 247);
+        border: 1px #cbd6dc solid;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+    
+    .logoLandingRegisterDiv{
+        display: none;
+        width: 100%;
+        height: 100px;
+    }
+    
+    .logoLandingRegister{
+        display: none;
+        pointer-events: none;
+        object-fit: cover;
+        width: 120px;
+        height: 60px;
+    }
+    
+    .inputsContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 550px;
+    }
+    
+    .inputDivLeft{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 50%;
+        align-items: center;
+    }
+    
+    .inputDivRight{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 50%;
+        align-items: center;
+    }
+    
+    .inputDiv{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .inputText{
+        margin-bottom: 5px;
+    }
+    
+    .singleInput{
+        display: flex;
+        height: 35px;
+        width: 320px;
+    }
+    
+    .singleInput:focus {
+        outline: none;
+    }
+    
+    .buttonRegisterDisabled{
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 150px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: gray;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .buttonRegister{
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 150px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: #d50000;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .buttonRegister:hover{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        background-color: #860000;
+    }
+    
+    .buttonRegister:active{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        background-color: #750000;
+    }
+    
+    .errorLogin{
+        position: fixed;
+        display: flex;
+        color: red;
+        margin: 0;
+        font-size: 10px;
+        max-width: 350px;
+        margin-top: 71px;
+    }
+}
+@media screen and (max-width: 360px) {
+    .registerContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent;
+        height: 100vh;
+        width: 100%;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    @keyframes registerContainer {
+        from {
+            opacity: 0%;
+        }
+    
+        to {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes registerContainer {
+        from {
+            opacity: 0%;
+        }
+    
+        to {
+            opacity: 1;
+        }
+    }
+    
+    .registerContainer img {
+        animation: registerContainer 0.5s;
+    }
+    
+    .registerContainer img {
+        animation: registerContainer 0.5s;
+    }
+    
+    .registerContainer div {
+        animation: registerContainer 0.5s;
+    }
+    
+    .goBackRegisterContainer{
+        display: flex;
+        text-decoration: none;
+        width: 100%;
+        justify-content: flex-end;
+        margin-right: 65px;
+    }
+    
+    .goBackRegister{
+        cursor: pointer;
+        position: fixed;
+        text-decoration: none;
+        height: 35px;
+        width: 90px;
+        font-size: 17px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: #d50000;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .goBackRegister:hover{
+        color: #ffffff;
+        background-color: #860000;
+    }
+    
+    .goBackRegister:active{
+        color: #ffffff;
+        background-color: #750000;
+    }
+    
+    .registerText{
+        display: none;
+        font-size: 15px;
+    }
+    
+    .formContainerRegister{
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 100%;
+        background-color: rgb(247, 247, 247);
+        border: 1px #cbd6dc solid;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+    
+    .logoLandingRegisterDiv{
+        display: none;
+        width: 100%;
+        height: 100px;
+    }
+    
+    .logoLandingRegister{
+        display: none;
+        pointer-events: none;
+        object-fit: cover;
+        width: 120px;
+        height: 60px;
+    }
+    
+    .inputsContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 550px;
+    }
+    
+    .inputDivLeft{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 50%;
+        align-items: center;
+    }
+    
+    .inputDivRight{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 50%;
+        align-items: center;
+    }
+    
+    .inputDiv{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .inputText{
+        margin-bottom: 5px;
+    }
+    
+    .singleInput{
+        display: flex;
+        height: 35px;
+        width: 320px;
+    }
+    
+    .singleInput:focus {
+        outline: none;
+    }
+    
+    .buttonRegisterDisabled{
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 150px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: gray;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .buttonRegister{
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 150px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: #d50000;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .buttonRegister:hover{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        background-color: #860000;
+    }
+    
+    .buttonRegister:active{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        background-color: #750000;
+    }
+    
+    .errorLogin{
+        position: fixed;
+        display: flex;
+        color: red;
+        margin: 0;
+        font-size: 10px;
+        max-width: 350px;
+        margin-top: 71px;
+    }
+}
+@media screen and (max-width: 280px) {
+    .registerContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent;
+        height: 100vh;
+        width: 280px;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    @keyframes registerContainer {
+        from {
+            opacity: 0%;
+        }
+    
+        to {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes registerContainer {
+        from {
+            opacity: 0%;
+        }
+    
+        to {
+            opacity: 1;
+        }
+    }
+    
+    .registerContainer img {
+        animation: registerContainer 0.5s;
+    }
+    
+    .registerContainer img {
+        animation: registerContainer 0.5s;
+    }
+    
+    .registerContainer div {
+        animation: registerContainer 0.5s;
+    }
+    
+    .goBackRegisterContainer{
+        text-decoration: none;
+        width: 100%;
+        margin-left: 20px;
+    }
+    
+    .goBackRegister{
+        cursor: pointer;
+        position: fixed;
+        text-decoration: none;
+        height: 30px;
+        width: 65px;
+        font-size: 12px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: #d50000;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .goBackRegister:hover{
+        color: #ffffff;
+        background-color: #860000;
+    }
+    
+    .goBackRegister:active{
+        color: #ffffff;
+        background-color: #750000;
+    }
+    
+    .registerText{
+        display: flex;
+        font-size: 11px;
+    }
+    
+    .formContainerRegister{
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 280px;
+        background-color: rgb(247, 247, 247);
+        border: 1px #cbd6dc solid;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+    
+    .logoLandingRegisterDiv{
+        display: flex;
+        width: 100%;
+        height: 100px;
+    }
+    
+    .logoLandingRegister{
+        pointer-events: none;
+        object-fit: cover;
+        width: 120px;
+        height: 60px;
+    }
+    
+    .inputsContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 500px;
+    }
+    
+    .inputDivLeft{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        width: 50%;
+        align-items: center;
+    }
+    
+    .inputDivRight{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        width: 50%;
+        align-items: center;
+    }
+    
+    .inputDiv{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .inputText{
+        margin-bottom: 5px;
+    }
+    
+    .singleInput{
+        display: flex;
+        height: 30px;
+        width: 240px;
+    }
+    
+    .singleInput:focus {
+        outline: none;
+    }
+    
+    .buttonRegisterDisabled{
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 150px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: gray;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .buttonRegister{
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        width: 120px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        background-color: #d50000;
+        box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
+        transition: 0.3s;
+    }
+    
+    .buttonRegister:hover{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        background-color: #860000;
+    }
+    
+    .buttonRegister:active{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        background-color: #750000;
+    }
+    
+    .errorLogin{
+        position: fixed;
+        display: flex;
+        color: red;
+        margin: 0;
+        font-size: 11px;
+        max-width: 300px;
+        margin-top: 71px;
     }
 }
 
-@keyframes registerContainer {
-    from {
-        opacity: 0%;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-.registerContainer img {
-    animation: registerContainer 0.5s;
-}
-
-.registerContainer img {
-    animation: registerContainer 0.5s;
-}
-
-.registerContainer div {
-    animation: registerContainer 0.5s;
-}
-
-.goBackRegisterContainer{
-    text-decoration: none;
-    width: 100%;
-    margin-left: 20px;
-}
-
-.goBackRegister{
-    cursor: pointer;
-    position: fixed;
-    text-decoration: none;
-    height: 35px;
-    width: 90px;
-    font-size: 17px;
-    border: none;
-    border-radius: 4px;
-    color: #ffffff;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    background-color: #d50000;
-    box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
-    -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
-    -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
-    transition: 0.3s;
-}
-
-.goBackRegister:hover{
-    color: #ffffff;
-    background-color: #860000;
-}
-
-.goBackRegister:active{
-    color: #ffffff;
-    background-color: #750000;
-}
-
-.registerText{
-    display: flex;
-    font-size: 15px;
-}
-
-.formContainerRegister{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 1100px;
-    height: 550px;
-    background-color: rgb(247, 247, 247);
-    border: 1px #cbd6dc solid;
-    border-radius: 5px;
-    transition: 0.3s;
-}
-
-.logoLandingRegisterDiv{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: -20px;
-    width: 100%;
-}
-
-.logoLandingRegister{
-    pointer-events: none;
-    object-fit: cover;
-    width: 150px;
-    height: 80px;
-}
-
-.inputsContainer{
-    display: flex;
-    width: 100%;
-    height: 370px;
-}
-
-.inputDivLeft{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 100%;
-    width: 50%;
-    align-items: center;
-}
-
-.inputDivRight{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 100%;
-    width: 50%;
-    align-items: center;
-}
-
-.inputDiv{
-    display: flex;
-    flex-direction: column;
-}
-
-.inputText{
-    margin-bottom: 5px;
-}
-
-.singleInput{
-    display: flex;
-    height: 35px;
-    width: 350px;
-}
-
-.singleInput:focus {
-    outline: none;
-}
-
-.buttonRegisterDisabled{
-    pointer-events: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 45px;
-    width: 190px;
-    font-size: 18px;
-    border: none;
-    border-radius: 4px;
-    color: #ffffff;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    background-color: gray;
-    box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
-    -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
-    -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
-    transition: 0.3s;
-}
-
-.buttonRegister{
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 45px;
-    width: 190px;
-    font-size: 18px;
-    border: none;
-    border-radius: 4px;
-    color: #ffffff;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    background-color: #d50000;
-    box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
-    -webkit-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
-    -moz-box-shadow: 0px 12px 14px -16px rgba(0, 0, 0, 0.47);
-    transition: 0.3s;
-}
-
-.buttonRegister:hover{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    background-color: #860000;
-}
-
-.buttonRegister:active{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    background-color: #750000;
-}
-
-.errorLogin{
-    position: fixed;
-    display: flex;
-    color: red;
-    margin: 0;
-    font-size: 12px;
-    max-width: 350px;
-    margin-top: 73px;
-}
