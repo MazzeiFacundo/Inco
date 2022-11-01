@@ -330,6 +330,7 @@ function EditProductModal({
                             {
                                 slideNumber === 0 && (
                                     <form className="e-product-modal-slide-zero-container" onSubmit={(e) => handleSubmit(e)}>
+                                        <button className="ep-modal-close-modal-btn-mobile" onClick={() => handleCloseModal(false)}>X</button>
                                         <div className="e-product-modal-text-inputs-container">
                                             <div className="e-product-modal-single-input-container">
                                                 <label className="e-product-modal-single-label">Product name</label>
@@ -349,7 +350,7 @@ function EditProductModal({
 
                                             <div className="e-product-modal-single-input-container">
                                                 <label className="e-product-modal-single-label">Price</label>
-                                                <span className="list-p-price-span">
+                                                <span className="e-price-span">
                                                     <input
                                                         autocomplete="off"
                                                         value={input.price}

@@ -115,7 +115,7 @@ function CardDetail() {
 
                                     <div className="detail-p-measurements-container">
                                         <FontAwesomeIcon icon={faExchangeAlt} className='detail-p-measurements-icon'></FontAwesomeIcon>
-                                        <div className="detail-p-measurements-text">{"Sqft: " + e.productWidth + "ft"}<sup>2</sup></div>
+                                        <div className="detail-p-measurements-text">{"Sqft: " + e.productWidth + "Sqft"}</div>
                                         <FontAwesomeIcon icon={faLongArrowAltUp} className='detail-p-measurements-icon'></FontAwesomeIcon>
                                         <div className="detail-p-measurements-text">{"Height: " + e.productHeight + "ft"}</div>
                                     </div>
